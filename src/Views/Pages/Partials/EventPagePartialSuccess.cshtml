@@ -1,0 +1,18 @@
+﻿@using BVNetwork.Attend.Business.API
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Globalization
+@using EPiServer.Web.Routing
+
+@model BVNetwork.Attend.Models.ViewModels.EventRegistrationModel
+
+
+@if (Model.Submitted)
+{
+    @Html.PropertyFor(x => x.EventPageBase.SubmittedContent)
+
+}
+else
+{
+    @Html.PropertyFor(x => x.EventPageBase.CompleteContent)
+}

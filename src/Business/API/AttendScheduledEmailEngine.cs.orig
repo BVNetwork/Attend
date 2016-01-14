@@ -1,0 +1,146 @@
+<<<<<<< HEAD:Business/API/AttendScheduledEmailEngine.cs
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Web;
+using BVNetwork.Attend.Business.Email;
+using BVNetwork.Attend.Business.Participant;
+=======
+﻿using BVNetwork.Attend.Business.Email;
+>>>>>>> 73745f7b1dee57238ba5a5ce0fcd2dd5827ceedc:BVNetwork.Attend/Business/API/AttendScheduledEmailEngine.cs
+using BVNetwork.Attend.Business.Text;
+using BVNetwork.Attend.Models.Blocks;
+using BVNetwork.Attend.Models.Pages;
+using EPiServer;
+using EPiServer.Core;
+using EPiServer.DataAccess;
+using EPiServer.ServiceLocation;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+
+namespace BVNetwork.Attend.Business.API
+{
+    public class AttendScheduledEmailEngine
+    {
+
+        private static ContentFolder GetOrCreateEmailFolder(ContentReference eventPage)
+        {
+            return Core.Folders.GetOrCreateEventFolder(eventPage, "emails");
+        }
+
+        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmails(ContentReference eventPage)
+        {
+            var contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>();
+            return contentRepository.GetChildren<ScheduledEmailBlock>(GetOrCreateEmailFolder(eventPage).ContentLink, new CultureInfo(Localization.LanguageHelper.MasterLanguage(eventPage)));
+        }
+
+        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmails(ContentReference eventPage, SendOptions option, AttendStatus status)
+        {
+            return (from e in GetScheduledEmails(eventPage) where e.SendOnStatus == status && e.EmailSendOptions == option select e);
+        }
+
+        public static ScheduledEmailBlock GenerateScheduledEmailBlock(ContentReference eventPage)
+        {
+            var contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>();
+            ScheduledEmailBlock emailBlock = contentRepository.GetDefault<ScheduledEmailBlock>(GetOrCreateEmailFolder(eventPage).ContentLink, new CultureInfo(Localization.LanguageHelper.MasterLanguage(eventPage)));
+            (emailBlock as IContent).Name = "New message";
+            emailBlock.EventPage = eventPage as PageReference;
+            contentRepository.Save(emailBlock as IContent, SaveAction.Publish);
+            return emailBlock;
+        }
+
+        public static void SendScheduledEmail(ScheduledEmailBlock scheduledEmailBlock, IParticipant participant)
+        {
+            EmailTemplateBlock et;
+            EmailSender email;
+
+            if (scheduledEmailBlock != null)
+            {
+                if (scheduledEmailBlock.EmailTemplateContentReference == null)
+                    et = (scheduledEmailBlock.EmailTemplate);
+                else
+                    et = DataFactory.Instance.Get<EmailTemplateBlock>(scheduledEmailBlock.EmailTemplateContentReference);
+
+                if (et != null)
+                {
+                    email = new EmailSender(participant, et);
+                    email.Send();
+                }
+            }
+
+        }
+
+        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmailsToSend(EventPage eventPage)
+        {
+            var scheduledEmailBlocks = (from e in GetScheduledEmails(eventPage.ContentLink) where (e.EmailSendOptions == SendOptions.Specific || e.EmailSendOptions == SendOptions.Relative) && e.DateSent > DateTime.Now select e);
+            var scheduledEmailBlocksToSend = new List<ScheduledEmailBlock>();
+            foreach (ScheduledEmailBlock scheduledEmailBlock in scheduledEmailBlocks)
+            {
+                if (GetSendDate(scheduledEmailBlock, eventPage) < DateTime.Now)
+                    scheduledEmailBlocksToSend.Add(scheduledEmailBlock);
+            }
+            return scheduledEmailBlocksToSend;
+        }
+
+        public static DateTime GetSendDate(ScheduledEmailBlock scheduledEmailBlock, EventPage eventPage)
+        {
+            DateTime dateToSend = DateTime.Now;
+            bool subtract = false;
+            if (scheduledEmailBlock.EmailSendOptions == SendOptions.Specific)
+                return scheduledEmailBlock.SpecificDateScheduled;
+            if (scheduledEmailBlock.EmailSendOptions == SendOptions.Relative)
+            {
+                switch (scheduledEmailBlock.ScheduledRelativeTo)
+                {
+                    case RelativeTo.AfterEventStart:
+                        subtract = false;
+                        dateToSend = eventPage.EventDetails.EventStart;
+                        break;
+
+                    case RelativeTo.BeforeEventStart:
+                        subtract = true;
+                        dateToSend = eventPage.EventDetails.EventStart;
+                        break;
+
+                    case RelativeTo.AfterStartPublish:
+                        subtract = false;
+                        dateToSend = eventPage.StartPublish;
+                        break;
+
+                    case RelativeTo.BeforeStartPublish:
+                        subtract = true;
+                        dateToSend = eventPage.StartPublish;
+                        break;
+
+                }
+                int amount = scheduledEmailBlock.ScheduledRelativeAmount;
+                if (subtract)
+                    amount = amount * -1;
+
+                switch (scheduledEmailBlock.ScheduledRelativeUnit)
+                {
+                    case RelativeUnit.Days:
+                        dateToSend = dateToSend.AddDays(scheduledEmailBlock.ScheduledRelativeAmount);
+                        break;
+                    case RelativeUnit.Hours:
+                        dateToSend = dateToSend.AddHours(scheduledEmailBlock.ScheduledRelativeAmount);
+                        break;
+                    case RelativeUnit.Minutes:
+                        dateToSend = dateToSend.AddMinutes(scheduledEmailBlock.ScheduledRelativeAmount);
+                        break;
+                    case RelativeUnit.Months:
+                        dateToSend = dateToSend.AddMonths(scheduledEmailBlock.ScheduledRelativeAmount);
+                        break;
+                }
+                return dateToSend;
+            }
+            return DateTime.MaxValue;
+        }
+
+
+    }
+}

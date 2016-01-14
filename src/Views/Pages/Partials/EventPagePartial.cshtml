@@ -1,0 +1,108 @@
+﻿@using BVNetwork.Attend.Business.API
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Globalization
+@using EPiServer.Web.Routing
+
+@model BVNetwork.Attend.Models.ViewModels.EventRegistrationModel
+
+
+
+
+@if (Model.EventPageBase != null)
+{
+    <div class="">
+        <div class="">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class=" registrationForm">
+                        @if (Model.AvalibleSeats < 1)
+                        {
+                            <div class="well">
+                                @Html.PropertyFor(x => x.EventPageBase.NoSeatsContent)
+                            </div>
+                        }
+                        @if (Model.EventPageBase.EventDetails.RegistrationClose < DateTime.Now)
+                        {
+                            <div class="well">
+                                @Html.PropertyFor(x => x.EventPageBase.ClosedContent)
+                            </div>
+                        }
+                        else if (Model.EventPageBase.EventDetails.RegistrationClose > DateTime.Now && !Model.EventPageBase.EventDetails.Cancelled)
+                        {
+                            if (Model.EventPageBase.AvailableSeatsText.ShowAvailableSeats)
+                            {
+                                <strong>
+                                    @AttendRegistrationEngine.GetAvailableSeatsText(Model.EventPageBase)
+                                </strong>
+                                <br /><br />
+                            }
+                            if (Model.Sessions.Count > 0)
+                            {
+                                <div class="well-sessions" id="sessions">
+                                    <div class="form-group">
+                                        <h4>@Html.Translate("/eventRegistrationPage/sessionsIntroText") @Model.EventPageBase.PageName</h4>
+                                        @foreach (var session in Model.Sessions)
+                                        {
+                                            if (session.NewGroup)
+                                            {
+                                                <h5>@session.Header</h5>
+                                            }
+
+                                            if (AttendSessionEngine.HasParallelSessions(session, Model.Sessions) == false)
+                                            {
+                                                <div class="checkbox" @(session.Enabled ? "" : "disabled")>
+                                                    <label>
+                                                        <input type="checkbox" @(session.Selected ? "checked=''" : "") name="@session.Group" value="@session.ContentID" @(session.Enabled ? "" : "disabled=")> @session.Name
+                                                    </label>
+                                                </div>
+                                            }
+                                            if (AttendSessionEngine.HasParallelSessions(session, Model.Sessions))
+                                            {
+                                                <label class="radio-inline">
+                                                    <input type="radio" @(session.Selected ? "checked=''" : "") name="@session.Group" value="@session.ContentID" @(session.Enabled ? "" : "disabled=")> @session.Name
+                                                </label>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            
+                            <div class="xformpage" >
+    @using (Html.BeginXForm(Model.EventPageBase.RegistrationForm, new { Action = Model.ActionUrl, @class = "form xform" }))
+    {
+        Html.RenderXForm(Model.EventPageBase.RegistrationForm);
+    }
+    @if (Model.EventPageBase.RegistrationForm.Id == ViewData["XFormID"])
+    {
+        @Html.ValidationSummary()
+    }
+</div>
+                            
+ 
+@*@Html.ValidationSummary()
+ 
+@(Html.BeginXForm(Model.EventPageBase.RegistrationForm, new { Action = Model.ActionUrl }))
+{
+    Html.RenderXForm(Model.EventPageBase.RegistrationForm);
+}*@ 
+
+                            
+                            @*@Html.BeginXForm(Model.EventPageBase.RegistrationForm, new { Action = Model.ActionUrl })
+    @EPiServer.Web.Mvc.Html.XFormExtensions.RenderXForm(Model.EventPageBase.RegistrationForm);*@
+                            
+                            @*<div class="well well-kompetanse">
+                                @Html.PropertyFor(x => x.EventPageBase.RegistrationForm, new { XFormParameters = new EPiServer.XForms.Util.XFormParameters() { PostAction = "DoSubmit", SuccessAction = "Success", FailedAction = "Failed", ContentLink = @Model.HostPageData.ContentLink.ID.ToString() } })
+                            </div>*@
+
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+}

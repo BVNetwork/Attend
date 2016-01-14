@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BVNetwork.Attend</id>
+    <version>5.2.10</version> 
+    <title>Attend</title>
+    <authors>The EPiCode Community</authors>
+    <owners>BV Network AS</owners>
+    <projectUrl>https://www.coderesort.com/p/epicode/wiki/Attend</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Create a events, and allow visitors to attend. Handle registrations from EPiServer Edit View.</description>
+    <summary>
+      Event management plugin for EPiServer.
+    </summary>
+    <tags>EPiServerPublicModulePackage Attend</tags>
+    <references>
+      <reference file="BVNetwork.Attend.dll" />
+    </references>
+    <dependencies>
+      <dependency id="EPiServer.CMS.Core" version="9.3.0"/>
+      <dependency id="EPiServer.CMS.UI" version="9.3.0"/>
+      <dependency id="iTextSharp" version="5.5.6"/>
+      <dependency id="ExcelLibrary" version="1.2011.7.30"/>
+    </dependencies>
+</metadata>
+  <files>
+    <file src="\Static\**\*.png" target="content\Modules\BVNetwork.Attend\Static\" />
+    <file src="\Static\**\*.css" target="content\Modules\BVNetwork.Attend\Static\" />
+    <file src="\**\*.js" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\**\*.eot" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\**\*.svg" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\**\*.ttf" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\**\*.woff" target="content\Modules\BVNetwork.Attend\" />
+    <file src="Resources\LanguageFiles\*.xml" target="content\lang\" />
+    <file src="\bin\BVNetwork.Attend.dll" target="lib\net40\BVNetwork.Attend.dll" />
+    <!--<file src="\bin\ExcelLibrary.dll" target="lib\net40\ExcelLibrary.dll" />-->
+    <!--<file src="\bin\OpenPop.dll" target="lib\net40\OpenPop.dll" />
+    <file src="\bin\OpenPop.dll" target="content\modulesbin\OpenPop.dll" />-->
+    <file src="\**\*.aspx" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\**\*.cshtml" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\**\*.ascx" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\**\*.master" target="content\Modules\BVNetwork.Attend\" />
+    <file src="\Views\*.config" target="content\Modules\BVNetwork.Attend\Views\" />
+  </files>
+</package>

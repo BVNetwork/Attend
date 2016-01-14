@@ -1,0 +1,716 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E7DC699-26A5-4BC2-A851-CBCB8DC475B0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BVNetwork.Attend</RootNamespace>
+    <AssemblyName>BVNetwork.Attend</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.ApplicationModules, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.9.3.3\lib\net45\EPiServer.ApplicationModules.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Cms.Shell.UI, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.9.3.3\lib\net45\EPiServer.Cms.Shell.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Configuration, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Data, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.9.3.3\lib\net45\EPiServer.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Data.Cache, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.9.3.3\lib\net45\EPiServer.Data.Cache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Enterprise, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.Enterprise.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Events, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.9.3.3\lib\net45\EPiServer.Events.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Framework, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.9.3.3\lib\net45\EPiServer.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.ImageLibrary, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.ImageLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Implementation, Version=8.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.8.11.0\lib\net45\EPiServer.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Licensing, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.9.3.3\lib\net45\EPiServer.Licensing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.LinkAnalyzer, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.LinkAnalyzer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Packaging, Version=3.2.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.3.2.3\lib\net45\EPiServer.Packaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Packaging.CmdAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.3.2.3\lib\net45\EPiServer.Packaging.CmdAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Packaging.UI, Version=3.2.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.UI.3.2.3\lib\net45\EPiServer.Packaging.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Shell, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Framework.9.3.3\lib\net45\EPiServer.Shell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Shell.UI, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.9.3.3\lib\net45\EPiServer.Shell.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.UI, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.UI.Core.9.3.3\lib\net45\EPiServer.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.Web.WebControls, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.Web.WebControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.WorkflowFoundation, Version=8.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.8.11.0\lib\net45\EPiServer.WorkflowFoundation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPiServer.XForms, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.XForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelLibrary.1.2011.7.30\lib\ExcelLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.6\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.5.40416.9020, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.5.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap-signed.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap-signed.3.1.6.186\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.web-signed.3.1.6.186\lib\net40\StructureMap.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AdminMenuProvider.cs" />
+    <Compile Include="Admin\Partials\EmailList.ascx.cs">
+      <DependentUpon>EmailList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Partials\EmailList.ascx.designer.cs">
+      <DependentUpon>EmailList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RegisterParticipants.aspx.cs">
+      <DependentUpon>RegisterParticipants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RegisterParticipants.aspx.designer.cs">
+      <DependentUpon>RegisterParticipants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ScheduledEmails.aspx.cs">
+      <DependentUpon>ScheduledEmails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ScheduledEmails.aspx.designer.cs">
+      <DependentUpon>ScheduledEmails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SettingsEdit.aspx.cs">
+      <DependentUpon>SettingsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SettingsEdit.aspx.designer.cs">
+      <DependentUpon>SettingsEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ImportText.aspx.cs">
+      <DependentUpon>ImportText.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ImportText.aspx.designer.cs">
+      <DependentUpon>ImportText.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MasterPages\AttendAdminMaster.Master.cs">
+      <DependentUpon>AttendAdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MasterPages\AttendAdminMaster.Master.designer.cs">
+      <DependentUpon>AttendAdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Import.aspx.cs">
+      <DependentUpon>Import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Import.aspx.designer.cs">
+      <DependentUpon>Import.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Invoicing.aspx.cs">
+      <DependentUpon>Invoicing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Invoicing.aspx.designer.cs">
+      <DependentUpon>Invoicing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Partials\ImportMenu.ascx.cs">
+      <DependentUpon>ImportMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Partials\ImportMenu.ascx.designer.cs">
+      <DependentUpon>ImportMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Partials\TopMenu.ascx.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Partials\TopMenu.ascx.designer.cs">
+      <DependentUpon>TopMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Partials\EventFilter.ascx.cs">
+      <DependentUpon>EventFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Partials\EventFilter.ascx.designer.cs">
+      <DependentUpon>EventFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Partials\InvoiceList.ascx.cs">
+      <DependentUpon>InvoiceList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Partials\InvoiceList.ascx.designer.cs">
+      <DependentUpon>InvoiceList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Events.aspx.cs">
+      <DependentUpon>Events.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Events.aspx.designer.cs">
+      <DependentUpon>Events.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Participants.aspx.cs">
+      <DependentUpon>Participants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Participants.aspx.designer.cs">
+      <DependentUpon>Participants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CSV\ParticipantList.aspx.cs">
+      <DependentUpon>ParticipantList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CSV\ParticipantList.aspx.designer.cs">
+      <DependentUpon>ParticipantList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Partials\ParticipantList.ascx.cs">
+      <DependentUpon>ParticipantList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Partials\ParticipantList.ascx.designer.cs">
+      <DependentUpon>ParticipantList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Business\API\AttendScheduledEmailEngine.cs" />
+    <Compile Include="Business\API\AttendSessionEngine.cs" />
+    <Compile Include="Business\API\RegistrationEventArgs.cs" />
+    <Compile Include="Business\Core\Folders.cs" />
+    <Compile Include="Business\EditorDescriptors\AttendFormsOnlyContentAreaEditing .cs" />
+    <Compile Include="Business\EditorDescriptors\AttendStatusMultipleSelector.cs" />
+    <Compile Include="Business\EditorDescriptors\AttendXFormFieldsSelector.cs" />
+    <Compile Include="Business\EditorDescriptors\AttendXFormFieldsSelectionFactory.cs" />
+    <Compile Include="Business\EditorDescriptors\AttendStatusSelectionFactory.cs" />
+    <Compile Include="Business\EditorDescriptors\AttendStatusSelector.cs" />
+    <Compile Include="Business\API\AttendRegistrationEngine.cs" />
+    <Compile Include="Business\EditorDescriptors\EnumAttribute.cs" />
+    <Compile Include="Business\EditorDescriptors\EnumSelectionFactory.cs" />
+    <Compile Include="Business\Email\EmailEventArgs.cs" />
+    <Compile Include="Business\Email\EmailSender.cs" />
+    <Compile Include="Business\Email\EmailSendOptions.cs" />
+    <Compile Include="Business\Email\SmsSender.cs" />
+    <Compile Include="Business\Export\ParticipantExport.cs" />
+    <Compile Include="Business\Index\Registration.cs" />
+    <Compile Include="Business\InitializableModules\AttendLogInitializer.cs" />
+    <Compile Include="Business\InitializableModules\AttendLocalizationProviderInitializer.cs" />
+    <Compile Include="Business\Localization\FixEditModeCulture.cs" />
+    <Compile Include="Business\Localization\LanguageHelper.cs" />
+    <Compile Include="Business\Participant\BlockProvider\BlockParticipantProvider.cs" />
+    <Compile Include="Business\Participant\ParticipantEventArgs.cs" />
+    <Compile Include="Business\Participant\ParticipantProviderBase.cs" />
+    <Compile Include="Business\Participant\ParticipantProviderManager.cs" />
+    <Compile Include="Business\Participant\DDSProvider\DDSParticipant.cs" />
+    <Compile Include="Business\Participant\DDSProvider\DDSParticipantProvider.cs" />
+    <Compile Include="Business\Participant\TestProvider\TestParticipant.cs" />
+    <Compile Include="Business\Participant\TestProvider\TestParticipantProvider.cs" />
+    <Compile Include="Business\Pdf\PdfGenerator.cs" />
+    <Compile Include="Business\ScheduledJobs\AttendSendScheduledEmails.cs" />
+    <Compile Include="Business\ScheduledJobs\AttendConvertToScheduledEmails.cs" />
+    <Compile Include="Business\Settings\DDSSetting.cs" />
+    <Compile Include="Business\Settings\Settings.cs" />
+    <Compile Include="Business\Text\Tabs.cs" />
+    <Compile Include="Business\Text\Groups.cs" />
+    <Compile Include="Business\Text\AttendStatus.cs" />
+    <Compile Include="Business\Text\EventRenderTags.cs" />
+    <Compile Include="Business\Log\ParticipantLog.cs" />
+    <Compile Include="Business\Email\EmailTemplate.cs" />
+    <Compile Include="Business\UIDescriptors\EventPageUIDescriptor.cs" />
+    <Compile Include="Controllers\EventPagePartialController.cs" />
+    <Compile Include="Controllers\PreviewController.cs" />
+    <Compile Include="Models\Blocks\AvailableSeatsBlock.cs" />
+    <Compile Include="Models\Blocks\EmailTemplateBlock.cs" />
+    <Compile Include="Models\Blocks\EventDetailsBlock.cs" />
+    <Compile Include="Models\Blocks\ParticipantBlock.cs" />
+    <Compile Include="Models\Blocks\ScheduledEmailBlock.cs" />
+    <Compile Include="Models\Blocks\SessionBlock.cs" />
+    <Compile Include="Business\Participant\IParticipant.cs" />
+    <Compile Include="Models\Pages\EventPage.cs" />
+    <Compile Include="Models\Pages\EventPageBase.cs" />
+    <Compile Include="Models\ViewModels\EventRegistrationModel.cs" />
+    <Compile Include="Models\ViewModels\AttendPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\AttendPreviewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Blocks\ScheduledEmailBlockListViewControl.ascx.cs">
+      <DependentUpon>ScheduledEmailBlockListViewControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\ScheduledEmailBlockListViewControl.ascx.designer.cs">
+      <DependentUpon>ScheduledEmailBlockListViewControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\ScheduledEmailBlockPreview.aspx.cs">
+      <DependentUpon>ScheduledEmailBlockPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\ScheduledEmailBlockPreview.aspx.designer.cs">
+      <DependentUpon>ScheduledEmailBlockPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\SessionBlockPreviewControl.ascx.cs">
+      <DependentUpon>SessionBlockPreviewControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\SessionBlockPreviewControl.ascx.designer.cs">
+      <DependentUpon>SessionBlockPreviewControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\SessionBlockPreview.aspx.cs">
+      <DependentUpon>SessionBlockPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\SessionBlockPreview.aspx.designer.cs">
+      <DependentUpon>SessionBlockPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\SessionBlockListViewControl.ascx.cs">
+      <DependentUpon>SessionBlockListViewControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\SessionBlockListViewControl.ascx.designer.cs">
+      <DependentUpon>SessionBlockListViewControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\ParticipantBlockListViewSmallControl.ascx.cs">
+      <DependentUpon>ParticipantBlockListViewSmallControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\ParticipantBlockListViewSmallControl.ascx.designer.cs">
+      <DependentUpon>ParticipantBlockListViewSmallControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\Static\AvailableSeatsControl.ascx.cs">
+      <DependentUpon>AvailableSeatsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\Static\AvailableSeatsControl.ascx.designer.cs">
+      <DependentUpon>AvailableSeatsControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\Static\EmailTemplateBlockControl.ascx.cs">
+      <DependentUpon>EmailTemplateBlockControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\Static\EmailTemplateBlockControl.ascx.designer.cs">
+      <DependentUpon>EmailTemplateBlockControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\Static\EventDetailsBlockControl.ascx.cs">
+      <DependentUpon>EventDetailsBlockControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\Static\EventDetailsBlockControl.ascx.designer.cs">
+      <DependentUpon>EventDetailsBlockControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\ParticipantBlockPreviewControl.ascx.cs">
+      <DependentUpon>ParticipantBlockPreviewControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\ParticipantBlockPreviewControl.ascx.designer.cs">
+      <DependentUpon>ParticipantBlockPreviewControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\ParticipantBlockPreview.aspx.cs">
+      <DependentUpon>ParticipantBlockPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\ParticipantBlockPreview.aspx.designer.cs">
+      <DependentUpon>ParticipantBlockPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterPages\Attend.Master.cs">
+      <DependentUpon>Attend.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\MasterPages\Attend.Master.designer.cs">
+      <DependentUpon>Attend.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPageEditParticipants.ascx.cs">
+      <DependentUpon>EventPageEditParticipants.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPageEditParticipants.ascx.designer.cs">
+      <DependentUpon>EventPageEditParticipants.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPageEditParticipantsParticipant.ascx.cs">
+      <DependentUpon>EventPageEditParticipantsParticipant.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPageEditParticipantsParticipant.ascx.designer.cs">
+      <DependentUpon>EventPageEditParticipantsParticipant.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPageEditScheduledEmail.ascx.cs">
+      <DependentUpon>EventPageEditScheduledEmail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPageEditScheduledEmail.ascx.designer.cs">
+      <DependentUpon>EventPageEditScheduledEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPagePartial.ascx.cs">
+      <DependentUpon>EventPagePartial.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pages\Partials\EventPagePartial.ascx.designer.cs">
+      <DependentUpon>EventPagePartial.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\EventPagePreview.aspx.cs">
+      <DependentUpon>EventPagePreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pages\EventPagePreview.aspx.designer.cs">
+      <DependentUpon>EventPagePreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Pdf.aspx.cs">
+      <DependentUpon>Pdf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Pages\Pdf.aspx.designer.cs">
+      <DependentUpon>Pdf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Blocks\EMailTemplatePreview.aspx.cs">
+      <DependentUpon>EMailTemplatePreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\EMailTemplatePreview.aspx.designer.cs">
+      <DependentUpon>EMailTemplatePreview.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Admin\Partials\EmailList.ascx" />
+    <Content Include="Admin\RegisterParticipants.aspx" />
+    <Content Include="Admin\ScheduledEmails.aspx" />
+    <Content Include="Admin\SettingsEdit.aspx" />
+    <Content Include="Admin\ImportText.aspx" />
+    <Content Include="Admin\Import.aspx" />
+    <Content Include="Admin\Invoicing.aspx" />
+    <Content Include="Admin\Partials\ImportMenu.ascx" />
+    <Content Include="Admin\Partials\TopMenu.ascx" />
+    <Content Include="Admin\Partials\EventFilter.ascx" />
+    <Content Include="Admin\Partials\InvoiceList.ascx" />
+    <Content Include="Admin\Events.aspx" />
+    <Content Include="Admin\Participants.aspx" />
+    <Content Include="Admin\CSV\ParticipantList.aspx" />
+    <Content Include="Admin\Partials\ParticipantList.ascx" />
+    <Content Include="Resources\LanguageFiles\AttendEN.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\LanguageFiles\AttendNO.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="modules\_protected\Shell\EPiServer.Shell.UI.zip" />
+    <Content Include="modules\_protected\CMS\EPiServer.Cms.Shell.UI.zip" />
+    <Content Include="packages.config" />
+    <Content Include="modules\_protected\Shell\web.config" />
+    <Content Include="modules\_protected\Shell\Shell.zip" />
+    <Content Include="modules\_protected\CMS\web.config" />
+    <Content Include="modules\_protected\CMS\CMS.zip" />
+    <Content Include="App_Data\GeoLiteCity.dat" />
+    <Content Include="modules\_protected\EPiServer.Packaging.UI\web.config" />
+    <Content Include="modules\_protected\EPiServer.Packaging.UI\EPiServer.Packaging.UI.zip" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.0.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.0.3.min.js" />
+    <Content Include="Static\AttendStyle.css" />
+    <Content Include="Static\attend_blue.png" />
+    <Content Include="Static\attend_blue_large.png" />
+    <Content Include="Static\js\attend.js" />
+    <Content Include="Static\js\bootstrap-datetimepicker.js" />
+    <Content Include="Static\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Static\css\bootstrap-theme.css" />
+    <Content Include="Static\css\bootstrap-theme.min.css" />
+    <Content Include="Static\css\bootstrap.css" />
+    <Content Include="Static\css\bootstrap.min.css" />
+    <Content Include="Static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Static\js\bootstrap.js" />
+    <Content Include="Static\js\bootstrap.min.js" />
+    <Content Include="Static\js\jquery-2.1.1.min.js" />
+    <Content Include="Static\js\npm.js" />
+    <Content Include="Views\Blocks\ScheduledEmailBlockListViewControl.ascx" />
+    <Content Include="Views\Blocks\ScheduledEmailBlockPreview.aspx" />
+    <Content Include="Views\Blocks\SessionBlockPreviewControl.ascx" />
+    <Content Include="Views\Blocks\SessionBlockPreview.aspx" />
+    <Content Include="Views\Blocks\SessionBlockListViewControl.ascx" />
+    <Content Include="Views\Blocks\ParticipantBlockListViewSmallControl.ascx" />
+    <Content Include="Views\Blocks\Static\AvailableSeatsControl.ascx" />
+    <Content Include="Views\Blocks\Static\EmailTemplateBlockControl.ascx" />
+    <Content Include="Views\Blocks\Static\EventDetailsBlockControl.ascx" />
+    <Content Include="Views\Blocks\ParticipantBlockPreviewControl.ascx" />
+    <Content Include="Views\Blocks\ParticipantBlockPreview.aspx" />
+    <Content Include="Views\Pages\Partials\EventPageEditParticipants.ascx" />
+    <Content Include="Views\Pages\Partials\EventPageEditParticipantsParticipant.ascx" />
+    <Content Include="Views\Pages\Partials\EventPageEditScheduledEmail.ascx" />
+    <Content Include="Views\Pages\Partials\EventPagePartial.ascx" />
+    <Content Include="Views\Pages\EventPagePreview.aspx" />
+    <Content Include="Views\Pages\Pdf.aspx" />
+    <Content Include="Views\Blocks\EMailTemplatePreview.aspx" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="BVNetwork.Attend.nuspec">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Pages\Partials\EventPagePartial.cshtml" />
+    <Content Include="Views\Shared\PagePartials\EventPage.cshtml" />
+    <Content Include="Static\css\bootstrap-theme.css.map" />
+    <Content Include="Static\css\bootstrap.css.map" />
+    <Content Include="Static\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Static\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Admin\MasterPages\AttendAdminMaster.Master" />
+    <Content Include="Views\Pages\Partials\EventPagePartialSuccess.cshtml" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\MasterPages\Attend.Master" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="Web2.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <PropertyGroup>
+    <DevelopmentSitePath>c:\EPiServer\AlloyAttend\wwwroot\</DevelopmentSitePath>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61394</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61347/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!--<Import Project="packages\OctoPack.3.0.27\tools\OctoPack.targets" Condition="Exists('packages\OctoPack.3.0.27\tools\OctoPack.targets')" />
+  <Target Name="EnsureOctoPackImported" BeforeTargets="BeforeBuild" Condition="'$(OctoPackImported)' == ''">
+    <Error Condition="!Exists('packages\OctoPack.3.0.27\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="You are trying to build with OctoPack, but the NuGet targets file that OctoPack depends on is not available on this computer. This is probably because the OctoPack package has not been committed to source control, or NuGet Package Restore is not enabled. Please enable NuGet Package Restore to download them. For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('packages\OctoPack.3.0.27\tools\OctoPack.targets') And ('$(RunOctoPack)' != '' And $(RunOctoPack))" Text="OctoPack cannot be run because NuGet packages were restored prior to the build running, and the targets file was unavailable when the build started. Please build the project again to include these packages in the build. You may also need to make sure that your build server does not delete packages prior to each build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <PropertyGroup>
+    <DevelopmentSitePath>c:\EPiServer\AlloyAttend\wwwroot\</DevelopmentSitePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <Target Name="CopyOutputToModulesBin">
+    <!-- Copy project output to the site modulesbin folder -->
+    <ItemGroup>
+      <AddOnFilesToCopy Include="$(OutputPath)*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(AddOnFilesToCopy)" DestinationFolder="$(DevelopmentSitePath)\modulesbin\" />
+  </Target>
+  <Target Name="RestartSite">
+  </Target>
+</Project>

@@ -1,0 +1,268 @@
+﻿
+
+body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family:  Tahoma, Geneva, sans-serif !important;
+}
+
+h1 {
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+h2 {
+    padding: 5px 0;
+}
+
+.greyarea {
+    background-color: #ebebe6;
+    padding: 10px 0;
+    margin: 0;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
+
+.darkarea {
+    background-color: #2677af;
+    border-bottom: 1px solid #174564;
+    margin: 0;
+    padding: 10px 0;
+    color: #fff;
+    overflow:hidden;
+}
+
+.content {
+    margin: 0px 20px 10px 30px;
+    padding: 15px;
+}
+
+a:visited { text-decoration: none; }
+
+a.btn btn-default btn-sm {
+    font-weight: bold;
+    background-color: #fff;
+    padding: 3px;
+    margin: 0px 6px 0px 0px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #2677af;
+    background-image: none;
+    float: left;
+    display: block;
+}
+
+a.button {
+    overflow: hidden;
+    padding: 10px 10px 10px 40px;
+    background-color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    color: #2677af;
+    clear: both;
+    margin: 0;
+    border: 1px solid #2677af;
+    background: url('/Modules/BVNetwork.Attend/Static/icons/calendar.png') 0 3px no-repeat #fff;
+}
+
+a.iconEdit {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/edit.png') 0 3px no-repeat #fff;
+}
+
+a.iconNew {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/new.png') 0 3px no-repeat #fff;
+}
+
+a.iconCalendar {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/calendar.png') 0 3px no-repeat #fff;
+}
+
+a.iconSave {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/save.png') 0 3px no-repeat #fff;
+}
+
+a.iconUser {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/agent.png') 0 3px no-repeat #fff;
+}
+
+a.iconNewUser {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/agentAdd.png') 0 3px no-repeat #fff;
+}
+
+a.iconPrint {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/print.png') 0 3px no-repeat #fff;
+}
+
+a.iconDelete {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/recycle-full.png') 0 3px no-repeat #fff;
+}
+
+a.iconMail {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/email.png') 0 3px no-repeat #fff;
+}
+
+a.iconTag {
+    background: url('/Modules/BVNetwork.Attend/Static/icons/tag.png') 0 3px no-repeat #fff;
+}
+
+
+.color-, .color-Submitted, .color-Deleted, .color-Standby, .color-Cancelled, .color-Confirmed, .color-Participated {
+    background-color: #ddd;
+    border: 1px solid #b0b0b0;
+    font-weight: bold;
+    padding: 3px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+
+a.status {
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+}
+
+a.color-Confirmed, a.color-Participated {
+    color: #fff;
+    background-color: #2677af;
+}
+
+a.color-Submitted {
+    background-color: #eee;
+    color: #000;
+}
+
+a.color-Standby {
+    background-color: #ddd;
+    color: #000;
+}
+
+a.color-Cancelled, a.color-Deleted {
+    background-color: #f08080;
+    color: #fff;
+}
+
+
+.attendee {
+    border: 1px solid #b0b0b0;
+    margin-bottom: 10px;
+    padding: 7px;
+    padding-bottom: 10px;
+    background-color: #ebebe6;
+}
+
+    .attendee a {
+        text-decoration: none;
+    }
+
+td {
+    padding: 3px;
+    margin: 0;
+    vertical-align: middle !important; 
+}
+
+.alert {
+
+    background-color:#ebebe6;
+    border: 1px solid #aaa;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+tr.selected {
+    background-color: #ebebe6;
+}
+
+.thinborder {
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border: 1px solid #174564;
+}
+
+.border {
+    background-color: #fff;
+    padding: 10px;
+    color: #000;
+    border: 1px solid #174564;
+    margin:5px;
+}
+
+
+.buttonrow {
+    background-color: #ebebe6;
+    border: 1px solid #aaa;
+    padding: 20px;
+    margin:5px 5px 10px 5px;
+    overflow: hidden;
+}
+
+.left {
+    float: left;
+    padding-right: 20px;
+}
+
+.right {
+    float:right;
+    padding-left: 20px;
+}
+
+.darkrow {
+    background-color: #808080;
+    border: 1px solid #174564;
+    margin: 0;
+    padding: 20px 20px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.paddingtop {
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.event-cancelled { background-color: #f08080;  }
+.event-private { background-color: #eee; }
+.event-empty { background-color: #fff; }
+.event-full { background-color: #2677af; }
+.event-many { background-color: #5c9ac5; }
+.event-some { background-color: #90bddc; }
+.event-few { background-color: #8acfff; }
+.event-full { background-color: #2677af; }
+
+.event-cancelled,.event-private ,.event-empty ,.event-full,.event-many ,.event-some,.event-few ,.event-full {
+    font-weight: bold;
+}
+
+
+.event-cancelled,.event-full,.event-many,.event-full {
+    color: #fff;
+}
+
+  form { margin: 0 !important;}
+
+  .nav-tabs  li a {
+      background-color: #eeeeee !important;
+  } 
+    .nav-tabs  li.active a {
+      background-color: #fff !important;
+  } 
+
+    .bs-example{
+   position: relative;
+}
+
+    .tabset, .tab-content, .tab-pane, .tabbable {
+  height:100% !important;
+}
+
+.tab-pane{
+    height: 100%;
+}

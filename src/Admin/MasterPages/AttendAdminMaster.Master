@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AttendAdminMaster.master.cs" Inherits="BVNetwork.Attend.Admin.MasterPages.AttendAdminMaster" %>
+<%@ Import Namespace="EPiServer.Framework.Web.Resources" %>
+<%@ Import Namespace="EPiServer.Framework.Web.Mvc.Html" %>
+<%@ Import Namespace="EPiServer" %>
+<%@ Register Namespace="EPiServer.Web.WebControls" TagPrefix="EPiServer" %>
+<%@ Register TagPrefix="sc" Assembly="EPiServer.Shell" Namespace="EPiServer.Shell.Web.UI.WebControls" %>
+<%@ Register TagPrefix="Attend" TagName="TopMenu" Src="~/Modules/BVNetwork.Attend/Admin/Partials/TopMenu.ascx" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="margin: 0; padding: 0;">
+<head id="Head1" runat="server">
+    <title>
+        <EPiServer:Translate Text="/attend/admin/attend" runat="server" />
+    </title>
+
+    <asp:PlaceHolder ID="shellScripts" runat="server">
+        <%=Page.ClientResources("Dojo", new[] { ClientResourceType.Style })%>
+        <%=Page.ClientResources("ShellCore")%>
+        <%=Page.ClientResources("ShellWidgets")%>
+        <%=Page.ClientResources("Navigation")%>
+    </asp:PlaceHolder>
+
+    <link rel="Stylesheet" type="text/css" href="/Modules/BVNetwork.Attend/Static/AttendStyle.css">
+    <link rel="Stylesheet" type="text/css" href="/Modules/BVNetwork.Attend/Static/css/bootstrap.css">
+</head>
+<body>
+
+    <form id="Form1" runat="server" style="background-color: #fff; margin-top: 22px;">
+        <div class="epi-globalNavigationContainer">
+            <sc:ShellMenu ID="ShellMenu2" runat="server" SelectionPath="/global/fb/main" />
+        </div>
+
+        <div class="content">
+            <div class="row">
+        <Attend:TopMenu runat="server"></Attend:TopMenu></row>
+                    <div class="col-lg-2 well bs-component">
+
+                <asp:ContentPlaceHolder ID="Sidebar" runat="server">
+                    
+
+                </asp:ContentPlaceHolder>
+                        </div>
+                
+                <div class="col-lg-10">
+        <asp:ContentPlaceHolder ID="MainArea" runat="server">
+                
+        </asp:ContentPlaceHolder>
+                    </div>
+            </div>
+  
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Attend.master.cs" Inherits="BVNetwork.Attend.Views.MasterPages.Attend" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" style="margin: 0; padding: 0;">
+<head id="Head1" runat="server">
+    <title>
+        <episerver:translate runat="server" text="/attend/edit/eventblockpreview" />
+    </title>
+    <link rel="Stylesheet" type="text/css" href="/Modules/BVNetwork.Attend/Static/AttendStyle.css" />
+    <link rel="Stylesheet" type="text/css" href="/Modules/BVNetwork.Attend/Static/css/bootstrap.css" />
+    <script type="text/javascript" src="/Modules/BVNetwork.Attend/Static/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/Modules/BVNetwork.Attend/Static/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form id="Form1" runat="server" style="background-color: #fff; margin-top: -22px;">
+        <div class="">
+            <episerver:fullrefreshpropertiesmetadata runat="server" />
+            <div class="darkarea">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <img src="/Modules/BVNetwork.Attend/static/attend_blue.png" class="img-responsive" />
+                        </div>
+                        <div class="col-xs-11">
+                            <div style="color: #ffffff; font-size: 1.8em; padding-top: 10px;">
+                                <asp:ContentPlaceHolder runat="server" ID="HeaderArea">
+                                </asp:ContentPlaceHolder>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container collapse" id="helptextcontainer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="">
+                        <br />
+                        <div class="alert alert-info">
+                            <button type="button" class="btn btn-default btn-xs pull-right" onclick="$('#helptextcontainer h4').text('Title');$('#helptextcontainer').hide();">×</button>
+                            <h4 class="">Title</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <asp:ContentPlaceHolder runat="server" ID="MainContent">
+        </asp:ContentPlaceHolder>
+
+        <div class="container">
+            <asp:Literal runat="server" ID="VersionLiteral"></asp:Literal>
+        </div>
+    </form>
+
+</body>
+<script type="text/javascript" src="/Modules/BVNetwork.Attend/Static/js/attend.js"></script>
+</html>
