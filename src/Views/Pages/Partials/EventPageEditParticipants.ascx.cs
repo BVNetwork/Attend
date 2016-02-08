@@ -46,8 +46,6 @@ namespace BVNetwork.Attend.Views.Pages.Partials
 
             NoParticipants.DataBind();
 
-            PagingPage.Text = "1";
-
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -66,11 +64,6 @@ namespace BVNetwork.Attend.Views.Pages.Partials
             int numberOfCopied = AttendRegistrationEngine.GetOrCreateParticipantsClipboard().Count;
             CopyMovePlaceHolder.Visible = numberOfCopied > 0;
             CopyMovePlaceHolder.DataBind();
-            /*if (numberOfCopied > 3)
-                SelectedMoreLiteral.Text =
-                    string.Format(
-                        ServiceLocator.Current.GetInstance<LocalizationService>()
-                            .GetString("/attend/edit/numbermoreselected"), (numberOfCopied - 3));*/
             SelectedRepeater.DataSource = AttendRegistrationEngine.GetOrCreateParticipantsClipboard();
             SelectedRepeater.DataBind();
             base.OnDataBinding(e);
@@ -186,7 +179,7 @@ namespace BVNetwork.Attend.Views.Pages.Partials
             return contents;
         }
 
-        private void PopulateParticipants(int itemsPrPage, int page, bool temp)
+        private void PopulateParticipants()
         {
             int total = Participants.Count;
 
@@ -197,39 +190,15 @@ namespace BVNetwork.Attend.Views.Pages.Partials
             contents = FilterSessions(contents);
             contents = FilterSearch(contents);
 
-            int totalFiltered = contents.Count();
-            int last = itemsPrPage * (page);
-            if (last > totalFiltered)
-                last = totalFiltered;
-            int first = itemsPrPage * (page - 1) + 1;
-            var filteredContent = contents.Skip(first - 1).Take(itemsPrPage);
-
+            int totalFiltered = contents.Count;
 
             NumberOfParticipantsLiteral.Text = string.Format(Locate.LocalizationService().GetString("/attend/edit/findresult"), totalFiltered, total);
-
-            PageResultLiteral.Text = string.Format(Locate.LocalizationService().GetString("/attend/edit/pageresult"), page, first, last, totalFiltered);
 
             ParticipantsRepeater.DataSource = contents;
             ParticipantsRepeater.DataBind();
 
         }
 
-
-        protected void PagingPrevious_OnClick(object sender, EventArgs e)
-        {
-            int i = GetIntSafe(PagingPage.Text);
-            if (i > 1)
-                i = (i - 1);
-            PagingPage.Text = i.ToString();
-        }
-
-        protected void PagingNext_OnClick(object sender, EventArgs e)
-        {
-            int i = GetIntSafe(PagingPage.Text);
-            if ((double)i < (double)Participants.Count / double.Parse(PagingPrPaging.SelectedValue))
-                i = (i + 1);
-            PagingPage.Text = i.ToString();
-        }
 
         private int GetIntSafe(string text)
         {
@@ -271,13 +240,6 @@ namespace BVNetwork.Attend.Views.Pages.Partials
 
         }
 
-        private void PopulateParticipants()
-        {
-            int itemsPrPage = int.Parse(PagingPrPaging.SelectedValue);
-            itemsPrPage = itemsPrPage == 0 ? Participants.Count() : itemsPrPage;
-            PopulateParticipants(GetIntSafe(PagingPage.Text), itemsPrPage, false);
-        }
-
 
         protected string DeleteConfirmation()
         {
@@ -304,12 +266,6 @@ namespace BVNetwork.Attend.Views.Pages.Partials
                     AttendRegistrationEngine.CopyParticipants(IParticipant as IParticipant);
                 }
             }
-        }
-
-        protected void PagingPrPaging_OnSelectedIndexChanged(object sender, EventArgs e)
-        {
-            PagingPage.Text = "1";
-            //SetupPreviewPropertyControl(ParticipantsContentArea, Participants, int.Parse(PagingPage.Text), int.Parse(PagingPrPaging.SelectedValue), true);
         }
 
         protected void PasteParticipantsMove_OnClick(object sender, EventArgs e)

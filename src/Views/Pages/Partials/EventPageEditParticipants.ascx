@@ -10,7 +10,7 @@
     <div class="container">
         <div class="">
             <asp:PlaceHolder runat="server" ID="NoParticipants">
-                <EPiServer:translate runat="server" text="/attend/edit/noparticipants" />
+                <episerver:translate runat="server" text="/attend/edit/noparticipants" />
             </asp:PlaceHolder>
 
 
@@ -20,7 +20,7 @@
                     <div class="btn-group">
 
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-                            <EPiServer:translate runat="server" text="/attend/edit/numberselected"></EPiServer:translate>
+                            <episerver:translate runat="server" text="/attend/edit/numberselected"></episerver:translate>
                             <%=AttendRegistrationEngine.GetOrCreateParticipantsClipboard().Count %>
                         </button>
                         <asp:LinkButton runat="server" ID="PasteParticipantsExport" Text="&nbsp;<span class='glyphicon glyphicon-save'></span>" CssClass="btn btn-default" ToolTip="<%$ Resources: EPiServer, attend.edit.export %>" OnClick="PasteParticipantsExport_OnClick"></asp:LinkButton>
@@ -107,16 +107,16 @@
 
                     </td>
                     <td colspan="4">
-                            <div id="help-button" class="btn btn-primary btn-xs pull-right helpbutton" data-helptitle="<%=BVNetwork.Attend.Business.Localization.LanguageHelper.GetHelpTitle("participantslist")%>" data-helptext="<%=BVNetwork.Attend.Business.Localization.LanguageHelper.GetHelpText("participantslist") %>">
-                                <span class="glyphicon glyphicon-info-sign"></span>
-                            </div>
+                        <div id="help-button" class="btn btn-primary btn-xs pull-right helpbutton" data-helptitle="<%=BVNetwork.Attend.Business.Localization.LanguageHelper.GetHelpTitle("participantslist")%>" data-helptext="<%=BVNetwork.Attend.Business.Localization.LanguageHelper.GetHelpText("participantslist") %>">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </div>
 
 
                     </td>
                 </tr>
                 <asp:Repeater runat="server" ID="ParticipantsRepeater">
                     <ItemTemplate>
-                        <Attend:Participant runat="server" CurrentData='<%#Container.DataItem as IParticipant %>'></Attend:Participant>
+                        <attend:participant runat="server" currentdata='<%#Container.DataItem as IParticipant %>'></attend:participant>
 
                     </ItemTemplate>
                 </asp:Repeater>
@@ -124,72 +124,6 @@
             <%--                       <EventX:EventEditorList runat="server" id="ParticipantsList" EventPageBaseId="<%#CurrentData.ContentLink.ID %>" />
             --%>
 
-
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <asp:Literal runat="server" ID="PageResultLiteral"></asp:Literal>
-
-                    </div>
-
-                    <div class="col-lg-2">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-btn">
-                                        <asp:LinkButton runat="server" ID="PagingPrevious" CssClass="btn btn-default" OnClick="PagingPrevious_OnClick">
-                            <EPiServer:Translate runat="server" text="/attend/edit/previous" />
-                                        </asp:LinkButton>
-                                    </div>
-                                    <asp:TextBox runat="server" ID="PagingPage" CssClass="form-control"></asp:TextBox>
-
-                                    <div class="input-group-btn">
-                                        <asp:LinkButton runat="server" ID="PagingNext" CssClass="btn btn-default" OnClick="PagingNext_OnClick"><EPiServer:Translate runat="server" text="/attend/edit/next" /></asp:LinkButton>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <asp:DropDownList runat="server" ID="PagingPrPaging" CssClass="form-control" AutoPostBack="true">
-                            <asp:ListItem Value="150" Text="<%$ Resources: EPiServer, attend.edit.numberPrPage %>"></asp:ListItem>
-                            <asp:ListItem Value="10">10</asp:ListItem>
-                            <asp:ListItem Value="50">50</asp:ListItem>
-                            <asp:ListItem Value="100">100</asp:ListItem>
-                            <asp:ListItem Value="0" Text="<%$ Resources: EPiServer, attend.edit.all %>"></asp:ListItem>
-                        </asp:DropDownList>
-
-                    </div>
-                    <div class="col-lg-2">
-
-                        <asp:LinkButton runat="server" CssClass="btn btn-default " ID="ExportButton" Text="<%$ Resources: EPiServer, attend.edit.exportfiltered %>" OnClick="ExportButton_OnClick"></asp:LinkButton>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <%-- 
-                        <div class="well">
-                            <div class="left">
-                                <asp:DropDownList runat="server" ID="StatusDropDown"></asp:DropDownList>
-                            </div>
-                            <div class="left">
-                                <asp:CheckBox runat="server" ID="StatusMailCheckBox" translate="/attend/edit/changestatus" />
-                                <EPiServer:Translate runat="server" text="/attend/edit/sendstatusmail" />
-                            </div>
-                            <div class="left">
-
-                                <asp:LinkButton runat="server" ID="ChangeStatus" CssClass="button iconTag paddingtop" OnClick="ChangeStatus_Click" translate="/attend/edit/changestatus">
-                 
-                                </asp:LinkButton>
-                            </div>
-                        </div>
-            --%>
         </div>
         <br />
         <div class="row">
@@ -207,11 +141,17 @@
                         </div>
                     </div>
                     <asp:PlaceHolder runat="server" ID="EmailPlaceHolder" Visible="false">
-                        <EPiServer:translate runat="server" text="/attend/edit/musthaveemail" />
+                        <episerver:translate runat="server" text="/attend/edit/musthaveemail" />
                     </asp:PlaceHolder>
                 </div>
 
             </div>
+                                <div class="col-lg-2 pull-right">
+
+                        <asp:LinkButton runat="server" CssClass="btn btn-default pull-right" ID="ExportButton" Text="<%$ Resources: EPiServer, attend.edit.exportfiltered %>" OnClick="ExportButton_OnClick"></asp:LinkButton>
+
+                    </div>
+
 
         </div>
     </div>

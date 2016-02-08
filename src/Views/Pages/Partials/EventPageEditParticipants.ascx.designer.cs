@@ -193,60 +193,6 @@ namespace BVNetwork.Attend.Views.Pages.Partials {
         protected global::System.Web.UI.WebControls.Repeater ParticipantsRepeater;
         
         /// <summary>
-        /// PageResultLiteral control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal PageResultLiteral;
-        
-        /// <summary>
-        /// PagingPrevious control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton PagingPrevious;
-        
-        /// <summary>
-        /// PagingPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PagingPage;
-        
-        /// <summary>
-        /// PagingNext control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton PagingNext;
-        
-        /// <summary>
-        /// PagingPrPaging control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList PagingPrPaging;
-        
-        /// <summary>
-        /// ExportButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ExportButton;
-        
-        /// <summary>
         /// EMailTextBox control.
         /// </summary>
         /// <remarks>
@@ -263,5 +209,14 @@ namespace BVNetwork.Attend.Views.Pages.Partials {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder EmailPlaceHolder;
+        
+        /// <summary>
+        /// ExportButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ExportButton;
     }
 }
