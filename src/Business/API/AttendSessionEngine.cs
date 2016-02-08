@@ -26,7 +26,7 @@ namespace BVNetwork.Attend.Business.API
             newSession.Start = start;
             newSession.End = end;
             newSession.NumberOfSeats = EventPageBase.EventDetails.NumberOfSeats;
-            newSession.EventPageBase = EventPageBase.ContentLink.ToPageReference();
+            newSession.EventPage = EventPageBase.ContentLink.ToPageReference();
             IContent newSessionContent = newSession as IContent;
             newSessionContent.Name = name;
             contentRepository.Save(newSessionContent, EPiServer.DataAccess.SaveAction.Publish, EPiServer.Security.AccessLevel.NoAccess);
@@ -158,7 +158,7 @@ namespace BVNetwork.Attend.Business.API
         {
             List<ParticipantBlock> sessionParticipants = new List<ParticipantBlock>();
             int sessionID = (session as IContent).ContentLink.ID;
-            var eventParticipants = AttendRegistrationEngine.GetParticipants(session.EventPageBase);
+            var eventParticipants = AttendRegistrationEngine.GetParticipants(session.EventPage);
             foreach (ParticipantBlock participant in eventParticipants)
             {
                 if (participant.Sessions != null && participant.Sessions.Items != null && participant.Sessions.Items.Count > 0)

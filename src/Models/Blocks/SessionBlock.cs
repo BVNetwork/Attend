@@ -13,7 +13,7 @@ namespace BVNetwork.Attend.Models.Blocks
         public virtual DateTime Start { get; set; }
         public virtual DateTime End { get; set; }
         public virtual int NumberOfSeats { get; set; }
-        public virtual PageReference EventPageBase { get; set; }
+        public virtual PageReference EventPage { get; set; }
         public virtual bool Mandatory { get; set; }
         public virtual string Description { get; set; }
         public virtual XhtmlString IntroContent { get; set; }

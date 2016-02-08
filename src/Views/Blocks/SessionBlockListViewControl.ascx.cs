@@ -16,16 +16,34 @@ using System.Collections.Specialized;
 using EPiServer.XForms.WebControls;
 using EPiServer.XForms.Util;
 using System.Collections;
+using System.Linq;
+using BVNetwork.Attend.Business.API;
+using BVNetwork.Attend.Business.Text;
 
 namespace BVNetwork.Attend.Views.Blocks
 {
-    [TemplateDescriptor(Inherited = true, Tags = new[] { "ListView" }, Path = "~/Modules/BVNetwork.Attend/Views/Blocks/SessionBlockListViewControl.ascx")]
+    [TemplateDescriptor(Inherited = true, Tags = new[] {"ListView"},
+        Path = "~/Modules/BVNetwork.Attend/Views/Blocks/SessionBlockListViewControl.ascx")]
     public partial class SessionBlockListViewControl : BlockControlBase<SessionBlock>
     {
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected string NumberOfParticipants
+        {
+            get
+            {
+                int numberOfParticipants = 0;
+                int numberOfSeats = CurrentBlock.NumberOfSeats;
+                var allParticipants =
+                    AttendSessionEngine.GetParticipants(CurrentBlock)
+                        .Where(x => x.AttendStatus == AttendStatus.Confirmed.ToString());
+                numberOfParticipants = allParticipants.Count();
+                return string.Format("{0} / {1}", numberOfParticipants, numberOfSeats);
+            }
         }
     }
 }
