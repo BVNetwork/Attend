@@ -159,6 +159,10 @@
         <content>Innhold</content>
         <scheduledemail>Scheduled e-mail</scheduledemail>
         <sendAs>Send as </sendAs>
+        <scheduling>Scheduling</scheduling>
+        <oneWhatTriggers>1. What should trigger the message?</oneWhatTriggers>
+        <twoWhenShouldBeSent>2. When should the message be sent?</twoWhenShouldBeSent>
+        <threeStatusFilter>3. Status filter - only send to participants with the following status:</threeStatusFilter>
       </edit>
       <eventstatus>
         <event-cancelled>Cancelled</event-cancelled>
@@ -179,7 +183,7 @@
         <confirmed>Confirmed</confirmed>
       </attendstatus>
       <diploma>
-        <datetext>Har den 8.-10. juni 2015 deltatt på</datetext>
+        <datetext>Has {0} participated at</datetext>
       </diploma>
       <help>
         <emailtemplates>
