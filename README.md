@@ -5,8 +5,6 @@ Attend is an event module for EPiServer 7 CMS. It enables you to create events, 
 ![Start Page](https://github.com/BVNetwork/Attend/blob/master/doc/img/EventEditor.png)
 
 
-
-
 # Installation
 `Install-Package BVNetwork.Attend`
 
@@ -39,6 +37,9 @@ For a more automated way of creating and displaying events, there are basically 
 
 # License
 The module has a licence fee of NOK 25.000 pr site. There are no software subscription, no fee for test and demo sites, and no usage limits. The software comes with full source code, and is licensed "as-is". You bear the risk of using it, and for supporting any distribution to third party. It comes with no warranties or guarantees of any kind.
+
+# Documentation
+* ![Read full documentation for both editors and developers in the wiki](https://github.com/BVNetwork/Attend/wiki)
 
 #Feature summary
 ![Features](https://raw.githubusercontent.com/BVNetwork/Attend/master/doc/guides/Attend%20Sales%20Sheet.png)
