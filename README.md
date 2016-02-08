@@ -2,6 +2,9 @@
 # Attend - Event management for Episerver
 
 Attend is an event module for EPiServer 7 CMS. It enables you to create events, manage participants, send e-mail confirmation, set up tracks, and more. 
+![Start Page](https://github.com/BVNetwork/Attend/blob/master/doc/img/EventEditor.png)
+
+
 
 
 # Installation
