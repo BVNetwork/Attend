@@ -40,12 +40,11 @@ namespace BVNetwork.Attend.Views.Blocks
             ScheduledRelativeAmountControl.ApplyEditAttributes<ScheduledEmailBlock>(p => p.ScheduledRelativeAmount);
             ScheduledRelativeToControl.ApplyEditAttributes<ScheduledEmailBlock>(p => p.ScheduledRelativeTo);
             ScheduledRelativeUnitControl.ApplyEditAttributes<ScheduledEmailBlock>(p => p.ScheduledRelativeUnit);
-            EditHints.Add("EmailSendOptions");
             (this as PageBase).EditHints.Add("ScheduledRelativeTo");
             (this as PageBase).EditHints.Add("ScheduledRelativeAmount");
             (this as PageBase).EditHints.Add("ScheduledRelativeUnit");
             (this as PageBase).EditHints.Add("SendOnStatus");
-            EditHints.Add("SendOptionsControl");
+            (this as PageBase).EditHints.Add("SendOptions");
 
             if ((CurrentData as ScheduledEmailBlock).EmailTemplateContentReference != null &&
                 (CurrentData as ScheduledEmailBlock).EmailTemplateContentReference != ContentReference.EmptyReference)
@@ -65,7 +64,18 @@ namespace BVNetwork.Attend.Views.Blocks
             
         }
 
-        protected string EventUrl { get { return EPiServer.Editor.PageEditing.GetEditUrl((Locate.ContentRepository().Get<EventPageBase>((CurrentData as ScheduledEmailBlock).EventPage) as IContent).ContentLink); } }
+        protected string EventUrl
+        {
+            get
+            {
+                if((CurrentData as ScheduledEmailBlock).EventPage != null)
+                return
+                    EPiServer.Editor.PageEditing.GetEditUrl(
+                        (Locate.ContentRepository().Get<EventPageBase>((CurrentData as ScheduledEmailBlock).EventPage)
+                            as IContent).ContentLink);
+                return string.Empty;
+            }
+        }
 
 
         private void SetupPreviewPropertyControl(Property propertyControl, IEnumerable<IContent> contents)

@@ -11,6 +11,7 @@
 
 
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
+<EPiServer:FullRefreshPropertiesMetaData runat="server"/>
     <div class="container">
 
         <div class="row">
@@ -76,7 +77,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div id="SendOptionsControl" runat="server"><%#Enum.Parse(typeof(SendOptions), (CurrentData as ScheduledEmailBlock).EmailSendOptions.ToString()).ToString() %></div>
+                                            <div id="SendOptionsControl" runat="server"><%=Enum.Parse(typeof(SendOptions), (CurrentData as ScheduledEmailBlock).EmailSendOptions.ToString()).ToString() %></div>
                                         </td>
                                     </tr>
 
