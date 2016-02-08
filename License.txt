@@ -1,0 +1,66 @@
+Please see https://www.coderesort.com/p/epicode/wiki/EpicodeLicense
+
+EPICODE COMMUNITY SOURCE LICENSE (ECSL) – version 1
+
+1. DEFINITIONS
+
+"EPiCode" is a collective term for the project site for EPiServer modules
+operated by BV Network AS, but containing modules and contributions from a
+number of companies and individuals.
+
+"Software" refers to any individual module available on EPiCode.
+
+"Module Provider" is the original maker(s) and copyright holder for a module
+on EPiCode.
+
+The terms "reproduce", "reproduction" and "distribution" have the same meaning
+here as under Norwegian copyright law.
+
+"Your company" means the company you worked for when downloading the software,
+and is formally the licensee of the software. "You" means you as a
+representative of your company.
+
+"Internal use" means use within your company, and specifically excludes the
+right to distribute the software outside your company or to use the software in
+an operational setting inside the company. However, it includes the right to
+modify or make derived and larger work ready for distribution to third party.
+
+"Third party" means any intended receipient of the software either as-is, or
+as part of derived and larger work offered by your company.
+
+"Larger work" and "derived work" is any modified version of the software
+developed by your company, or some new solution that uses the software as one
+of its components in any form.
+
+"Production use" means any use and redistribution to third party, or any form
+of operational usage inside your own company. This includes when distributed
+as-is, or as part of any derived/larger work made by your company.
+
+2. GRANT OF RIGHTS
+
+A.) Copyright Grant - Subject to the terms of this license, the Module Provider
+grants your company a non-transferable, non-exclusive, worldwide, royalty-free
+copyright license to use, reproduce, modify and prepare derivative/larger work
+within the definition of internal use.
+
+B.) Patent Grant - Subject to the terms of this license, the Module Provider
+grants you a non-transferable, non-exclusive, worldwide, royalty free patent
+license to use the software within the definition of internal use.
+
+3. CONDITIONS AND LIMITATIONS
+
+A.) No Trademark License - This license does not grant you any rights to use
+the name, logo or tradmarks owned by the Module Provider.
+
+B.) Production use - For production use of the software module, further
+commercial terms and licensing fees may apply.
+
+C.) Contribution - All modifications for any purpose and to any file that is
+part of the software in production use, has to be offered back to project on
+EPiCode. By modifying and contributing, your company grants the Module Provider a
+non-exlusive, worldwide, royalty-free copyright and patent license to use,
+reproduce, modify and include in the software.
+
+D.) The software is licensed "as-is". You bear the risk of using it, and for
+supporting any distribution to third party. It comes with no warranties or
+guarantees of any kind.
