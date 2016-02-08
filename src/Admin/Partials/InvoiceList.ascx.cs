@@ -13,6 +13,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BVNetwork.Attend.Business.Text;
 
 namespace BVNetwork.Attend.Admin.Partials
 {
@@ -23,9 +24,12 @@ namespace BVNetwork.Attend.Admin.Partials
         protected int TotalIncome { get; set; }
         protected int TotalCount { get; set; }
 
-        protected string Income(int income)
+        protected string Income(IParticipant participant)
         {
-            TotalIncome += income;
+            if(participant.AttendStatus == AttendStatus.Confirmed.ToString() || participant.AttendStatus == AttendStatus.Participated.ToString()) { 
+                TotalIncome += participant.Price;
+                TotalCount++;
+            }
             return string.Empty;
         }
 
@@ -75,32 +79,11 @@ namespace BVNetwork.Attend.Admin.Partials
         {
         }
 
-        private void SetupPreviewPropertyControl(Property propertyControl, IEnumerable<IParticipant> contents)
-        {
-            var contentArea = new ContentArea();
-            foreach (var content in contents)
-            {
-                contentArea.Items.Add(new ContentAreaItem { ContentLink = (content as IContent).ContentLink });
-            }
-
-            var previewProperty = new PropertyContentArea { Value = contentArea, Name = "PreviewPropertyData", IsLanguageSpecific = true };
-
-            propertyControl.InnerProperty = previewProperty;
-            propertyControl.DataBind();
-
-        }
-
         protected string GetCourseName(ContentReference EventPageBase)
         {
             var currentEvent = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentRepository>().Get<BVNetwork.Attend.Models.Pages.EventPageBase>(EventPageBase);
             if (currentEvent == null)
                 return string.Empty;
-            /*
-            if (currentEvent.EventDetails.EventStart.ToString("dd.MM") == currentEvent.EventDetails.EventEnd.ToString("dd.MM"))
-                return currentEvent.Name + " " + currentEvent.EventDetails.EventStart.ToString(" d. MMM yyyy");
-            else
-                return currentEvent.Name + " " + currentEvent.EventDetails.EventStart.ToString(" d. MMM - ") + currentEvent.EventDetails.EventEnd.ToString(" d. MMM yyy");
-             */
             return currentEvent.Name;
         }
 
@@ -109,13 +92,6 @@ namespace BVNetwork.Attend.Admin.Partials
             return AttendRegistrationEngine.GetParticipantInfo(participant, fieldname);
         }
 
-        protected void previewRepeater_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
-        {
-            var propertyControl = e.Item.FindControl("ParticipantsContentArea") as Property;
-            EventPageBase EventPageBase = e.Item.DataItem as EventPageBase;
-            if (EventPageBase != null)
-                SetupPreviewPropertyControl(propertyControl, AttendRegistrationEngine.GetParticipants(EventPageBase.ContentLink));
-        }
 
         protected int CalculateIncome(PageReference EventPageBase)
         {

@@ -17,7 +17,7 @@
 </asp:Repeater>
 
 
-<asp:Repeater runat="server" ID="ParticipantsRepeater" OnItemDataBound="previewRepeater_ItemDataBound">
+<asp:Repeater runat="server" ID="ParticipantsRepeater">
     <HeaderTemplate>
         <div>
             <table class="table table-bordered table-hover table-responsive table-striped table-condensed">
@@ -25,7 +25,7 @@
     </HeaderTemplate>
 
     <ItemTemplate>
-         <%#Income((Container.DataItem as BVNetwork.Attend.Models.Blocks.ParticipantBlock).Price) %>
+         <%#Income(Container.DataItem as BVNetwork.Attend.Business.Participant.IParticipant) %>
         <tr>
             <asp:Repeater runat="server" ID="InvoiceDetailsRepeater" DataSource='<%#GetInvoiceValues(Container.DataItem as BVNetwork.Attend.Models.Blocks.ParticipantBlock) %>'>
                 <ItemTemplate>
