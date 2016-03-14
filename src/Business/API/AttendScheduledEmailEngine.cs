@@ -54,7 +54,7 @@ namespace BVNetwork.Attend.Business.API
             scheduledEmailBlock = scheduledEmailBlock.CreateWritableClone() as ScheduledEmailBlock;
             scheduledEmailBlock.DateSent = DateTime.Now;
             DataFactory.Instance.Save(scheduledEmailBlock as IContent,
-                SaveAction.Publish | SaveAction.ForceCurrentVersion);
+                SaveAction.Publish | SaveAction.ForceCurrentVersion, EPiServer.Security.AccessLevel.NoAccess);
         }
 
 
