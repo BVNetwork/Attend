@@ -1,9 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="True" CodeBehind="EventPageEditParticipants.ascx.cs" Inherits="BVNetwork.Attend.Views.Pages.Partials.EventPageEditParticipants" %>
-<%@ Register Src="/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditParticipantsParticipant.ascx" TagPrefix="Attend" TagName="Participant" %>
-<%@ Register Namespace="EPiServer.Web.WebControls" TagPrefix="EPiServer" %>
+<%@ Register Src="~/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditParticipantsParticipant.ascx" TagPrefix="Attend" TagName="Participant" %>
 <%@ Import Namespace="BVNetwork.Attend.Business.API" %>
 <%@ Import Namespace="BVNetwork.Attend.Business.Participant" %>
-<%@ Import Namespace="BVNetwork.Attend.Models.Blocks" %>
 
 
 <asp:PlaceHolder runat="server" ID="ParticipantsListPlaceHolder">

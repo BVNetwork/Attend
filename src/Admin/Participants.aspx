@@ -1,10 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Participants.aspx.cs" Inherits="BVNetwork.Attend.Admin.Participants" MasterPageFile="/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Participants.aspx.cs" Inherits="BVNetwork.Attend.Admin.Participants" MasterPageFile="~/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
 <%@ Import Namespace="BVNetwork.Attend.Business.API" %>
 <%@ Import Namespace="BVNetwork.Attend.Business.Participant" %>
-<%@ Import Namespace="BVNetwork.Attend.Models.Blocks" %>
-<%@ Register TagPrefix="Attend" TagName="ParticipantList" Src="~/Modules/BVNetwork.Attend/Admin/Partials/ParticipantList.ascx" %>
-
 
 <asp:Content runat="server" ContentPlaceHolderID="Sidebar">
             <div class="form-horizontal">

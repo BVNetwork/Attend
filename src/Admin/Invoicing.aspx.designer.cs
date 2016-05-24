@@ -58,12 +58,21 @@ namespace BVNetwork.Attend.Admin {
         protected global::System.Web.UI.WebControls.LinkButton SaveSettingsButton;
         
         /// <summary>
+        /// ExportButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ExportButton;
+        
+        /// <summary>
         /// AttendInvoiceList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BVNetwork.Attend.Admin.Partials.InvoiceList AttendInvoiceList;
+        protected global::System.Web.UI.UserControl AttendInvoiceList;
     }
 }

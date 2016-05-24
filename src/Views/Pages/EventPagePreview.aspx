@@ -1,10 +1,6 @@
 ﻿<%@ Page Language="C#" Inherits="BVNetwork.Attend.Views.Pages.EventPagePreview" CodeBehind="EventPagePreview.aspx.cs" EnableViewState="false" MasterPageFile="~/modules/BVNetwork.Attend/Views/MasterPages/Attend.Master" %>
-
-<%@ Import Namespace="BVNetwork.Attend.Business.API" %>
-<%@ Import Namespace="BVNetwork.Attend.Models.Blocks" %>
-<%@ Register Namespace="EPiServer.Web.WebControls" TagPrefix="EPiServer" %>
-<%@ Register Src="/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditScheduledEmail.ascx" TagPrefix="Attend" TagName="EventPageEditScheduledEmail" %>
-<%@ Register Src="/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditParticipants.ascx" TagPrefix="Attend" TagName="EventPageEditParticipants" %>
+<%@ Register Src="~/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditScheduledEmail.ascx" TagPrefix="Attend" TagName="EventPageEditScheduledEmail" %>
+<%@ Register Src="~/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditParticipants.ascx" TagPrefix="Attend" TagName="EventPageEditParticipants" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="HeaderArea">
     <%=CurrentData.Name %>
