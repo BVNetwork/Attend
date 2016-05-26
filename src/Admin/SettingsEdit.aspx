@@ -1,13 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SettingsEdit.aspx.cs" Inherits="BVNetwork.Attend.Admin.SettingsEdit" EnableViewState="true" MasterPageFile="/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SettingsEdit.aspx.cs" Inherits="BVNetwork.Attend.Admin.SettingsEdit" EnableViewState="true" MasterPageFile="~/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
 <%@ Import Namespace="BVNetwork.Attend.Business.Settings" %>
-<%@ Import Namespace="EPiServer.Framework.Web.Resources" %>
-<%@ Import Namespace="EPiServer.Framework.Web.Mvc.Html" %>
-<%@ Import Namespace="EPiServer" %>
-<%@ Register Namespace="EPiServer.Web.WebControls" TagPrefix="EPiServer" %>
-<%@ Register TagPrefix="sc" Assembly="EPiServer.Shell" Namespace="EPiServer.Shell.Web.UI.WebControls" %>
-
-
 
 <asp:Content runat="server" ContentPlaceHolderID="MainArea">
 
@@ -92,8 +84,5 @@
             </div>
         </div>
     </div>
-    </div>
-
-
 
 </asp:Content>

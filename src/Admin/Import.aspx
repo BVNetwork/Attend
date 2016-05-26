@@ -1,10 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Import.aspx.cs" Inherits="BVNetwork.Attend.Admin.Import" MasterPageFile="/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
-
-<%@ Import Namespace="EPiServer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Import.aspx.cs" Inherits="BVNetwork.Attend.Admin.Import" MasterPageFile="~/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
 <%@ Register TagPrefix="Attend" TagName="ImportMenu" Src="~/Modules/BVNetwork.Attend/Admin/Partials/ImportMenu.ascx" %>
-<%@ Register TagPrefix="sc" Assembly="EPiServer.Shell" Namespace="EPiServer.Shell.Web.UI.WebControls" %>
 <%@ Register TagPrefix="ux" Namespace="EPiServer.Web.WebControls" Assembly="EPiServer" %>
-<%@ Register TagPrefix="ux" Namespace="EPiServer.Web.PropertyControls" Assembly="EPiServer" %>
+
 <asp:Content runat="server" ContentPlaceHolderID="Sidebar">
     <Attend:ImportMenu runat="server"></Attend:ImportMenu>
 </asp:Content>

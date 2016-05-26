@@ -1,13 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterParticipants.aspx.cs" Inherits="BVNetwork.Attend.Admin.RegisterParticipants" MasterPageFile="/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
-
-<%@ Import Namespace="EPiServer.Framework.Web.Resources" %>
-<%@ Import Namespace="EPiServer.Framework.Web.Mvc.Html" %>
-<%@ Import Namespace="EPiServer" %>
-<%@ Register TagPrefix="Attend" TagName="InvoiceList" Src="~/Modules/BVNetwork.Attend/Admin/Partials/InvoiceList.ascx" %>
-<%@ Register TagPrefix="Attend" TagName="EventFilter" Src="~/Modules/BVNetwork.Attend/Admin/Partials/EventFilter.ascx" %>
-<%@ Register Namespace="EPiServer.Web.WebControls" TagPrefix="EPiServer" %>
-<%@ Register TagPrefix="sc" Assembly="EPiServer.Shell" Namespace="EPiServer.Shell.Web.UI.WebControls" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterParticipants.aspx.cs" Inherits="BVNetwork.Attend.Admin.RegisterParticipants" MasterPageFile="~/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="Sidebar">
     <div class="col-lg-12">
