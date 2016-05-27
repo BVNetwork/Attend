@@ -47,9 +47,12 @@ namespace BVNetwork.Attend.Business.Export
             else
             {
                 string[] headers = AttendRegistrationEngine.GetFormData(participants[0]).AllKeys;
+                worksheet.Cells[0, 0] = new Cell("Status");
+                worksheet.Cells[0, 1] = new Cell("E-mail");
+                worksheet.Cells[0, 2] = new Cell("Code");
                 for (int i = 0; i < headers.Length; i++)
                 {
-                    worksheet.Cells[0, i] = new Cell(headers[i]);
+                    worksheet.Cells[0, i+3] = new Cell(headers[i]);
                 }
             }
 
@@ -107,7 +110,7 @@ namespace BVNetwork.Attend.Business.Export
 
         private static string GetParticipantData(IParticipant participant, List<string> formFields)
         {
-            string data = participant.AttendStatus.ToString() + "," + participant.Email + "," + participant.Code + ",";
+            string data = participant.AttendStatus.ToString() + ";" + participant.Email + ";" + participant.Code + ";";
             NameValueCollection allFormFields = AttendRegistrationEngine.GetFormData(participant);
             if (formFields == null)
                 foreach (var key in allFormFields.AllKeys)
