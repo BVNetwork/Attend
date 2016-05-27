@@ -20,23 +20,5 @@ namespace BVNetwork.Attend.Views.Blocks {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton DeleteScheduledEmail;
-        
-        /// <summary>
-        /// SubmitMailTemplateBlock control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::EPiServer.Web.WebControls.Property SubmitMailTemplateBlock;
-        
-        /// <summary>
-        /// SubmitMailTemplateBlockPreview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::EPiServer.Web.WebControls.Property SubmitMailTemplateBlockPreview;
     }
 }

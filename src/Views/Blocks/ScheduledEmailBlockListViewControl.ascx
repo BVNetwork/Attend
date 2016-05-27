@@ -43,8 +43,6 @@
                         <h4 class="modal-title" id="myModalLabel">Details</h4>
                     </div>
                     <div class="modal-body">
-                        <EPiServer:Property runat="server" PropertyName="SubmitMailTemplateBlock" id="SubmitMailTemplateBlock" />
-                        <EPiServer:Property runat="server" ID="SubmitMailTemplateBlockPreview"></EPiServer:Property>
 
                     </div>
                 </div>

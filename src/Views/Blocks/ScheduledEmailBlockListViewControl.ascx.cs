@@ -33,24 +33,6 @@ namespace BVNetwork.Attend.Views.Blocks
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (CurrentBlock.EmailTemplateContentReference != null)
-            {
-                SubmitMailTemplateBlockPreview.Visible = false;
-                SubmitMailTemplateBlock.Visible = true;
-                SetupPreviewPropertyControl(SubmitMailTemplateBlock,
-                    new[]
-                    {
-                        Locate.ContentRepository()
-                            .Get<IContent>((CurrentData as ScheduledEmailBlock).EmailTemplateContentReference)
-                    });
-
-            }
-            else
-            {
-                SubmitMailTemplateBlockPreview.Visible = true;
-                SubmitMailTemplateBlock.Visible = false;
-                SubmitMailTemplateBlockPreview.PropertyName = "EmailTemplate";
-            }
 
 
         }
