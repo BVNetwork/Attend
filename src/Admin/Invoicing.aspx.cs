@@ -118,7 +118,7 @@ namespace BVNetwork.Attend.Admin
                     }
             }
             Participants = participants;
-            AttendInvoiceList.ParticipantList = participants;
+            (AttendInvoiceList as Attend.Admin.Partials.InvoiceList).ParticipantList = participants;
             AttendInvoiceList.DataBind();
 
         }
