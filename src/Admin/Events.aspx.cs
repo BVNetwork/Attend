@@ -45,10 +45,14 @@ namespace BVNetwork.Attend.Admin
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnPreInit(EventArgs e)
         {
             BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
+            base.OnPreInit(e);
+        }
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (string.IsNullOrEmpty(TextBoxToDate.Text))
                 ToDateTime = DateTime.Now.AddMonths(12);
             if (string.IsNullOrEmpty(TextBoxFromDate.Text))

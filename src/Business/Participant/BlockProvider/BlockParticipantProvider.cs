@@ -124,11 +124,11 @@ namespace BVNetwork.Attend.Business.Participant.BlockProvider
 
                 PageDataCollection allEvents = new PageDataCollection();
 
-                PageDataCollection allLanguages = DataFactory.Instance.GetLanguageBranches(siteDefinition.StartPage.ToPageReference());
+                var allLanguages = ServiceLocator.Current.GetInstance<ILanguageBranchRepository>().ListEnabled();
 
-                foreach (PageData pageData in allLanguages)
+                foreach (LanguageBranch languageBranch in allLanguages)
                 {
-                    allEvents.Add(DataFactory.Instance.FindPagesWithCriteria(siteDefinition.StartPage.ToPageReference(), criteria, pageData.LanguageBranch));
+                    allEvents.Add(DataFactory.Instance.FindPagesWithCriteria(siteDefinition.StartPage.ToPageReference(), criteria, languageBranch.LanguageID));
                 }
 
                 foreach (PageData currentEvent in allEvents)

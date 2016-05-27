@@ -29,7 +29,7 @@
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.lastmonth %>" Value="lastmonth"></asp:ListItem>
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.nextmonth %>" Value="nextmonth"></asp:ListItem>
                 </asp:DropDownList>
-                <asp:LinkButton runat="server" CssClass="btn btn-default btn-block" Text="Search" OnClick="ChangeDate_OnClick"></asp:LinkButton>
+                <asp:LinkButton runat="server" CssClass="btn btn-default btn-block" Text="<%$ Resources: EPiServer, attend.edit.search %>" OnClick="ChangeDate_OnClick"></asp:LinkButton>
                 <br />
 
             </div>

@@ -47,6 +47,14 @@ namespace BVNetwork.Attend.Admin
             }
         }
 
+        protected override void OnPreInit(EventArgs e)
+        {
+            BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
+            base.OnPreInit(e);
+        }
+
+
+
         protected void Page_Init(object sender, EventArgs e)
         {
             InvoiceFieldsTextBox.Text = Settings.GetSetting(InvoiceFildsSettingName);
@@ -59,7 +67,6 @@ namespace BVNetwork.Attend.Admin
             if (string.IsNullOrEmpty(TextBoxFromDate.Text))
                 FromDateTime = DateTime.Now;
 
-            BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
             if (!string.IsNullOrEmpty(DatePeriod.SelectedValue))
             {
                 switch (DatePeriod.SelectedValue)

@@ -6,19 +6,18 @@
             <div class="col-lg-12">
 
                 <div class='input-group date' id='datetimepicker1'>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxFromDate"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxFromDate" OnTextChanged="ChangeDate_OnClick" AutoPostBack="true"></asp:TextBox>
 
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
 
                 <div class='input-group date' id='datetimepicker1'>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxToDate"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxToDate" OnTextChanged="ChangeDate_OnClick" AutoPostBack="true"></asp:TextBox>
 
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
-
                 <asp:DropDownList runat="server" CssClass="form-control" AutoPostBack="true" ID="DatePeriod" >
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.selectperiod %>" Value=""></asp:ListItem>
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.thisyear %>" Value="thisyear"></asp:ListItem>
@@ -28,7 +27,7 @@
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.lastmonth %>" Value="lastmonth"></asp:ListItem>
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.nextmonth %>" Value="nextmonth"></asp:ListItem>
                 </asp:DropDownList>
-                <asp:LinkButton runat="server" CssClass="btn btn-default btn-block" Text="Search" OnClick="ChangeDate_OnClick"></asp:LinkButton>
+                <asp:LinkButton runat="server" CssClass="btn btn-default btn-block" Text="<%$ Resources: EPiServer, attend.edit.search %>" OnClick="ChangeDate_OnClick"></asp:LinkButton>
                 <br />
 
             </div>

@@ -7,14 +7,14 @@
             <div class="col-lg-12">
 
                 <div class='input-group date' id='datetimepicker1'>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxFromDate"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxFromDate" OnTextChanged="ChangeDate_OnClick" AutoPostBack="true"></asp:TextBox>
 
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
 
                 <div class='input-group date' id='datetimepicker1'>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxToDate"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="TextBoxToDate" OnTextChanged="ChangeDate_OnClick" AutoPostBack="true"></asp:TextBox>
 
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -29,7 +29,7 @@
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.lastmonth %>" Value="lastmonth"></asp:ListItem>
                     <asp:ListItem runat="server" Text="<%$ Resources: EPiServer, attend.edit.nextmonth %>" Value="nextmonth"></asp:ListItem>
                 </asp:DropDownList>
-                <asp:LinkButton runat="server" CssClass="btn btn-default btn-block" Text="<span class='glyphicon glyphicon-search'></span>&nbsp; Search" OnClick="ChangeDate_OnClick"></asp:LinkButton>
+                <asp:LinkButton runat="server" CssClass="btn btn-default btn-block" Text="<%$ Resources: EPiServer, attend.edit.search %>" OnClick="ChangeDate_OnClick"></asp:LinkButton>
                 <br />
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -63,7 +63,7 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <h1>Participant filter</h1>
+                <h1><episerver:translate runat="server" text="/attend/admin/participantfilter"></episerver:translate></h1>
                 <asp:Literal runat="server" ID="NumberOfParticipantsLiteral"></asp:Literal>
 
             </div>

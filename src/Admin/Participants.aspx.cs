@@ -56,9 +56,15 @@ namespace BVNetwork.Attend.Admin
             }
         }
 
-        protected void Page_Init(object sender, EventArgs e)
+        protected override void OnPreInit(EventArgs e)
         {
             BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
+            base.OnPreInit(e);
+        }
+
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
             if (string.IsNullOrEmpty(Request.QueryString["todate"]) || string.IsNullOrEmpty(Request.QueryString["fromdate"]))
                 Response.Redirect("Participants.aspx?fromdate=" + DateTime.Now.ToShortDateString() + "&todate=" + DateTime.Now.AddMonths(6).ToShortDateString());
 
@@ -430,8 +436,8 @@ namespace BVNetwork.Attend.Admin
 
         protected void ChangeDate_OnClick(object sender, EventArgs e)
         {
-            FromDateTime = DateTime.Parse(TextBoxFromDate.Text,new CultureInfo(EPiServer.Globalization.GlobalizationSettings.CultureLanguageCode));
-            ToDateTime = DateTime.Parse(TextBoxToDate.Text,new CultureInfo(EPiServer.Globalization.GlobalizationSettings.CultureLanguageCode));
+            FromDateTime = DateTime.Parse(TextBoxFromDate.Text);
+            ToDateTime = DateTime.Parse(TextBoxToDate.Text);
             PopulateParticipants();
 
         }
