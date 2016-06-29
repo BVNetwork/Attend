@@ -42,8 +42,6 @@
             <episerver:translate runat="server" text="/attend/edit/xhtmlbody" />
         </b>
         <br />
-        <episerver:property runat="server" propertyname="MainBody" />
-        <br />
     </asp:PlaceHolder>
     <b>
         <episerver:translate runat="server" text="/attend/edit/plaintextbody" />
