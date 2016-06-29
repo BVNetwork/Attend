@@ -53,12 +53,14 @@ namespace BVNetwork.Attend.Admin
             SaveProviderButton.Visible = true;
             ProviderDropDowns.Visible = true;
             ProviderOverview.Visible = false;
+            UseFormsCheckBox.Checked = Settings.GetSetting("UseEpiserverForms").ToString() == true.ToString();
 
         }
 
         protected void SaveSettings_Click(object sender, EventArgs e)
         {
             Settings.AddSetting("DefaultParticipantProviderString", ParticipantProvidersDropDown.SelectedValue);
+            Settings.AddSetting("UseEpiserverForms", UseFormsCheckBox.Checked.ToString());
             ParticipantProviderManager.Initialize();
             ProviderDropDowns.Visible = false;
             SaveProviderButton.Visible = false;

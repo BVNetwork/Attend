@@ -1,14 +1,15 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SettingsEdit.aspx.cs" Inherits="BVNetwork.Attend.Admin.SettingsEdit" EnableViewState="true" MasterPageFile="~/modules/BVNetwork.Attend/Admin/MasterPages/AttendAdminMaster.Master" %>
+
 <%@ Import Namespace="BVNetwork.Attend.Business.Settings" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="MainArea">
 
     <h1>
-        <EPiServer:Translate Text="/attend/admin/settings" runat="server" />
+        <episerver:translate text="/attend/admin/settings" runat="server" />
     </h1>
     <div class="">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="well">
                     <h2>Provider Settings</h2>
                     <div id="ProviderDropDowns" visible="false" runat="server">
@@ -18,7 +19,21 @@
                             <div class="col-sm-5">
                                 <asp:DropDownList runat="server" ID="ParticipantProvidersDropDown" CssClass="form-control"></asp:DropDownList>
                             </div>
-                            <asp:LinkButton runat="server" OnClick="SaveSettings_Click" CssClass="btn btn-primary" ID="SaveProviderButton">Save</asp:LinkButton>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                Use Episerver Forms instead of XForms
+                            </div>
+                            <div class="col-sm-5">
+                                <asp:CheckBox runat="server" ID="UseFormsCheckBox" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <asp:LinkButton runat="server" OnClick="SaveSettings_Click" CssClass="btn btn-primary" ID="SaveProviderButton">Save</asp:LinkButton>
+                            </div>
+
                         </div>
 
 
@@ -39,6 +54,10 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
             </div>
         </div>
     </div>
