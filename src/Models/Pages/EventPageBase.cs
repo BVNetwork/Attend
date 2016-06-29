@@ -13,12 +13,19 @@ namespace BVNetwork.Attend.Models.Pages
     public class EventPageBase : PageData
     {
         [Display(
-    Name = "Registration form",
-    Description = "Form for participant details in event registration",
-    GroupName = Tabs.Event,
-    Order = 50)]
-        [Required]
+            Name = "Registration form",
+            Description = "Form for participant details in event registration",
+            GroupName = Tabs.Event,
+            Order = 50)]
         public virtual XForm RegistrationForm { get; set; }
+
+        [Display(
+            Name = "Registration form",
+            Description = "Form for participant details in event registration",
+            GroupName = Tabs.Event,
+            Order = 55)]
+        public virtual ContentArea RegistrationFormContainer { get; set; }
+
 
         [Display(
             Name = "EventName",

@@ -55,6 +55,8 @@ namespace BVNetwork.Attend.Views.Pages
             //if(SubmitMailTemplateBlock != null)
             //SubmitMailTemplate. = Locate.ContentRepository().Get<EmailTemplateBlock>((CurrentPage as EventPageBase).ConfirmMailTemplateBlock) as PropertyData;
 
+            FormsPlaceHolder.DataBind();
+
             EventPageBaseEditScheduledEmailControl.DataBind();
             if ((CurrentPage as EventPageBase).DetailsContent != null)
             DetailsContentRepeater.DataSource = (CurrentPage as EventPageBase).DetailsContent.FilteredItems;

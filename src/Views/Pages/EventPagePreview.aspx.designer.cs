@@ -22,6 +22,15 @@ namespace BVNetwork.Attend.Views.Pages {
         protected global::EPiServer.Web.WebControls.Property EventDetailsPropertyControl;
         
         /// <summary>
+        /// FormsPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder FormsPlaceHolder;
+        
+        /// <summary>
         /// DetailsContentRepeaterWrapper control.
         /// </summary>
         /// <remarks>

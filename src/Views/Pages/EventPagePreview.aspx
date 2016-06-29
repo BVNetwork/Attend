@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" Inherits="BVNetwork.Attend.Views.Pages.EventPagePreview" CodeBehind="EventPagePreview.aspx.cs" EnableViewState="false" MasterPageFile="~/modules/BVNetwork.Attend/Views/MasterPages/Attend.Master" %>
+
 <%@ Register Src="~/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditScheduledEmail.ascx" TagPrefix="Attend" TagName="EventPageEditScheduledEmail" %>
 <%@ Register Src="~/modules/bvnetwork.attend/Views/Pages/Partials/EventPageEditParticipants.ascx" TagPrefix="Attend" TagName="EventPageEditParticipants" %>
 
@@ -23,7 +24,7 @@
                 $('[href="' + lastTab + '"]').tab('show');
             }
 
-            
+
         });
     </script>
     <br />
@@ -31,34 +32,34 @@
         <div class="container">
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#participants" aria-controls="participants" role="tab" data-toggle="tab">
-                    <EPiServer:Translate runat="server" text="/attend/edit/participants" />
+                    <episerver:translate runat="server" text="/attend/edit/participants" />
                 </a></li>
                 <li role="presentation"><a href="#details" aria-controls="details" role="tab" data-toggle="tab">
-                    <EPiServer:Translate runat="server" text="/attend/edit/eventdetails" />
+                    <episerver:translate runat="server" text="/attend/edit/eventdetails" />
                 </a></li>
                 <li role="presentation"><a href="#xform" aria-controls="xform" role="tab" data-toggle="tab">
-                    <EPiServer:Translate runat="server" text="/attend/edit/form" />
+                    <episerver:translate runat="server" text="/attend/edit/form" />
                 </a></li>
 
                 <li role="presentation"><a href="#content" aria-controls="content" role="tab" data-toggle="tab">
-                    <EPiServer:Translate runat="server" text="/attend/edit/content" />
+                    <episerver:translate runat="server" text="/attend/edit/content" />
                 </a></li>
 
                 <li role="presentation"><a href="#sessions" aria-controls="sessions" role="tab" data-toggle="tab">
-                    <EPiServer:Translate runat="server" text="/attend/edit/sessions" />
+                    <episerver:translate runat="server" text="/attend/edit/sessions" />
                 </a></li>
 
                 <li role="presentation"><a href="#email" aria-controls="email" role="tab" data-toggle="tab">
-                    <EPiServer:Translate runat="server" text="/attend/edit/emailtemplates" />
+                    <episerver:translate runat="server" text="/attend/edit/emailtemplates" />
                 </a></li>
             </ul>
         </div>
     </div>
-    <br/>
+    <br />
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="participants">
 
-            <Attend:EventPageEditParticipants runat="server" CurrentEventPageBase='<%#CurrentPage %>'></Attend:EventPageEditParticipants>
+            <attend:eventpageeditparticipants runat="server" currenteventpagebase='<%#CurrentPage %>'></attend:eventpageeditparticipants>
 
         </div>
 
@@ -71,9 +72,9 @@
                         <div class="col-lg-12">
                             <div class="">
                                 <div class="">
-                                    <EPiServer:Property runat="server" PropertyName="EventDetails" ID="EventDetailsPropertyControl">
+                                    <episerver:property runat="server" propertyname="EventDetails" id="EventDetailsPropertyControl">
                                         <rendersettings enableeditfeaturesforchildren="true" />
-                                    </EPiServer:Property>
+                                    </episerver:property>
                                 </div>
                             </div>
                         </div>
@@ -92,10 +93,12 @@
                 <div class="row">
 
                     <div class="col-lg-6">
-                        <EPiServer:Property runat="server" propertyname="AvailableSeatsText" />
+                        <episerver:property runat="server" propertyname="AvailableSeatsText" />
                         <br />
-                        <EPiServer:Property propertyname="RegistrationForm" runat="server"></EPiServer:Property>
-
+                        <asp:PlaceHolder runat="server" ID="FormsPlaceHolder">
+                            <episerver:property propertyname="RegistrationForm" runat="server" visible='<%#BVNetwork.Attend.Business.Settings.Settings.GetSetting("UseEpiserverForms").ToString() != true.ToString() %>'></episerver:property>
+                            <episerver:property propertyname="RegistrationFormContainer" runat="server" visible='<%#BVNetwork.Attend.Business.Settings.Settings.GetSetting("UseEpiserverForms").ToString() == true.ToString() %>'></episerver:property>
+                        </asp:PlaceHolder>
 
 
                     </div>
@@ -116,22 +119,23 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    <EPiServer:Translate runat="server" text="/attend/edit/open" />
+                                    <episerver:translate runat="server" text="/attend/edit/open" />
                                 </h3>
                             </div>
                             <div class="panel-body">
                                 <p>
-                                    <EPiServer:Translate runat="server" text="/attend/edit/contentwhenopen" />
+                                    <episerver:translate runat="server" text="/attend/edit/contentwhenopen" />
                                 </p>
-                                <asp:Panel runat="server" id="DetailsContentRepeaterWrapper">
+                                <asp:Panel runat="server" ID="DetailsContentRepeaterWrapper">
                                     <asp:Repeater runat="server" ID="DetailsContentRepeater">
                                         <ItemTemplate>
                                             <div class="well well-sm">
-                                            <%#GetBlockName(Container.DataItem) %></div>
+                                                <%#GetBlockName(Container.DataItem) %>
+                                            </div>
                                         </ItemTemplate>
                                     </asp:Repeater>
                                 </asp:Panel>
-                                
+
                             </div>
                         </div>
 
@@ -143,18 +147,19 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    <EPiServer:Translate runat="server" text="/attend/edit/closed" />
+                                    <episerver:translate runat="server" text="/attend/edit/closed" />
                                 </h3>
                             </div>
                             <div class="panel-body">
                                 <p>
-                                    <EPiServer:Translate runat="server" text="/attend/edit/contentwhenclosed" />
+                                    <episerver:translate runat="server" text="/attend/edit/contentwhenclosed" />
                                 </p>
-                                <asp:Panel runat="server" id="ClosedContentRepeaterWrapper">
+                                <asp:Panel runat="server" ID="ClosedContentRepeaterWrapper">
                                     <asp:Repeater runat="server" ID="ClosedContentRepeater">
                                         <ItemTemplate>
                                             <div class="well well-sm">
-                                            <%#GetBlockName(Container.DataItem) %></div>
+                                                <%#GetBlockName(Container.DataItem) %>
+                                            </div>
                                         </ItemTemplate>
                                     </asp:Repeater>
                                 </asp:Panel>
@@ -165,18 +170,19 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    <EPiServer:Translate runat="server" text="/attend/edit/noseats" />
+                                    <episerver:translate runat="server" text="/attend/edit/noseats" />
                                 </h3>
                             </div>
                             <div class="panel-body">
                                 <p>
-                                    <EPiServer:Translate runat="server" text="/attend/edit/contentwhennoseats" />
+                                    <episerver:translate runat="server" text="/attend/edit/contentwhennoseats" />
                                 </p>
-                                <asp:Panel runat="server" id="NoSeatsContentWrapper">
+                                <asp:Panel runat="server" ID="NoSeatsContentWrapper">
                                     <asp:Repeater runat="server" ID="NoSeatsContentRepeater">
                                         <ItemTemplate>
                                             <div class="well well-sm">
-                                            <%#GetBlockName(Container.DataItem) %></div>
+                                                <%#GetBlockName(Container.DataItem) %>
+                                            </div>
                                         </ItemTemplate>
                                     </asp:Repeater>
                                 </asp:Panel>
@@ -193,21 +199,22 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <EPiServer:Translate runat="server" text="/attend/edit/confirmed" />
+                                        <episerver:translate runat="server" text="/attend/edit/confirmed" />
                                     </h3>
                                 </div>
                                 <div class="panel-body">
                                     <p>
-                                        <EPiServer:Translate runat="server" text="/attend/edit/contentwhenconfirmed" />
+                                        <episerver:translate runat="server" text="/attend/edit/contentwhenconfirmed" />
                                     </p>
-                                <asp:Panel runat="server" id="ConfirmedContentWrapper">
-                                    <asp:Repeater runat="server" ID="ConfirmedContentRepeater">
-                                        <ItemTemplate>
-                                            <div class="well well-sm">
-                                            <%#GetBlockName(Container.DataItem) %></div>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </asp:Panel>
+                                    <asp:Panel runat="server" ID="ConfirmedContentWrapper">
+                                        <asp:Repeater runat="server" ID="ConfirmedContentRepeater">
+                                            <ItemTemplate>
+                                                <div class="well well-sm">
+                                                    <%#GetBlockName(Container.DataItem) %>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </asp:Panel>
                                 </div>
                             </div>
 
@@ -215,21 +222,22 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <EPiServer:Translate runat="server" text="/attend/edit/submitted" />
+                                        <episerver:translate runat="server" text="/attend/edit/submitted" />
                                     </h3>
                                 </div>
                                 <div class="panel-body">
                                     <p>
-                                        <EPiServer:Translate runat="server" text="/attend/edit/contentwhensubmitted" />
+                                        <episerver:translate runat="server" text="/attend/edit/contentwhensubmitted" />
                                     </p>
-                                <asp:Panel runat="server" id="SubmittedContentWrapper">
-                                    <asp:Repeater runat="server" ID="SubmittedContentRepeater">
-                                        <ItemTemplate>
-                                            <div class="well well-sm">
-                                            <%#GetBlockName(Container.DataItem) %></div>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </asp:Panel>
+                                    <asp:Panel runat="server" ID="SubmittedContentWrapper">
+                                        <asp:Repeater runat="server" ID="SubmittedContentRepeater">
+                                            <ItemTemplate>
+                                                <div class="well well-sm">
+                                                    <%#GetBlockName(Container.DataItem) %>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </asp:Panel>
 
                                 </div>
                             </div>
@@ -247,9 +255,9 @@
                     <div class="col-lg-12">
                         <div class="panel panel-body">
                             <table class="table table-striped table-hover">
-                                <EPiServer:Property runat="server" id="SessionsContentArea">
+                                <episerver:property runat="server" id="SessionsContentArea">
                                     <rendersettings tag="ListView" />
-                                </EPiServer:Property>
+                                </episerver:property>
                             </table>
                             <br />
                             <div class="">
@@ -276,7 +284,7 @@
         <div role="tabpanel" class="tab-pane" id="email">
             <div class="container">
 
-                <Attend:EventPageEditScheduledEmail runat="server" id="EventPageBaseEditScheduledEmailControl" CurrentEventPageBase='<%#CurrentPage %>' />
+                <attend:eventpageeditscheduledemail runat="server" id="EventPageBaseEditScheduledEmailControl" currenteventpagebase='<%#CurrentPage %>' />
             </div>
         </div>
 
