@@ -24,11 +24,14 @@ namespace BVNetwork.Attend.Business.Export
         public static void ExportXLSX(List<IParticipant> participants, List<string> formFields)
         {
 
+            string eventName = (participants.Count > 0) ? ((participants[0] != null && participants[0].EventPage != null && participants[0].EventPage != PageReference.EmptyReference) ? EPiServer.DataFactory.Instance.Get<PageData>(participants[0].EventPage).URLSegment : "NA" ) : "NA";
+            string fileName = EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/edit/participants") + " - " + eventName;
+
             HttpContext.Current.Response.Clear();
             HttpContext.Current.Response.ClearHeaders();
             HttpContext.Current.Response.ClearContent();
             HttpContext.Current.Response.ContentType = "application/vnd.ms-excel";
-            HttpContext.Current.Response.AddHeader("content-disposition", "attachment;filename=participants-" + participants[0].EventPage.ID + ".xls");
+            HttpContext.Current.Response.AddHeader("content-disposition", "attachment;filename=" + fileName + ".xls");
             HttpContext.Current.Response.Charset = Encoding.UTF8.WebName;
             HttpContext.Current.Response.ContentEncoding = Encoding.UTF8;
             HttpContext.Current.Response.BinaryWrite(Encoding.UTF8.GetPreamble());
@@ -44,7 +47,7 @@ namespace BVNetwork.Attend.Business.Export
             if(formFields != null)
             for(int i = 0; i < formFields.Count; i++)
                 worksheet.Cells[0, i]= new Cell(formFields[i]);
-            else
+            else if(participants.Count > 0)
             {
                 string[] headers = AttendRegistrationEngine.GetFormData(participants[0]).AllKeys;
                 worksheet.Cells[0, 0] = new Cell("Status");
@@ -60,6 +63,10 @@ namespace BVNetwork.Attend.Business.Export
             {
                 AddParticipantToWorksheet(worksheet, i+1, participants[i]);
             }
+
+            // Some Excel versions requires more than 100 rows - adding empty ones
+            for (int i = participants.Count; i < 150; i++)
+                worksheet.Cells[i, 0] = new Cell(string.Empty);
 
             workbook.Worksheets.Add(worksheet);
 
