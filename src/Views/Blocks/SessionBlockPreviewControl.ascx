@@ -2,29 +2,11 @@
 <%@ Register Namespace="EPiServer.Web.WebControls" TagPrefix="EPiServer" %>
 <%@ Register Namespace="EPiServer.XForms.WebControls" TagPrefix="XForms" %>
 
+<br/>
 
-<div class="darkarea">
-    <div class="content">
-        <div class="left">
-            <a target="_top" class="" href='<%=EventUrl %>'>
-                <img src="/Modules/BVNetwork.Attend/static/attend_blue.png" /></a>
-        </div>
-        <div class="left">
-            <h1>
-                <EPiServer:Translate runat="server" text="/attend/edit/attend" />
-                <br />
-                <%=(CurrentBlock as EPiServer.Core.IContent).Name %></h1>
-            <EPiServer:Translate runat="server" text="/attend/edit/sessionat" />
-            <EPiServer:property runat="server" propertyname="pageName" pagelinkproperty="EventPageBase"></EPiServer:property><br />
-        </div>
-        <div class="right">
-            <a target="_top" class="btn btn-default" href='<%=EventUrl %>'>
-                <EPiServer:Translate runat="server" text="/attend/edit/returntoevent" />
-            </a>
-        </div>
-    </div>
-</div>
-
+<a target="_top" class="btn btn-default pull-right" href='<%=EventUrl %>'>
+    <EPiServer:Translate runat="server" text="/attend/edit/returntoevent" />
+</a>
 
 <div class="content">
     <h2>
