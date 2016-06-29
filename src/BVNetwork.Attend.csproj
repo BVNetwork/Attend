@@ -4,9 +4,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6E7DC699-26A5-4BC2-A851-CBCB8DC475B0}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -371,6 +368,7 @@
     <Compile Include="Business\Email\EmailSender.cs" />
     <Compile Include="Business\Email\EmailSendOptions.cs" />
     <Compile Include="Business\Email\SmsSender.cs" />
+    <Compile Include="Business\Email\Validation.cs" />
     <Compile Include="Business\Export\ParticipantExport.cs" />
     <Compile Include="Business\Index\Registration.cs" />
     <Compile Include="Business\InitializableModules\AttendLogInitializer.cs" />
@@ -573,7 +571,9 @@
     </Content>
     <Content Include="modules\_protected\Shell\EPiServer.Shell.UI.zip" />
     <Content Include="modules\_protected\CMS\EPiServer.Cms.Shell.UI.zip" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="modules\_protected\Shell\web.config" />
     <Content Include="modules\_protected\Shell\Shell.zip" />
     <Content Include="modules\_protected\CMS\web.config" />

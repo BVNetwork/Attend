@@ -21,7 +21,7 @@ using EPiServer.XForms.Util;
 
 namespace BVNetwork.Attend.Controllers
 {
-    [TemplateDescriptor(TemplateTypeCategory = TemplateTypeCategories.MvcPartialController, Inherited =true)]
+    [TemplateDescriptor(TemplateTypeCategory = TemplateTypeCategories.MvcPartialController, Inherited = true)]
     public class EventPageBasePartialController : PageController<EventPageBase>
     {
         private XFormPageUnknownActionHandler _xformHandler;
@@ -45,14 +45,14 @@ namespace BVNetwork.Attend.Controllers
                 ViewData = (ViewDataDictionary)TempData["ViewData"];
             }
 
-            var viewModel =  CreateEventRegistrationModel(currentPage, contentLink);
+            var viewModel = CreateEventRegistrationModel(currentPage, contentLink);
 
             var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
             PageData hostPageData = pageRouteHelper.Page;
 
             if (currentPage != null && hostPageData != null)
             {
-                
+
 
                 var urlResolver = ServiceLocator.Current.GetInstance<UrlResolver>();
                 var pageUrl = urlResolver.GetUrl(hostPageData.ContentLink);
@@ -70,20 +70,62 @@ namespace BVNetwork.Attend.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DoSubmit(XFormPostedData xFormpostedData)
+        {
+            return _xformHandler.HandleAction(this);
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult Index(EventPageBase currentPage, XFormPostedData xFormPostedData, string contentLink)
         {
             var model = CreateEventRegistrationModel(currentPage, contentLink);
 
+            var id = (currentPage as IContent).ContentLink.ID;
+
+            var viewDataKey = string.Format("TempViewData_{0}", id);
+            this.ViewData["XFormFragments"] = (object)xFormPostedData.Fragments;
+            this.ControllerContext.Controller.ViewData["XFormFragments"] = (object)xFormPostedData.Fragments;
+            this.TempData[viewDataKey] = this.ViewData;
+            model.ViewData = this.ViewData;
+            model.ViewDataKey = viewDataKey;
+            
+
+
             string participantEmail = "";
             foreach (var fragment in xFormPostedData.Fragments)
             {
-                if (fragment as EPiServer.XForms.Parsing.InputFragment != null && ((fragment as EPiServer.XForms.Parsing.InputFragment).Reference.ToLower() == "epost" || (fragment as EPiServer.XForms.Parsing.InputFragment).Reference.ToLower() == "email"))
+                if (fragment as EPiServer.XForms.Parsing.InputFragment != null)
                 {
-                    participantEmail = (fragment as EPiServer.XForms.Parsing.InputFragment).Value;
+                    string fragmentReference = (fragment as EPiServer.XForms.Parsing.InputFragment).Reference.ToLower();
+                    if (fragmentReference == "epost" || fragmentReference == "email" || fragmentReference == BVNetwork.Attend.Business.Settings.Settings.GetSetting("emailFieldName"))
+                    {
+                        participantEmail = (fragment as EPiServer.XForms.Parsing.InputFragment).Value;
+                    }
                 }
             }
 
             string xformdata = new EPiServer.Web.Mvc.XForms.XFormPageHelper().GetXFormData(this, xFormPostedData).Data.InnerXml;
+
+            var metadata = ModelMetadataProviders.Current.GetMetadataForType(null, typeof(XFormPostedData));
+
+            var validationResult = new XFormValidator(metadata, this.ControllerContext).Validate(xFormPostedData);
+            model.Messages = new List<string>();
+            foreach (var a in validationResult)
+            {
+                if (!string.IsNullOrEmpty(a.Message))
+                    model.Messages.Add(a.Message);
+            }
+            if (Business.Email.Validation.IsEmail(participantEmail) == false)
+                model.Messages.Add(EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/edit/emailmissing"));
+
+            if (Business.Email.Validation.IsEmail(participantEmail) == false || model.Messages.Count > 0)
+            {
+                model.PostedData = xFormPostedData;
+                _xformHandler.HandleAction(this);
+                return PartialView("~/modules/BVNetwork.Attend/Views/Pages/Partials/EventPagePartial.cshtml", model);
+            }
+
             IParticipant participant = AttendRegistrationEngine.GenerateParticipation(model.EventPageBase.ContentLink, participantEmail, true, xformdata, "Participant submitted form");
             participant.XForm = xformdata;
 
@@ -99,6 +141,15 @@ namespace BVNetwork.Attend.Controllers
                 }
             }
             _contentRepository.Save(participant as IContent, SaveAction.Publish, AccessLevel.NoAccess);
+
+
+            //ValidationRuleDescriptorCollection clientValidationRules = XFormClientValidationHelper.CreateClientValidationRules(xFormPostedData.XForm, EPiServer.Framework.Localization.LocalizationService.Current);
+            //foreach (var validationRule in clientValidationRules) {
+            //    foreach (var rule in validationRule.Rules) {
+            //        rule.
+            //   }
+            //}
+
 
             model.Submitted = participant.AttendStatus.ToLower() == "submitted";
 

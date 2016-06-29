@@ -90,7 +90,7 @@ namespace BVNetwork.Attend.Views.Pages.Partials
                 }
 
 
-                if (string.IsNullOrEmpty(participantEmail)) {
+                if (string.IsNullOrEmpty(participantEmail) || Business.Email.Validation.IsEmail(participantEmail) == false) {
 
                     return;
                 }

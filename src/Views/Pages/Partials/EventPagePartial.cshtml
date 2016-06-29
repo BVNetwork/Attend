@@ -3,7 +3,8 @@
 @using EPiServer.Web.Mvc.Html
 @using EPiServer.Globalization
 @using EPiServer.Web.Routing
-
+@using EPiServer.Web.WebControls
+@using EPiServer.XForms.Util
 @model BVNetwork.Attend.Models.ViewModels.EventRegistrationModel
 
 
@@ -33,7 +34,7 @@
                     <strong>
                         @AttendRegistrationEngine.GetAvailableSeatsText(Model.EventPageBase)
                     </strong>
-                                <br /><br />
+                    <br /><br />
                 }
                 if (Model.Sessions.Count > 0)
                 {
@@ -65,20 +66,54 @@
                         </div>
                     </div>
                 }
+                if (BVNetwork.Attend.Business.API.AttendRegistrationEngine.UseForms == false)
+                {
+                    @*@Html.PropertyFor(x => x.EventPageBase.RegistrationForm, new { XFormParameters = new EPiServer.XForms.Util.XFormParameters() { PostController=Model. , PostAction = "DoSubmit", SuccessAction = "Success", FailedAction = "Failed", ContentLink = @Model.EventPageBase.ContentLink.ID.ToString() } })*@
 
-                <div class="xformpage">
-                    @using (Html.BeginXForm(Model.EventPageBase.RegistrationForm, new { Action = Model.ActionUrl, @class = "form xform" }))
+                    if (Model.PostedData != null)
                     {
-                        Html.RenderXForm(Model.EventPageBase.RegistrationForm);
+ 
+                        <div class="xformpage">Allerede påbegynt
+                            @using (EPiServer.Web.Mvc.Html.XFormExtensions.BeginXForm(Html, Model.PostedData, new { Action = Model.ActionUrl, @class = "form xform" }))
+                            {
+ 
+                                Html.RenderXForm(Model.PostedData.XForm);
+
+                            }
+                            @if (Model.EventPageBase.RegistrationForm.Id == ViewData["XFormID"])
+                            {
+                                @Html.ValidationSummary()
+                            }
+                        </div>
                     }
-                    @if (Model.EventPageBase.RegistrationForm.Id == ViewData["XFormID"])
-                    {
-                        @Html.ValidationSummary()
+                    else
+                    { 
+
+                    <div class="xformpage">Ikke påbegynt
+                        @using (EPiServer.Web.Mvc.Html.XFormExtensions.BeginXForm(Html, Model.EventPageBase.RegistrationForm, new { Action = Model.ActionUrl, @class = "form xform" }))
+                            {
+                                
+                                Html.RenderXForm(Model.EventPageBase.RegistrationForm);
+                        }
+
+                        @if (Model.EventPageBase.RegistrationForm.Id == ViewData["XFormID"])
+                        {
+                            @Html.ValidationSummary()
+                        }
+                    </div>
                     }
-                </div>
+                }
+                else
+                {
+                    @Html.DisplayFor(x => x.CurrentPage.RegistrationFormContainer, new { Tag="AttendContentArea", EventPage = Model.CurrentPage.ContentLink.ID });
+                }
 
             }
-
+            @if(Model.Messages != null) { 
+                foreach (string message in Model.Messages) {
+                    @message <br/>
+                }
+            }
         </div>
     </div>
 }

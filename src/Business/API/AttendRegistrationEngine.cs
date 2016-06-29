@@ -38,9 +38,10 @@ namespace BVNetwork.Attend.Business.API
 
         public delegate void RegistrationEventHandler(object o, RegistrationEventArgs e);
 
+
         public static event RegistrationEventHandler BeforeRegisterParticipant;
         public static event RegistrationEventHandler AfterRegisterParticipant;
-
+        
         protected static void BeforeRegisterParticipantHandler(RegistrationEventArgs e)
         {
             if (BeforeRegisterParticipant != null)
@@ -55,7 +56,10 @@ namespace BVNetwork.Attend.Business.API
 
         public static IParticipant GenerateParticipation(ContentReference EventPageBase, string email, bool sendMail, string xform, string logText)
         {
-            return ParticipantProviderManager.Provider.GenerateParticipant(EventPageBase, email, sendMail, xform, logText);
+            if (Business.Email.Validation.IsEmail(email))
+                return ParticipantProviderManager.Provider.GenerateParticipant(EventPageBase, email, sendMail, xform, logText);
+            else
+                throw new InvalidEmailException("Attend participant cannot be created without a valid e-mail address.");
 
         }
 
@@ -366,5 +370,7 @@ namespace BVNetwork.Attend.Business.API
         public static void SaveParticipant(IParticipant participant) {
             ParticipantProviderManager.Provider.SaveParticipant(participant);
         }
+
+        public static bool UseForms { get { return BVNetwork.Attend.Business.Settings.Settings.GetSetting("UseEpiserverForms").ToString() == true.ToString(); } }
     }
 }
