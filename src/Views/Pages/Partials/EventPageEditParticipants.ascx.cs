@@ -306,11 +306,13 @@ namespace BVNetwork.Attend.Views.Pages.Partials
         {
             IParticipant newParticipant = null;
             EmailPlaceHolder.Visible = false;
-            if (string.IsNullOrEmpty(EMailTextBox.Text))
+            if (Business.Email.Validation.IsEmail(EMailTextBox.Text) == false) { 
                 EmailPlaceHolder.Visible = true;
-            newParticipant = AttendRegistrationEngine.GenerateParticipation(CurrentPage.ContentLink, EMailTextBox.Text, string.Empty);
-            System.Web.UI.ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptid", "window.parent.location.href='" + EPiServer.Editor.PageEditing.GetEditUrl((newParticipant as IContent).ContentLink) + "'", true);
-
+            }
+            else { 
+                newParticipant = AttendRegistrationEngine.GenerateParticipation(CurrentPage.ContentLink, EMailTextBox.Text, string.Empty);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "scriptid", "window.parent.location.href='" + EPiServer.Editor.PageEditing.GetEditUrl((newParticipant as IContent).ContentLink) + "'", true);
+            }
         }
 
 
