@@ -165,6 +165,7 @@
         <oneWhatTriggers>1. Hva skal trigge utsendelsen?</oneWhatTriggers>
         <twoWhenShouldBeSent>2. Når skal meldingen sendes?</twoWhenShouldBeSent>
         <threeStatusFilter>3. Statusfilter - send kun til deltakere med følgende status:</threeStatusFilter>
+        <emailmissing>Godkjent e-post-adresse mangler i skjemaet.</emailmissing>
       </edit>
       <attendstatus>
         <deleted>Slettet</deleted>
@@ -175,6 +176,23 @@
         <undefined>Udefinert</undefined>
         <confirmed>Bekreftet</confirmed>
       </attendstatus>
+      <sendoptions>
+        <specific>Spesifisert</specific>
+        <action>Hendelse</action>
+        <relative>Relativ</relative>
+      </sendoptions>
+      <relativeunit>
+        <months>Måneder</months>
+        <days>Dager</days>
+        <hours>Timer</hours>
+        <minutes>Minutter</minutes>
+      </relativeunit>
+      <relativeto>
+        <BeforeStartPublish>Før startpublisering</BeforeStartPublish>
+        <AfterStartPublish>Etter startpublisering</AfterStartPublish>
+        <BeforeEventStart>Før eventet starter</BeforeEventStart>
+        <AfterEventStart>Etter eventet startet</AfterEventStart>
+      </relativeto>
       <eventstatus>
         <event-cancelled>Avlyst</event-cancelled>
         <event-private>Privat</event-private>
@@ -214,5 +232,105 @@
         </participantslist>
       </help>
     </attend>
+    <contenttypes>
+      <scheduledemailblock>
+        <name>Tidsstyrte meldinger</name>
+        <description>Male for meldinger til deltakere</description>
+        <properties>
+          <emailsendoptions>
+            <caption>Trigger</caption>
+            <help>Hva skal trigge utsendelse av meldingen</help>
+          </emailsendoptions>
+          <EmailTemplateContentReference>
+            <caption>Global meldingsmal</caption>
+            <help>Legg en referanse til en global meldingsmal her for å bruke den istedenfor den spesifikke malen på denne blokken</help>
+          </EmailTemplateContentReference>
+          <SpecificDateScheduled>
+            <caption>Spesifikk dato for utsendelse</caption>
+            <help>Hvis meldingen trigges av spesifikt tidspunkt, angi ønsket tidspunkt her</help>
+          </SpecificDateScheduled>
+          <ScheduledRelativeUnit>
+            <caption>Tidsenhet</caption>
+            <help>Enhet for hvor lang tid før eller etter et event meldingen skal sendes</help>
+          </ScheduledRelativeUnit>
+          <ScheduledRelativeAmount>
+            <caption>Tid</caption>
+            <help>Hvor tid før eller etter et event skal meldingen sendes?</help>
+          </ScheduledRelativeAmount>
+          <DateSent>
+            <caption>Dato sendt</caption>
+            <help>Tidspunktet meldingen ble sendt. Nullstill denne hvis meldingen skal sendes på nytt.</help>
+          </DateSent>
+          <SendOnStatus>
+            <caption>Status</caption>
+            <help>Hvilken status skal trigge meldingen?</help>
+          </SendOnStatus>
+          <AttendStatusFilter>
+            <caption>Statusfilter</caption>
+            <help>Statusfilter for deltakere. Sender kun e-posten dersom deltakerne har en av de angitte statusene.</help>
+          </AttendStatusFilter>
+          <EventPage>
+            <caption>Arrangementsside</caption>
+            <help>Arrangementet meldingen er tilknyttet</help>
+          </EventPage>
+          <ScheduledRelativeTo>
+            <caption>Relativt tidspunkt</caption>
+            <help>Angi hvilken dato meldingen skal sendes relativt til</help>
+          </ScheduledRelativeTo>
+        </properties>
+      </scheduledemailblock>
+
+      <EmailTemplateBlock>
+        <name>E-post-mal</name>
+        <description>Blokktype for planlagte meldinger</description>
+        <properties>
+          <From>
+            <caption>Fra</caption>
+            <help>Avsenders e-post-adresse. For eksempel fornavn.etternavn@selskap.no</help>
+          </From>
+          <To>
+            <caption>Til</caption>
+            <help>Mottakers e-post-adresse. F.eks. [CurrentRegistration.Epost] eller fornavn.etternavn@selskap.no</help>
+          </To>
+          <CC>
+            <caption>CC</caption>
+            <help>Mottaker av kopi av e-post</help>
+          </CC>
+          <BCC>
+            <caption>BCC</caption>
+            <help>Mottaker av blindkopi av e-post</help>
+          </BCC>
+          <Subject>
+            <caption>Emne</caption>
+            <help>Emnet i e-posten</help>
+          </Subject>
+          <MainBody>
+            <caption>Hovedinnhold</caption>
+            <help>Hovedinnhold i HTML-format</help>
+          </MainBody>
+          <MainTextBody>
+            <caption>Ren tekst</caption>
+            <help>Hovedinnhold i tekstformat / SMS tekst</help>
+          </MainTextBody>
+          <SendAsSms>
+            <caption>Send som SMS</caption>
+            <help>Huk av for å sende meldingen som SMS istedenfor e-post. (Ren tekst-feltet vil bli brukt)</help>
+          </SendAsSms>
+        </properties>
+      </EmailTemplateBlock>
+
+
+
+      <BlockTypeName>
+        <name>Name</name>
+        <description>Description</description>
+        <properties>
+          <PropertyName>
+            <caption>Caption</caption>
+            <help>Help</help>
+          </PropertyName>
+        </properties>
+      </BlockTypeName>
+    </contenttypes>
   </language>
 </languages>

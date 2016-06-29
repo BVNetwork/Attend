@@ -29,6 +29,7 @@ namespace BVNetwork.Attend.Models.Blocks
 
 
         [EnumAttribute(typeof(SendOptions))]
+        [Display(Name = "E-mail send options")]
         public virtual SendOptions EmailSendOptions { get; set; }
 
         public virtual DateTime SpecificDateScheduled { get; set; }

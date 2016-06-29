@@ -21,7 +21,7 @@ namespace BVNetwork.Attend.Business.EditorDescriptors
         private string GetValueName(object value)
         {
             var staticName = Enum.GetName(typeof(TEnum), value); 
-            string localizationPath = string.Format("/property/enum/{0}/{1}", typeof(TEnum).Name.ToLowerInvariant(), staticName.ToLowerInvariant()); 
+            string localizationPath = string.Format("/attend/{0}/{1}", typeof(TEnum).Name.ToLowerInvariant(), staticName.ToLowerInvariant()); 
             string localizedName;
             if (LocalizationService.Current.TryGetString(localizationPath, out localizedName))
             {

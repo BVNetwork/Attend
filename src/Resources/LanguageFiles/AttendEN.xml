@@ -163,6 +163,7 @@
         <oneWhatTriggers>1. What should trigger the message?</oneWhatTriggers>
         <twoWhenShouldBeSent>2. When should the message be sent?</twoWhenShouldBeSent>
         <threeStatusFilter>3. Status filter - only send to participants with the following status:</threeStatusFilter>
+        <emailmissing>E-mail could not be found in the form.</emailmissing>
       </edit>
       <eventstatus>
         <event-cancelled>Cancelled</event-cancelled>
@@ -182,6 +183,23 @@
         <undefined>Undefined</undefined>
         <confirmed>Confirmed</confirmed>
       </attendstatus>
+      <sendoptions>
+        <specific>Specific</specific>
+        <action>Action</action>
+        <relative>Relative</relative>
+      </sendoptions>
+      <relativeunit>
+        <months>Months</months>
+        <days>Days</days>
+        <hours>Hours</hours>
+        <minutes>Minutes</minutes>
+      </relativeunit>
+      <relativeto>
+        <BeforeStartPublish>Before start publish</BeforeStartPublish>
+        <AfterStartPublish>After start publish</AfterStartPublish>
+        <BeforeEventStart>Before event start</BeforeEventStart>
+        <AfterEventStart>After event start</AfterEventStart>
+      </relativeto>
       <diploma>
         <datetext>Has {0} participated at</datetext>
       </diploma>
@@ -212,5 +230,105 @@
         </participantslist>
       </help>
     </attend>
+    <contenttypes>
+      <scheduledemailblock>
+        <name>Scheduled messages</name>
+        <description>Message templates for participant notifications</description>
+        <properties>
+          <emailsendoptions>
+            <caption>Trigger</caption>
+            <help>What should trigger e-mail sending</help>
+          </emailsendoptions>
+          <EmailTemplateContentReference>
+            <caption>E-mail global template</caption>
+            <help>Add a reference to an e-mail template block here to use a global template instead of the custom message in this block</help>
+          </EmailTemplateContentReference>
+          <SpecificDateScheduled>
+            <caption>Specific date to send message</caption>
+            <help>If the trigger is specific, add the specific date and time of scheduling here.</help>
+          </SpecificDateScheduled>
+          <ScheduledRelativeUnit>
+            <caption>Date span unit</caption>
+            <help>Unit for date when making it relative to selected event date</help>
+          </ScheduledRelativeUnit>
+          <ScheduledRelativeAmount>
+            <caption>Amount of time</caption>
+            <help>Amount of time of selected unit from selected event date.</help>
+          </ScheduledRelativeAmount>
+          <DateSent>
+            <caption>Date sent</caption>
+            <help>The date the scheduled message is sent.</help>
+          </DateSent>
+          <SendOnStatus>
+            <caption>Send on status</caption>
+            <help>What participant status should trigger the message?</help>
+          </SendOnStatus>
+          <AttendStatusFilter>
+            <caption>Status filter</caption>
+            <help>Status filter for participants. Only send to participants with selected statuses.</help>
+          </AttendStatusFilter>
+          <EventPage>
+            <caption>Event page</caption>
+            <help>Event associated with this scheduled message.</help>
+          </EventPage>
+          <ScheduledRelativeTo>
+            <caption>Date to send relatively to</caption>
+            <help>If the messages is sent relatively, select property to send relatively to.</help>
+          </ScheduledRelativeTo>
+        </properties>
+      </scheduledemailblock>
+
+      <EmailTemplateBlock>
+        <name>Email Template</name>
+        <description>Block type for message templates</description>
+        <properties>
+          <From>
+            <caption>From</caption>
+            <help>Sender e-mail address. E.g. someone@mycompany.com</help>
+          </From>
+          <To>
+            <caption>To</caption>
+            <help>Receipient e-mail address. E.g. [CurrentRegistration.Email] or someone@mycompany.com</help>
+          </To>
+          <CC>
+            <caption>CC</caption>
+            <help>Send copy of e-mail to</help>
+          </CC>
+          <BCC>
+            <caption>BCC</caption>
+            <help>Send blind copy of e-mail to</help>
+          </BCC>
+          <Subject>
+            <caption>Subject</caption>
+            <help>E-mail subject</help>
+          </Subject>
+          <MainBody>
+            <caption>Main Body</caption>
+            <help>Main body HTML text</help>
+          </MainBody>
+          <MainTextBody>
+            <caption>Main Text Body / SMS body</caption>
+            <help>Main body plain text</help>
+          </MainTextBody>
+          <SendAsSms>
+            <caption>Send as SMS</caption>
+            <help>Check to send message as SMS instead of e-mail (Main Text Body will be used)</help>
+          </SendAsSms>
+        </properties>
+      </EmailTemplateBlock>
+
+
+
+      <BlockTypeName>
+        <name>Name</name>
+        <description>Description</description>
+        <properties>
+          <PropertyName>
+            <caption>Caption</caption>
+            <help>Help</help>
+          </PropertyName>
+        </properties>
+      </BlockTypeName>
+    </contenttypes>
   </language>
 </languages>

@@ -44,6 +44,7 @@ namespace BVNetwork.Attend.Views.Blocks
             (this as PageBase).EditHints.Add("ScheduledRelativeAmount");
             (this as PageBase).EditHints.Add("ScheduledRelativeUnit");
             (this as PageBase).EditHints.Add("SendOnStatus");
+            (this as PageBase).EditHints.Add("EmailSendOptions");
             (this as PageBase).EditHints.Add("SendOptions");
 
             if ((CurrentData as ScheduledEmailBlock).EmailTemplateContentReference != null &&
@@ -61,8 +62,22 @@ namespace BVNetwork.Attend.Views.Blocks
             MailTemplateBlockPreview.DataBind();
 
             this.DataBind();
-            
+
         }
+
+        protected string GetStatusText() {
+            var localizationService = EPiServer.Framework.Localization.LocalizationService.Current;
+            return localizationService.GetString("/contenttypes/scheduledemailblock/properties/SendOnStatus/caption") + ": " + localizationService.GetString("/attend/attendstatus/" + (CurrentData as ScheduledEmailBlock).SendOnStatus.ToString());
+
+        }
+
+
+        protected string GetEnumText(string enumtype, string value) {
+            var localizationService = EPiServer.Framework.Localization.LocalizationService.Current;
+            return localizationService.GetString("/attend/"+enumtype+"/"+value);
+
+        }
+
 
         protected string EventUrl
         {

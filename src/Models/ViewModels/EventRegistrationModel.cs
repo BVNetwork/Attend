@@ -7,6 +7,8 @@ using BVNetwork.Attend.Models.Blocks;
 using BVNetwork.Attend.Models.Pages;
 using EPiServer.Core;
 using EPiServer.XForms;
+using EPiServer.XForms.Util;
+using System.Web.Mvc;
 
 namespace BVNetwork.Attend.Models.ViewModels
 {
@@ -18,6 +20,10 @@ namespace BVNetwork.Attend.Models.ViewModels
 
         }
         public EventPageBase EventPageBase { get; set; }
+        public XFormPostedData PostedData { get; set; }
+        public ViewDataDictionary ViewData { get; set; }
+        public string Controller { get; set; }
+        public string ViewDataKey { get; set; }
         public List<AttendSessionEngine.Session> Sessions { get; set; }
         public int AvalibleSeats { get; set; }
         public string PriceText { get; set; }
@@ -26,5 +32,6 @@ namespace BVNetwork.Attend.Models.ViewModels
         public ParticipantBlock CurrentParticipant { get; set; }
         public PageData HostPageData { get; set; }
         public string ActionUrl { get; set; }
+        public List<string> Messages { get; set; }
     }
 }

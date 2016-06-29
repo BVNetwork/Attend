@@ -77,7 +77,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div id="SendOptionsControl" runat="server"><%=Enum.Parse(typeof(SendOptions), (CurrentData as ScheduledEmailBlock).EmailSendOptions.ToString()).ToString() %></div>
+                                            <div id="SendOptionsControl" runat="server"><%#GetEnumText("SendOptions", (CurrentData as ScheduledEmailBlock).EmailSendOptions.ToString()) %></div>
                                         </td>
                                     </tr>
 
@@ -109,16 +109,16 @@
                                                     <li>&nbsp;<div id="ScheduledRelativeAmountControl" runat="server" class="label label-default"><%#(CurrentData as ScheduledEmailBlock).ScheduledRelativeAmount.ToString() %></div>
                                                         &nbsp;<span class="badge"></span></li>
                                                     <li>&nbsp;
-                                    <div id="ScheduledRelativeUnitControl" runat="server" class="label label-default"><%#(CurrentData as ScheduledEmailBlock).ScheduledRelativeUnit.ToString() %></div>
+                                    <div id="ScheduledRelativeUnitControl" runat="server" class="label label-default"><%#GetEnumText("RelativeUnit", (CurrentData as ScheduledEmailBlock).ScheduledRelativeUnit.ToString()) %></div>
                                                         &nbsp; <span class="badge"></span></li>
-                                                    <li>&nbsp;<div id="ScheduledRelativeToControl" runat="server" class="label label-default"><%#(CurrentData as ScheduledEmailBlock).ScheduledRelativeTo.ToString() %></div>
+                                                    <li>&nbsp;<div id="ScheduledRelativeToControl" runat="server" class="label label-default"><%#GetEnumText("RelativeTo", (CurrentData as ScheduledEmailBlock).ScheduledRelativeTo.ToString()) %></div>
                                                         &nbsp; <span class="badge"></span></li>
                                                 </ul>
                                             </asp:PlaceHolder>
 
 
                                             <asp:PlaceHolder runat="server" Visible='<%#(CurrentData as ScheduledEmailBlock).EmailSendOptions == SendOptions.Action %>'>
-                                                <div id="SendOnStatusControl" runat="server">E-mail trigger: <%#(CurrentData as ScheduledEmailBlock).SendOnStatus.ToString() %></div>
+                                                <div id="SendOnStatusControl" runat="server"><%#GetStatusText() %></div>
                                             </asp:PlaceHolder>
 
                                         </td>
