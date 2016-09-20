@@ -28,7 +28,7 @@ namespace BVNetwork.Attend.Business.API
             return Core.Folders.GetOrCreateEventFolder(EventPageBase, "emails");
         }
 
-        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmails(ContentReference EventPageBase)
+        public static IEnumerable<ScheduledEmailBlock> GetAllEmails(ContentReference EventPageBase)
         {
             var contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>();
             return contentRepository.GetChildren<ScheduledEmailBlock>(GetOrCreateEmailFolder(EventPageBase).ContentLink, new CultureInfo(Localization.LanguageHelper.MasterLanguage(EventPageBase)));
@@ -36,7 +36,7 @@ namespace BVNetwork.Attend.Business.API
 
         public static IEnumerable<ScheduledEmailBlock> GetScheduledEmails(ContentReference EventPageBase, SendOptions option, AttendStatus status)
         {
-            return (from e in GetScheduledEmails(EventPageBase) where e.SendOnStatus == status && e.EmailSendOptions == option select e);
+            return (from e in GetAllEmails(EventPageBase) where e.SendOnStatus == status && e.EmailSendOptions == option select e);
         }
 
         public static ScheduledEmailBlock GenerateScheduledEmailBlock(ContentReference EventPageBase)
@@ -68,12 +68,12 @@ namespace BVNetwork.Attend.Business.API
                 {
                     statuses.Add(status, status);
                 }
-            if(scheduledEmailBlock.EventPage != null)
-            foreach (var participant in AttendRegistrationEngine.GetParticipants(scheduledEmailBlock.EventPage))
-            {
-                if (statuses.Contains(participant.AttendStatus))
-                    participants.Add(participant);
-            }
+            if (scheduledEmailBlock.EventPage != null)
+                foreach (var participant in AttendRegistrationEngine.GetParticipants(scheduledEmailBlock.EventPage))
+                {
+                    if (scheduledEmailBlock.AttendStatusFilter == null || statuses.Contains(participant.AttendStatus))
+                        participants.Add(participant);
+                }
             return participants;
         }
 
@@ -96,19 +96,24 @@ namespace BVNetwork.Attend.Business.API
                     email.Send();
                 }
             }
-
         }
 
-        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmailsToSend(EventPageBase EventPageBase)
+        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmails(EventPageBase EventPageBase)
         {
-            var scheduledEmailBlocks = (from e in GetScheduledEmails(EventPageBase.ContentLink) where (e.EmailSendOptions == SendOptions.Specific || e.EmailSendOptions == SendOptions.Relative) select e);
+            return (from e in GetAllEmails(EventPageBase.ContentLink) where (e.EmailSendOptions == SendOptions.Specific || e.EmailSendOptions == SendOptions.Relative) select e);
+        }
+
+        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmailsToSend(EventPageBase eventPageBase, DateTime plannedAfterDate, DateTime plannedBeforeDate)
+        {
+            var scheduledEmailBlocks = GetScheduledEmails(eventPageBase);
             var scheduledEmailBlocksToSend = new List<ScheduledEmailBlock>();
-            foreach (ScheduledEmailBlock scheduledEmailBlock in scheduledEmailBlocks)
-            {
-                if (GetSendDate(scheduledEmailBlock, EventPageBase) < DateTime.Now && scheduledEmailBlock.DateSent < new DateTime(1801, 01, 01))
-                    scheduledEmailBlocksToSend.Add(scheduledEmailBlock);
-            }
+            scheduledEmailBlocksToSend.AddRange((from x in scheduledEmailBlocks where x.SendDateTime < plannedBeforeDate && x.SendDateTime > plannedAfterDate && x.DateSent < new DateTime(1801, 01, 01) select x));
             return scheduledEmailBlocksToSend;
+        }
+
+        public static IEnumerable<ScheduledEmailBlock> GetScheduledEmailsToSend(EventPageBase eventPageBase)
+        {
+            return GetScheduledEmailsToSend(eventPageBase, DateTime.MinValue, DateTime.Now);
         }
 
 
@@ -185,6 +190,49 @@ namespace BVNetwork.Attend.Business.API
                 return dateToSend;
             }
             return DateTime.MaxValue;
+        }
+
+        public static string GetStatus(ScheduledEmailBlock scheduledEmailBlock)
+        {
+            if (scheduledEmailBlock.EmailSendOptions == SendOptions.Action)
+                return "<span class='label label-success'>" + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/attendstatus/" + scheduledEmailBlock.SendOnStatus.ToString()) + "</span>";
+            if (scheduledEmailBlock.EventPage == null)
+                return string.Empty;
+            DateTime sendDateTime = AttendScheduledEmailEngine.GetSendDate(scheduledEmailBlock,
+                ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(scheduledEmailBlock.EventPage));
+            if (sendDateTime >
+                    DateTime.Now && ((int)sendDateTime.Subtract(DateTime.Now).TotalDays > 0))
+                return "<span class='label label-success'>" + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/in") + " " + (int)sendDateTime.Subtract(DateTime.Now).TotalDays + " " + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/days") + "</span>";
+            if (sendDateTime >
+                    DateTime.Now && ((int)sendDateTime.Subtract(DateTime.Now).TotalHours > 0))
+                return "<span class='label label-success'>" + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/in") + " " + (int)sendDateTime.Subtract(DateTime.Now).TotalHours + " " + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/hours") + "</span>";
+            if (sendDateTime >
+                    DateTime.Now && ((int)sendDateTime.Subtract(DateTime.Now).TotalHours <= 0))
+                return "<span class='label label-success'>" + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/in") + " " + (int)sendDateTime.Subtract(DateTime.Now).TotalMinutes + " " + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/minutes") + "</span>";
+            if (DateTime.Now.Subtract(scheduledEmailBlock.DateSent).TotalDays > 60000)
+                return "<span class='label label-warning'>" + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/sending") + "...</span>";
+            else
+            {
+                return "<span class='label label-primary'>" + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/sent") + " " + (int)DateTime.Now.Subtract(scheduledEmailBlock.DateSent).TotalDays + " " + EPiServer.Framework.Localization.LocalizationService.Current.GetString("/attend/admin/daysAgo") + "</span>";
+            }
+        }
+
+        public static SaveAction GetForcedSaveActionFor(IVersionable page)
+        {
+            var saveAction = SaveAction.SkipValidation | SaveAction.ForceCurrentVersion;
+            switch (page.Status)
+            {
+                case VersionStatus.Published:
+                    saveAction = saveAction | SaveAction.Publish;
+                    break;
+                case VersionStatus.CheckedIn:
+                    saveAction = saveAction | SaveAction.CheckIn;
+                    break;
+                default:
+                    saveAction = saveAction | SaveAction.Save;
+                    break;
+            }
+            return saveAction;
         }
 
 

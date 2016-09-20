@@ -18,17 +18,26 @@ namespace BVNetwork.Attend.Admin.Partials
 {
     public partial class EmailList : System.Web.UI.UserControl
     {
+        public List<ScheduledEmailBlock> Messages { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            ScheduledEmailsRepeater.DataSource = AttendScheduledEmailEngine.GetEventPageBases();
-            ScheduledEmailsRepeater.DataBind();
+
         }
 
-
-        protected IEnumerable<ScheduledEmailBlock> GetScheduledEmailBlocks(EventPageBase EventPageBase)
+        protected IEnumerable<ScheduledEmailBlock> GetScheduledEmailBlocks()
         {
-            return AttendScheduledEmailEngine.GetScheduledEmailsToSend(EventPageBase);
+            return Messages;
+        }
 
+        protected string GetPageName(ScheduledEmailBlock email) {
+            if (email.EventPage != null)
+            {
+                var eventPage = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(email.EventPage);
+                if (eventPage != null)
+                    return eventPage.Name;
+            }
+            return "Page not found";
         }
 
     }

@@ -24,6 +24,31 @@ namespace BVNetwork.Attend.Admin
 {
     public partial class ScheduledEmails : System.Web.UI.Page
     {
+        protected override void OnPreInit(EventArgs e)
+        {
+            BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
+            base.OnPreInit(e);
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            List<EventPageBase> AllEvents = AttendScheduledEmailEngine.GetEventPageBases();
+
+            List<ScheduledEmailBlock> upcoming = new List<ScheduledEmailBlock>();
+            List<ScheduledEmailBlock> sendNow = new List<ScheduledEmailBlock>();
+
+            foreach (EventPageBase eventPage in AllEvents)
+            {
+                upcoming.AddRange(AttendScheduledEmailEngine.GetScheduledEmailsToSend(eventPage, DateTime.Now, DateTime.MaxValue));
+                sendNow.AddRange(AttendScheduledEmailEngine.GetScheduledEmailsToSend(eventPage, DateTime.MinValue, DateTime.Now));
+            }
+            (UpcomingControl as EmailList).Messages = (from x in upcoming orderby x.SendDateTime ascending select x).ToList<ScheduledEmailBlock>();
+            (SendNowControl as EmailList).Messages = (from x in sendNow orderby x.SendDateTime ascending select x).ToList<ScheduledEmailBlock>();
+            UpcomingControl.DataBind();
+            SendNowControl.DataBind();
+
+        }
+
 
 
     }

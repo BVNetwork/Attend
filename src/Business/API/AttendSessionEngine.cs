@@ -108,7 +108,7 @@ namespace BVNetwork.Attend.Business.API
                                               sessionBlocks[i + 1].TrackID == sessionBlocks[i].TrackID;
                     previousSessionIsConcurrent = (i > 0) && sessionBlocks[i - 1].TrackID == sessionBlocks[i].TrackID;
                 }
-                if (!previousSessionIsConcurrent)
+                if (!previousSessionIsConcurrent || currentBlock.Mandatory)
                 {
                     groupID = "Session-" + (currentBlock as IContent).ContentLink.ID;
                     groupName = currentBlock.TrackID;

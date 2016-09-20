@@ -94,7 +94,7 @@ namespace BVNetwork.Attend.Business.ScheduledJobs
         public static int UpdateEvent(EventPageBase EventPageBase)
         {
             var scheduledEmails =
-                Attend.Business.API.AttendScheduledEmailEngine.GetScheduledEmails(EventPageBase.ContentLink);
+                Attend.Business.API.AttendScheduledEmailEngine.GetAllEmails(EventPageBase.ContentLink);
             int cnt = 0;
             if (!ContainsStatusMail(scheduledEmails, AttendStatus.Submitted))
             {

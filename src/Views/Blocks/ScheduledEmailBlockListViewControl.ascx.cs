@@ -89,24 +89,7 @@ namespace BVNetwork.Attend.Views.Blocks
 
         protected string GetStatus()
         {
-            if (CurrentBlock.EmailSendOptions == SendOptions.Action)
-                return "<span class='label label-success'>When " + CurrentBlock.SendOnStatus.ToString() + "</span>";
-            if (CurrentBlock.EventPage == null)
-                return string.Empty;
-            DateTime sendDateTime = AttendScheduledEmailEngine.GetSendDate(CurrentBlock,
-                ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(CurrentBlock.EventPage));
-            if (sendDateTime >
-                    DateTime.Now)
-                return "<span class='label label-success'>In " + sendDateTime.Subtract(DateTime.Now).TotalDays + " days</span>";
-            else
-            {
-                if (DateTime.Now.Subtract(CurrentBlock.DateSent).TotalDays > 60000)
-                    return "<span class='label label-warning'>Sending...</span>";
-                else
-                {
-                    return "<span class='label label-primary'>Sent " + (int)DateTime.Now.Subtract(CurrentBlock.DateSent).TotalDays + " days ago</span>";
-                }
-            }
+            return AttendScheduledEmailEngine.GetStatus(CurrentBlock);
         }
 
     }

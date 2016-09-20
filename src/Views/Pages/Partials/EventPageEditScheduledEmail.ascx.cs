@@ -22,7 +22,7 @@ namespace BVNetwork.Attend.Views.Pages.Partials
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ScheduledEmails = AttendScheduledEmailEngine.GetScheduledEmails(CurrentPage.ContentLink).ToList();
+            ScheduledEmails = AttendScheduledEmailEngine.GetAllEmails(CurrentPage.ContentLink).ToList();
             SetupGenericPreviewPropertyControl(ScheduledEmailContentArea, ScheduledEmails);
 
         }

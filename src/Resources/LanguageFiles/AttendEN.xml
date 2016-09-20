@@ -36,6 +36,16 @@
         <noshow>Register no-show</noshow>
         <participated>Registered at the event</participated>
         <registerall>Register all participants</registerall>
+        <messagesToBeSent>Next messages to be sent</messagesToBeSent>
+        <messagesToBeSentNow>Messages queue (Sending now ...)</messagesToBeSentNow>
+        <noMessages>No messages</noMessages>
+        <in>In</in>
+        <days>days</days>
+        <hours>hours</hours>
+        <minutes>minutes</minutes>
+        <sending>Sending</sending>
+        <sent>Sendt for </sent>
+        <daysAgo>dager siden</daysAgo>
       </admin>
       <edit>
         <event>Event</event>

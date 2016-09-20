@@ -22,6 +22,8 @@ namespace BVNetwork.Attend.Models.Blocks
     [ContentType(DisplayName = "ScheduledEmailBlock", AvailableInEditMode = false, GUID = "fa4baf30-c34f-4557-a697-5d6b68d37a61", Description = "")]
     public class ScheduledEmailBlock : BlockData
     {
+        private DateTime _sendDate;
+
         public virtual EmailTemplateBlock EmailTemplate { get; set; }
 
         [AllowedTypes(typeof(EmailTemplateBlock))]
@@ -46,8 +48,10 @@ namespace BVNetwork.Attend.Models.Blocks
         public DateTime SendDateTime {
             get
             {
-                return AttendScheduledEmailEngine.GetSendDate(this,
-                    ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(this.EventPage));
+                if (_sendDate == DateTime.MinValue)
+                    _sendDate = AttendScheduledEmailEngine.GetSendDate(this,
+                        ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(this.EventPage));
+                return _sendDate;
             }
         }
 

@@ -5,8 +5,16 @@
     <h1>
         <EPiServer:Translate Text="/attend/admin/scheduledemail" runat="server" />
     </h1>
-    <div class="well">
-        <br />
-        <Attend:EmailList runat="server"/>
+    <div class="row">
+        <div class="col-lg-6">
+            <h2><episerver:translate runat="server" text="/attend/admin/messagesToBeSent"></episerver:translate></h2>
+            <Attend:EmailList ID="UpcomingControl"  runat="server"/>
+        </div>
+        <div class="col-lg-6">
+            <div class="well">
+                <h2><episerver:translate runat="server" text="/attend/admin/messagesToBeSentNow"></episerver:translate></h2>
+                <Attend:EmailList ID="SendNowControl"  runat="server"/>
+            </div>
+        </div>
     </div>
 </asp:Content>

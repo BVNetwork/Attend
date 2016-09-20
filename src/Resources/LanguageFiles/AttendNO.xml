@@ -36,7 +36,16 @@
         <noshow>Registrer ikke oppmøtte</noshow>
         <participated>Deltakere som har møtt opp</participated>
         <registerall>Registrer alle deltakere</registerall>
-
+        <messagesToBeSent>Meldinger som skal sendes fremover</messagesToBeSent>
+        <messagesToBeSentNow>Meldingskø (Sendes nå ...)</messagesToBeSentNow>
+        <noMessages>Ingen meldinger</noMessages>
+        <in>Om</in>
+        <days>dager</days>
+        <hours>timer</hours>
+        <minutes>minutter</minutes>
+        <sending>Sender</sending>
+        <sent>Sendt for </sent>
+        <daysAgo>dager siden</daysAgo>
       </admin>
       <edit>
         <event>Arrangement</event>
