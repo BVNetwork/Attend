@@ -459,6 +459,13 @@
     <Compile Include="Views\Blocks\Static\AvailableSeatsControl.ascx.designer.cs">
       <DependentUpon>AvailableSeatsControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Blocks\Static\EmailTemplateBlockPreviewControl.ascx.cs">
+      <DependentUpon>EmailTemplateBlockPreviewControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Blocks\Static\EmailTemplateBlockPreviewControl.ascx.designer.cs">
+      <DependentUpon>EmailTemplateBlockPreviewControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Blocks\Static\EmailTemplateBlockControl.ascx.cs">
       <DependentUpon>EmailTemplateBlockControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -608,6 +615,7 @@
     <Content Include="Views\Blocks\SessionBlockListViewControl.ascx" />
     <Content Include="Views\Blocks\ParticipantBlockListViewSmallControl.ascx" />
     <Content Include="Views\Blocks\Static\AvailableSeatsControl.ascx" />
+    <Content Include="Views\Blocks\Static\EmailTemplateBlockPreviewControl.ascx" />
     <Content Include="Views\Blocks\Static\EmailTemplateBlockControl.ascx" />
     <Content Include="Views\Blocks\Static\EventDetailsBlockControl.ascx" />
     <Content Include="Views\Blocks\ParticipantBlockPreviewControl.ascx" />

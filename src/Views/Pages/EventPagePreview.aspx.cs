@@ -41,6 +41,7 @@ namespace BVNetwork.Attend.Views.Pages
         {
             Sessions = AttendSessionEngine.GetSessions(CurrentPage.ContentLink).ToList();
 
+            BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
 
             //ParticipantsContentArea.DataBind();
             //SessionsContentArea.DataBind();
@@ -171,13 +172,9 @@ namespace BVNetwork.Attend.Views.Pages
             localBlockData.Subject = sharedBlockData.Subject;
             localBlockData.To = sharedBlockData.To;
             currentEventPageBase[sharedBlock] = null;
-            Locate.ContentRepository().Save(currentEventPageBase, SaveAction.Save | SaveAction.ForceCurrentVersion);
+            Locate.ContentRepository().Save(currentEventPageBase, AttendScheduledEmailEngine.GetForcedSaveActionFor(currentEventPageBase));
             ClientScript.RegisterStartupScript(this.GetType(), "scriptid", "window.parent.location.href='" + EPiServer.Editor.PageEditing.GetEditUrl((CurrentData as IContent).ContentLink) + "'", true);
         }
-
-
-
-
 
 
         public bool SendStatusMail(ParticipantBlock participant, EmailTemplateBlock et)

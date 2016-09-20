@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmailTemplateBlockControl.ascx.cs" Inherits="BVNetwork.Attend.Views.Blocks.Static.EmailTemplateBlockControl" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EmailTemplateBlockPreviewControl.ascx.cs" Inherits="BVNetwork.Attend.Views.Blocks.Static.EmailTemplateBlockPreviewControl" %>
 <div style="background-color: #fff; padding: 10px; margin: 10px;">
     <span id="SendAsSMSProperty" runat="server" class="label label-primary">
         <%=CurrentBlock.SendAsSms ? "<span class='glyphicon glyphicon-phone'></span> " :  "<span class='glyphicon glyphicon-envelope'></span> " %>
@@ -38,11 +38,6 @@
         <br />
         <episerver:property runat="server" propertyname="Subject" />
         <br />
-        <b>
-            <episerver:translate runat="server" text="/attend/edit/xhtmlbody" />
-        </b>
-        <br />
-        <episerver:property runat="server" id="MainBodyControl" propertyname="MainBody" />
     </asp:PlaceHolder>
     <b>
         <episerver:translate runat="server" text="/attend/edit/plaintextbody" />

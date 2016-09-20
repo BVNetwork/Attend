@@ -67,6 +67,15 @@ namespace BVNetwork.Attend.Views.Blocks {
         protected global::EPiServer.XForms.WebControls.XFormControl DetailsXFormControl;
         
         /// <summary>
+        /// StatusLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal StatusLiteral;
+        
+        /// <summary>
         /// SessionList control.
         /// </summary>
         /// <remarks>

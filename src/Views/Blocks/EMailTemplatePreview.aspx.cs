@@ -20,6 +20,8 @@ namespace BVNetwork.Attend.Views.Blocks
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,19 +34,14 @@ namespace BVNetwork.Attend.Views.Blocks
 
         private void SetupPreviewPropertyControl(Property propertyControl, IEnumerable<IContent> contents)
         {
-            // Define a content area
             var contentArea = new ContentArea();
 
-            // Add the blocks to preview
             foreach (var content in contents)
             {
                 contentArea.Items.Add(new ContentAreaItem { ContentLink = content.ContentLink });
             }
 
-            // Create a temporary property for the content area
             var previewProperty = new PropertyContentArea { Value = contentArea, Name = "PreviewPropertyData", IsLanguageSpecific = true };
-
-            // Render the temporary property using the Property control in the web form
             propertyControl.InnerProperty = previewProperty;
         }
 

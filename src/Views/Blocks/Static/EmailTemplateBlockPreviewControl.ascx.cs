@@ -13,8 +13,8 @@ using EPiServer.Framework.DataAnnotations;
 namespace BVNetwork.Attend.Views.Blocks.Static
 {
 
-    [TemplateDescriptor(AvailableWithoutTag = true, Default = false,  Path = "~/Modules/BVNetwork.Attend/Views/Blocks/Static/EmailTemplateBlockControl.ascx")]
-    public partial class EmailTemplateBlockControl : BlockControlBase<EmailTemplateBlock>
+    [TemplateDescriptor(AvailableWithoutTag = true, TagString = "MailPreview", Default = true,  Path = "~/Modules/BVNetwork.Attend/Views/Blocks/Static/EmailTemplateBlockPreviewControl.ascx")]
+    public partial class EmailTemplateBlockPreviewControl : BlockControlBase<EmailTemplateBlock>
     {
         protected void Page_Load(object sender, EventArgs e)
         

@@ -87,10 +87,3 @@
         <br />
     </div>
 </div>
-<div class="darkarea">
-    <div class="content">
-        <a target="_top" class="btn btn-default" href='<%=EventUrl %>'>
-            <EPiServer:Translate runat="server" text="/attend/edit/returntoevent" />
-        </a>
-    </div>
-</div>

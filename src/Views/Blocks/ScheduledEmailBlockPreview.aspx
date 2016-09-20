@@ -40,7 +40,9 @@
                             <EPiServer:Translate runat="server" text="/attend/edit/selectglobaltemplate" />
                             <EPiServer:Property runat="server" PropertyName="EmailTemplateContentReference" id="EmailTemplateContentReference" />
                             <asp:PlaceHolder runat="server" ID="ConfirmMailTemplateBlockPreviewPlaceHolder">
-                                <EPiServer:Property runat="server" ID="MailTemplateBlockPreview"></EPiServer:Property>
+                                <EPiServer:Property runat="server" ID="MailTemplateBlockPreview">
+                                    <rendersettings tag="MailPreview" />
+                                </EPiServer:Property>
                                 <asp:LinkButton runat="server" ID="ConvertLocalConfirmBlock" Text="<%$ Resources: EPiServer, attend.edit.convertlocal %>" CssClass="btn btn-primary" OnClick="ConvertLocalConfirmBlock_OnClick"></asp:LinkButton>
                                 &nbsp;
                             <asp:LinkButton runat="server" ID="EditConfirmMailTemplate" Text="<%$ Resources: EPiServer, attend.edit.editmailtemplate %>" CssClass="btn btn-primary" OnClick="EditConfirmMailTemplate_OnClick"></asp:LinkButton>

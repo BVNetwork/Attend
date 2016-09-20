@@ -57,7 +57,18 @@ namespace BVNetwork.Attend.Views.Blocks
 
         }
 
-        protected string EventUrl { get { return EPiServer.Editor.PageEditing.GetEditUrl((Locate.ContentRepository().Get<EventPageBase>(CurrentBlock.EventPage) as IContent).ContentLink); } }
+        protected string EventUrl
+        {
+            get
+            {
+                if ((CurrentData as SessionBlock).EventPage != null)
+                    return
+                        EPiServer.Editor.PageEditing.GetEditUrl(
+                            (Locate.ContentRepository().Get<EventPageBase>((CurrentData as SessionBlock).EventPage)
+                                as IContent).ContentLink);
+                return string.Empty;
+            }
+        }
 
     }
 }

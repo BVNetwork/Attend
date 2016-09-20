@@ -27,6 +27,8 @@ namespace BVNetwork.Attend.Views.Blocks
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
+
             propertyControl.RenderSettings.Tag = "edit";
             SetupPreviewPropertyControl(propertyControl, new[] { CurrentData });
             
@@ -73,6 +75,8 @@ namespace BVNetwork.Attend.Views.Blocks
             public string AreaName { get; set; }
             public string AreaTag { get; set; }
         }
+
+
 
     }
 }

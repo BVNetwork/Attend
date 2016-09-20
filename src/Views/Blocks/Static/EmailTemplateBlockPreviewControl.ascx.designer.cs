@@ -10,7 +10,7 @@
 namespace BVNetwork.Attend.Views.Blocks.Static {
     
     
-    public partial class EmailTemplateBlockControl {
+    public partial class EmailTemplateBlockPreviewControl {
         
         /// <summary>
         /// SendAsSMSProperty control.
@@ -20,14 +20,5 @@ namespace BVNetwork.Attend.Views.Blocks.Static {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SendAsSMSProperty;
-        
-        /// <summary>
-        /// MainBodyControl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::EPiServer.Web.WebControls.Property MainBodyControl;
     }
 }

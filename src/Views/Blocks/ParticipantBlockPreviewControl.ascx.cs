@@ -36,9 +36,16 @@ namespace BVNetwork.Attend.Views.Blocks
 
         protected void UpdateParticipant_Click(object sender, EventArgs e)
         {
-            ParticipantBlock current = (CurrentBlock.CreateWritableClone() as ParticipantBlock);
-            current.XForm = DetailsXFormControl.Data.Data.OuterXml;
-            Locate.ContentRepository().Save(current as IContent, EPiServer.DataAccess.SaveAction.Publish);
+            try
+            {
+                ParticipantBlock current = (CurrentBlock.CreateWritableClone() as ParticipantBlock);
+                current.XForm = DetailsXFormControl.Data.Data.OuterXml;
+                Locate.ContentRepository().Save(current as IContent, EPiServer.DataAccess.SaveAction.Publish);
+                StatusLiteral.Text = "OK";
+            }
+            catch (Exception ex) {
+                StatusLiteral.Text = ex.Message;
+            }
         }
 
         protected void UpdateSessions_Click(object sender, EventArgs e)

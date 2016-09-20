@@ -17,6 +17,7 @@ using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.WebControls;
+using BVNetwork.Attend.Business.API;
 
 namespace BVNetwork.Attend.Views.Blocks
 {
@@ -29,6 +30,8 @@ namespace BVNetwork.Attend.Views.Blocks
 
         protected override void OnLoad(EventArgs e)
         {
+            BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
+
             base.OnLoad(e);
         }
 
@@ -46,15 +49,19 @@ namespace BVNetwork.Attend.Views.Blocks
             (this as PageBase).EditHints.Add("SendOnStatus");
             (this as PageBase).EditHints.Add("EmailSendOptions");
             (this as PageBase).EditHints.Add("SendOptions");
+            (this as PageBase).EditHints.Add("EmailTemplateContentReference");
+            
 
             if ((CurrentData as ScheduledEmailBlock).EmailTemplateContentReference != null &&
                 (CurrentData as ScheduledEmailBlock).EmailTemplateContentReference != ContentReference.EmptyReference)
+            { 
                 SetupPreviewPropertyControl(MailTemplateBlockPreview,
                     new[]
                     {
                         Locate.ContentRepository()
                             .Get<IContent>((CurrentData as ScheduledEmailBlock).EmailTemplateContentReference)
-                    });
+                    }, "MailPreview");
+            }
             else
                 ConfirmMailTemplateBlockPreviewPlaceHolder.Visible = false;
 
@@ -93,9 +100,12 @@ namespace BVNetwork.Attend.Views.Blocks
         }
 
 
-        private void SetupPreviewPropertyControl(Property propertyControl, IEnumerable<IContent> contents)
+        private void SetupPreviewPropertyControl(Property propertyControl, IEnumerable<IContent> contents, string tag)
         {
             var contentArea = new ContentArea();
+
+            if(!string.IsNullOrEmpty(tag))
+                contentArea.Tag = tag;
 
             foreach (var content in contents)
             {
@@ -125,7 +135,7 @@ namespace BVNetwork.Attend.Views.Blocks
             localBlockData.Subject = sharedBlockData.Subject;
             localBlockData.To = sharedBlockData.To;
             currentScheduledEmailBlock.EmailTemplateContentReference = null;
-            Locate.ContentRepository().Save(currentScheduledEmailBlock as IContent, SaveAction.Save | SaveAction.ForceCurrentVersion);
+            Locate.ContentRepository().Save(currentScheduledEmailBlock as IContent, AttendScheduledEmailEngine.GetForcedSaveActionFor(currentScheduledEmailBlock as IVersionable));
             ClientScript.RegisterStartupScript(this.GetType(), "scriptid", "window.parent.location.href='" + EPiServer.Editor.PageEditing.GetEditUrl((CurrentData as IContent).ContentLink) + "'", true);
         }
 
@@ -145,7 +155,7 @@ namespace BVNetwork.Attend.Views.Blocks
 
             if (previewArea.Supported)
             {
-                SetupPreviewPropertyControl(propertyControl, new[] { CurrentData });
+                SetupPreviewPropertyControl(propertyControl, new[] { CurrentData }, string.Empty);
             }
         }
 
