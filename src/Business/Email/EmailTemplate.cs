@@ -217,6 +217,8 @@ namespace BVNetwork.Attend.Business.Email
                 else
                 {
                     value = CurrentEvent.Property[propertyName];
+                    if (value == null)
+                        value = CurrentEvent.EventDetails.Property[propertyName];
                 }
             }
             else if (0 == String.Compare("CurrentRegistration", objectName, true))

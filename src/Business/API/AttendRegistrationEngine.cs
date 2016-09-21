@@ -212,6 +212,9 @@ namespace BVNetwork.Attend.Business.API
                                GetParticipantInfo(participant, "LastName");
 
                     case "datestring":
+                        return GetEventDates(participant.EventPage);
+
+                    case "coursedatestring":
                         return string.Format(LocalizationService.Current.GetString("/attend/diploma/datetext"), GetEventDates(participant.EventPage));
 
                     default:

@@ -212,7 +212,7 @@
         <event-few> </event-few>
       </eventstatus>
       <diploma>
-        <datetext>Har deltatt på</datetext>
+        <datetext>Har {0} deltatt på </datetext>
       </diploma>
       <help>
         <emailtemplates>
