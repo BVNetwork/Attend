@@ -103,8 +103,10 @@ namespace BVNetwork.Attend.Admin
 
             var upcomingEvents = (from PageData p in allEvents orderby ((EventPageBase)p).EventDetails.EventStart where ((EventPageBase)p).EventDetails.EventStart >= FromDateTime && ((EventPageBase)p).EventDetails.EventEnd <= ToDateTime select p);
 
-            (AttendParticipantList as ParticipantList).SetEventPageBaseList(upcomingEvents);
-            //AttendParticipantList.DataBind();
+            var upcomingEventPages = new PageDataCollection(upcomingEvents);
+            new EPiServer.Filters.FilterAccess(EPiServer.Security.AccessLevel.Publish).Filter(upcomingEventPages);
+
+            (AttendParticipantList as ParticipantList).SetEventPageBaseList(upcomingEventPages.ToList<PageData>());
 
         }
 
