@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<languages>
+  <language name="Norwegian" id="no">
+    <attend>
+      <admin>
+        <import>Import</import>
+        <importfromeventx>Import fra EventX</importfromeventx>
+        <numberofparticipants>Deltakere</numberofparticipants>
+        <numberofavailableseats>Ledige plasser</numberofavailableseats>
+        <numberofseats>Totalt antall plasser</numberofseats>
+        <totalincome>Total inntekst</totalincome>
+        <events>Arrangementer</events>
+        <urltoimportfrom>Url til importkilden</urltoimportfrom>
+        <rootpageatsource>Rotside på kilde-nettstedet</rootpageatsource>
+        <rootpageatdest>Rotside på mål-nettstedet</rootpageatdest>
+        <registrationform>Registreringsskjema</registrationform>
+        <language>Språk</language>
+        <testconnection>Test forbindelsen</testconnection>
+        <importevents>Importer arrangementer</importevents>
+        <importfromtext>Importer fra tekst</importfromtext>
+        <importparticipants>Importer deltakere</importparticipants>
+        <participants>Deltakere</participants>
+        <overview>Oversikt</overview>
+        <eventdetails>Arrangementsdetaljer</eventdetails>
+        <eventname>Arrangementsnavn</eventname>
+        <attend>Attend</attend>
+        <invoicing>Fakturering</invoicing>
+        <participantfilter>Deltakerfilter</participantfilter>B
+        <totalparticipants>Totalt antall deltakere</totalparticipants>
+        <totalincome>Totale inntekter</totalincome>
+        <export>Eksporter</export>
+        <fieldstodisplay>Felt som skal vises</fieldstodisplay>
+        <settings>Innstillinger</settings>
+        <scheduledemail>Tidsstyrte meldinger</scheduledemail>
+        <registerparticipant>Registrering</registerparticipant>
+        <noshow>Registrer ikke oppmøtte</noshow>
+        <participated>Deltakere som har møtt opp</participated>
+        <registerall>Registrer alle deltakere</registerall>
+
+      </admin>
+      <edit>
+        <event>Arrangement</event>
+        <attend>Attend</attend>
+        <eventdetails>Arrangementsdetaljer</eventdetails>
+        <noparticipants>Ingen påmeldte ennå ...</noparticipants>
+        <sendstatusmail>Send status e-post til deltakerne</sendstatusmail>
+        <changestatus>Endre status til markerte deltakere</changestatus>
+        <musthaveemail>E-post må angis</musthaveemail>
+        <email>E-post</email>
+        <createnew>Opprett ny deltaker</createnew>
+        <fieldstoshow>Kolonner som skal vises i deltakerlisten</fieldstoshow>
+        <beforeregistration>Før registrering</beforeregistration>
+        <fieldstohide>Kolonner som skal skjules i deltakerlisten:</fieldstohide>
+        <createsession>Opprett ny sesjon</createsession>
+        <sessionname>Sesjonsnavn</sessionname>
+        <location>Sted</location>
+        <contact>Kontaktperson</contact>
+        <eventstart>Starttidspunkt</eventstart>
+        <eventend>Avslutningstidspunkt</eventend>
+        <numberofseats>Antall plasser</numberofseats>
+        <price>Pris</price>
+        <participants>Deltakere</participants>
+        <edit>Rediger</edit>
+        <fieldstohide>Felter som skal skjules</fieldstohide>
+        <open>Åpen</open>
+        <contentwhenopen>Innhold som skal vises når registreringen er åpen</contentwhenopen>
+        <form>Skjema</form>
+        <closed>Stengt</closed>
+        <contentwhenclosed>Innhold som skal vises når registreringen er stengt</contentwhenclosed>
+        <noseats>Ingen plasser</noseats>
+        <contentwhennoseats>Innhold som skal vises når det ikke er flere ledige plasser</contentwhennoseats>
+        <afterregistration>Etter registrering</afterregistration>
+        <confirmed>Bekreftet</confirmed>
+        <contentwhenconfirmed>Innhold som skal vises når registreringen er bekreftet</contentwhenconfirmed>
+        <submitted>Innsending</submitted>
+        <contentwhensubmitted>Innhold som skal vises når registreringen ikke er bekreftet, men kun registrert</contentwhensubmitted>
+        <confirmtemplate>Melding ved bekreftelse</confirmtemplate>
+        <emailconfirmtemplate>Melding som skal sendes når registreringen er bekreftet</emailconfirmtemplate>
+        <submittemplate>Melding ved innsending</submittemplate>
+        <emailsubmittemplate>Melding som skal sendes når registreringen ikke er bekreftet (ingen ledige plasser)</emailsubmittemplate>
+        <notificationtemplate>Melding med informasjon</notificationtemplate>
+        <emailnotificationtemplate>Melding med generell informasjon til deltakerne. Startes manuelt.</emailnotificationtemplate>
+        <canceltemplate>Melding ved kansellering</canceltemplate>
+        <emailcanceltemplate>Melding som skal sendes når registreringen er kansellert</emailcanceltemplate>
+        <from>Fra</from>
+        <to>Til</to>
+        <cc>CC</cc>
+        <bcc>BCC</bcc>
+        <subject>Emne</subject>
+        <xhtmlbody>XHTML-innhold</xhtmlbody>
+        <plaintextbody>Ren tekst</plaintextbody>
+        <emailtemplates>Meldinger</emailtemplates>
+        <attend>Attend</attend>
+        <editparticipantdetails>Rediger påmeldingsdetaljer</editparticipantdetails>
+        <returntoevent>Tilbake til arrangementet</returntoevent>
+        <participantat>Deltaker på </participantat>
+        <email>E-mail</email>
+        <code>Kode</code>
+        <status>Status</status>
+        <username>Brukernavn</username>
+        <datesubmitted>Dato registrert</datesubmitted>
+        <editregistrationform>Rediger registreringsskjemaet</editregistrationform>
+        <saveformdata>Lagre skjemadataene</saveformdata>
+        <saveandsendmail>Lagre og send e-post til deltakeren</saveandsendmail>
+        <log>Logg</log>
+        <sessionat>Sesjon på eventet </sessionat>
+        <editsessiondetails>Rediger sesjon</editsessiondetails>
+        <start>Start</start>
+        <end>Slutt</end>
+        <selectglobaltemplate>Bruk global mal: </selectglobaltemplate>
+        <register>Registrer</register>
+        <mandatory>Obligatorisk</mandatory>
+        <introcontent>Introduksjon</introcontent>
+        <editsessions>Rediger sesjoner</editsessions>
+        <savesessionsdata>Lagre sesjoner</savesessionsdata>
+        <trackid>Spor ID</trackid>
+        <trackiddescription>Legg til ID for å gruppere denne sesjonen med andre spor med samme ID. Brukeren kan bare velge ett spor i hver gruppe. Sesjoner med samme spor-ID vil grupperes sammen. La denne stå tom hvis sesjonen skal grupperes automatisk basert på starttiden.</trackiddescription>
+        <previous>Forrige</previous>
+        <next>Neste</next>
+        <all>Alle</all>
+        <numberPrPage>Ant pr side</numberPrPage>
+        <search>Søk</search>
+        <searchparticipants>Search participants</searchparticipants>
+        <sessions>Sessions</sessions>
+        <findresult>Fant {0} av {1} deltakere</findresult>
+        <pageresult>Side {0} -  ({1}-{2} / {3})</pageresult>
+        <movehere>Flytt valgte deltakere hit</movehere>
+        <copyhere>Kopier valgte deltakere hit</copyhere>
+        <numberselected>Antall deltakere valgt: </numberselected>
+        <deselectall>Tøm listen over valgte deltakere</deselectall>
+        <deselect>Fjern</deselect>
+        <select>Velg</select>
+        <numbermoreselected>... og {0} til.</numbermoreselected>
+        <selectstatus>Endre status</selectstatus>
+        <export>Eksporter valgte deltakere</export>
+        <exportfiltered>Eksport listen over deltakere</exportfiltered>
+        <sessions>Sesjoner</sessions>
+        <showall>Vis alle</showall>
+        <permanentlydelete>Slett valgte deltakere permanent</permanentlydelete>
+        <deleteconfirmation>Er du sikker på at du vil slette deltakerne? Operasjonen kan ikke angres.</deleteconfirmation>
+        <convertlocal>Lag redigerbar kopi av mal</convertlocal>
+        <editmailtemplate>Rediger mal</editmailtemplate>
+        <showselected>Vis valgte</showselected>
+        <cancelled>Arrangementet er kansellert!</cancelled>
+        <private>Arrangementet er privat.</private>
+        <registrationopen>Registreringen er åpen!</registrationopen>
+        <registrationclosed>Registreringen er stengt!</registrationclosed>
+        <preview>Forhåndsvisning</preview>
+        <selectperiod>Velg periode</selectperiod>
+        <nextyear>Neste år</nextyear>
+        <thisyear>Dette år</thisyear>
+        <lastyear>Forrige år</lastyear>
+        <nextmonth>Neste måned</nextmonth>
+        <thismonth>Denne måned</thismonth>
+        <lastmonth>Forrige måned</lastmonth>
+        <sendnotificationtoselected>Send info-mail</sendnotificationtoselected>
+        <sendmail>Send e-post</sendmail>
+        <copypaste>Kopier / Lim inn</copypaste>
+        <time>Tidspunkt</time>
+        <moreinfo>Mer informasjon</moreinfo>
+        <content>Innhold</content>
+        <scheduledemail>Tidsstyrte meldinger</scheduledemail>
+        <sendAs>Send som </sendAs>
+        <scheduling>Tidsstyring</scheduling>
+        <oneWhatTriggers>1. Hva skal trigge utsendelsen?</oneWhatTriggers>
+        <twoWhenShouldBeSent>2. Når skal meldingen sendes?</twoWhenShouldBeSent>
+        <threeStatusFilter>3. Statusfilter - send kun til deltakere med følgende status:</threeStatusFilter>
+      </edit>
+      <attendstatus>
+        <deleted>Slettet</deleted>
+        <submitted>Venteliste</submitted>
+        <cancelled>Kansellert</cancelled>
+        <standby>Standby</standby>
+        <participated>Deltatt</participated>
+        <undefined>Udefinert</undefined>
+        <confirmed>Bekreftet</confirmed>
+      </attendstatus>
+      <eventstatus>
+        <event-cancelled>Avlyst</event-cancelled>
+        <event-private>Privat</event-private>
+        <event-empty> </event-empty>
+        <event-full>FULLT</event-full>
+        <event-many> </event-many>
+        <event-some> </event-some>
+        <event-few> </event-few>
+      </eventstatus>
+      <diploma>
+        <datetext>Har deltatt på</datetext>
+      </diploma>
+      <help>
+        <emailtemplates>
+          <title>Hjelp til meldingsmaler</title>
+          <content>Meldingsmaler kan defineres direkte på siden, eller man kan peke på en global mal som kan opprettes i blokkstrukturen.[br][br][strong]Global mal[/strong][br]Globale maler kan opprettes i den vanlige blokkstrukturen, og må være at typen [strong]e-postmal[/strong]. Når malen er opprettet, kan den velges ved å klikke på [strong]bruk global mal[/strong]. For å gjøre endringer på den globale malen, klikk [strong]Rediger mal[/strong]. [br][br][strong]Lokal mal[/strong][br]Hvis arrangementet skal ha en helt egen mal, så kan den redigeres direkte. Dersom man ønsker å ta utgangspunkt i en global mal, men ønsker å gjøre noen lokale justeringer, så vil den lokale malen overskrives ved å klikke [strong]Lag redigerbar kopi av mal[/strong]. [br][br][strong]Innhold i feltene[/strong][br]Når du redigerer malen kan du benytte braketter for å henvise til felter som ligger på arrangementet eller på deltakeren. For å henvise til eventet benyttes CurrentPage, og for å henvise til deltakeren benyttes Participant.[br]Eks: CurrentPage.PageName, CurrentPage.EventStart, Participant.FirstName, Participant.Email.</content>
+        </emailtemplates>
+        <emailschedule>
+          <title>Tidsstyring av meldinger</title>
+          <content>Meldinger kan sendes basert på tidspunkt, eller basert på en hendelse i systemet. Meldinger som er tidsstyrt blir sendt ved hjelp av en planlagt jobb, som ligger definert i administratorgrensesnittet i EPiServer. De hendelsesbaserte meldingene blir sendt direkte når hendelsen inntreffer.</content>
+        </emailschedule>
+        <emailtriggers>
+          <title>Hva skal trigge meldingen?</title>
+          <content>Det er tre triggere for meldinger.[ol][li][strong]Spesifikk[/strong][br]Velg spesifikk for å sende e-posten på et på forhånd angitt tidspunkt. For eksempel. 31. oktober 1985.[/li][li][strong]Relativ[/strong][br]Velg relativ for å sende e-posten på et tidspunkt relativt til en av arrangementsdatoene. For eksempel 2 uker før eventet starter.[/li][li][strong]Hendelse[/strong][br]Velg hendelse for å sende når det skjer en hendelse i systemet. For eksempel at en bruker kansellerer sin påmelding.[/li][/ol] </content>
+        </emailtriggers>
+        <emailwhen>
+          <title>Når skal meldingen sendes?</title>
+          <content>Hvilke felt som angis her er avhengig av hvilken trigger som er valgt. Her defineres nøyaktig når meldingen skal gå ut. Merk: Jobben Attend scheduled email må være aktivert i administratorgrensesnittet for at meldingene skal sendes.</content>
+        </emailwhen>
+        <emailfilter>
+          <title>Statusfilter</title>
+          <content>Mulighet for å begrense hvem som skal få meldingen. Huk av de statuskoder de påmeldte må ha for å motta meldingen. Hvis bekreftet og venteliste er huket av vil for eksempel ikke de med kansellerte påmeldinger motta meldingen når den sendes. </content>
+        </emailfilter>
+        <participantslist>
+          <title>Deltakere</title>
+          <content>Listen viser alle deltakere knyttet til arrangementet. Øverst i tabellen er det muligheter for filtrering på status, e-post, sesjoner, pluss et eget fritestsøk. Eksportknappen i bunnen vil resultere i et Excel-regneark med de valgte filtrene.[br][br][strong]Markere deltakere[/strong][br]Marker deltakere ved å klikke på knappen med checkbox-symbolet til venstre for deltakeren. Du kan markere deltakere på tvers av arrangementer. Når deltakere er valgt, vil en ny knapperad dukke opp øverst i tabellen. Se egen hjelpetekst for denne.</content>
+        </participantslist>
+      </help>
+    </attend>
+  </language>
+</languages>

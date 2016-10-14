@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<languages>
+  <language name="English" id="en">
+    <attend>
+      <admin>
+        <import>Import</import>
+        <importfromeventx>Import from EventX</importfromeventx>
+        <numberofparticipants>Participants</numberofparticipants>
+        <numberofavailableseats>Available seats</numberofavailableseats>
+        <numberofseats>Total seats</numberofseats>
+        <totalincome>Total income</totalincome>
+        <events>Events</events>
+        <urltoimportfrom>Url to source site</urltoimportfrom>
+        <rootpageatsource>Root page at source site</rootpageatsource>
+        <rootpageatdest>Root page at destination site</rootpageatdest>
+        <registrationform>Registration form</registrationform>
+        <language>Language</language>
+        <testconnection>Test connection</testconnection>
+        <importevents>Import events</importevents>
+        <importfromtext>Import from text</importfromtext>
+        <importparticipants>Import participants</importparticipants>
+        <participants>Participants</participants>
+        <overview>Overview</overview>
+        <eventdetails>Event details</eventdetails>
+        <eventname>Event name</eventname>
+        <attend>Attend</attend>
+        <invoicing>Invoicing</invoicing>
+        <participantfilter>Participant filter</participantfilter>
+        <totalparticipants>Total participants</totalparticipants>
+        <totalincome>Total income</totalincome>
+        <export>Export</export>
+        <fieldstodisplay>Fields to display</fieldstodisplay>
+        <settings>Settings</settings>
+        <scheduledemail>Scheduled messages</scheduledemail>
+        <registerparticipant>Registration</registerparticipant>
+        <noshow>Register no-show</noshow>
+        <participated>Registered at the event</participated>
+        <registerall>Register all participants</registerall>
+        <messagesToBeSent>Next messages to be sent</messagesToBeSent>
+        <messagesToBeSentNow>Messages queue (Sending now ...)</messagesToBeSentNow>
+        <noMessages>No messages</noMessages>
+        <in>In</in>
+        <days>days</days>
+        <hours>hours</hours>
+        <minutes>minutes</minutes>
+        <sending>Sending</sending>
+        <sent>Sendt for </sent>
+        <daysAgo>dager siden</daysAgo>
+      </admin>
+      <edit>
+        <event>Event</event>
+        <attend>Attend</attend>
+        <eventdetails>Event details</eventdetails>
+        <noparticipants>No participants so far ...</noparticipants>
+        <sendstatusmail>Send status mail to participants</sendstatusmail>
+        <changestatus>Change status of selected participants</changestatus>
+        <musthaveemail>E-mail must be entered</musthaveemail>
+        <email>E-mail</email>
+        <createnew>Create new participant</createnew>
+        <fieldstoshow>Columns to show in participant list: </fieldstoshow>
+        <beforeregistration>Before registration</beforeregistration>
+        <fieldstohide>Columns to hide in participant list:</fieldstohide>
+        <createsession>Create session</createsession>
+        <sessionname>Session name</sessionname>
+        <location>Location</location>
+        <contact>Contact</contact>
+        <eventstart>Event start</eventstart>
+        <eventend>Event end</eventend>
+        <numberofseats>Number of seats</numberofseats>
+        <price>Price</price>
+        <participants>Participants</participants>
+        <edit>Edit</edit>
+        <fieldstohide>Fields to hide</fieldstohide>
+        <open>Open</open>
+        <contentwhenopen>Content to show when registration is open</contentwhenopen>
+        <form>Form</form>
+        <closed>Closed</closed>
+        <contentwhenclosed>Content to show when registration is closed</contentwhenclosed>
+        <noseats>No seats</noseats>
+        <contentwhennoseats>Content to show when there is no seats available</contentwhennoseats>
+        <afterregistration>After registration</afterregistration>
+        <confirmed>Confirmed</confirmed>
+        <contentwhenconfirmed>Content to show when registration is confirmed</contentwhenconfirmed>
+        <submitted>Submitted</submitted>
+        <contentwhensubmitted>Content to show when registration is submitted</contentwhensubmitted>
+        <confirmtemplate>Confirm template</confirmtemplate>
+        <emailconfirmtemplate>E-mail to send when registration is confirmed</emailconfirmtemplate>
+        <submittemplate>Submit template</submittemplate>
+        <emailsubmittemplate>E-mail to send when registration is submitted (no seats available)</emailsubmittemplate>
+        <notificationtemplate>Notification template</notificationtemplate>
+        <emailnotificationtemplate>E-mail to send with general information to participants. Triggered manually.</emailnotificationtemplate>
+        <canceltemplate>Cancel template</canceltemplate>
+        <emailcanceltemplate>E-mail to send when registration is cancelled</emailcanceltemplate>
+        <from>From</from>
+        <to>To</to>
+        <cc>CC</cc>
+        <bcc>BCC</bcc>
+        <subject>Subject</subject>
+        <xhtmlbody>XHTML Body</xhtmlbody>
+        <plaintextbody>Plain text body</plaintextbody>
+        <emailtemplates>E-mail templates</emailtemplates>
+        <attend>Attend</attend>
+        <editparticipantdetails>Edit participant details</editparticipantdetails>
+        <returntoevent>Return to event</returntoevent>
+        <participantat>Participant at </participantat>
+        <email>E-mail</email>
+        <code>Code</code>
+        <status>Status</status>
+        <username>User name</username>
+        <datesubmitted>Date submitted</datesubmitted>
+        <editregistrationform>Edit registration form</editregistrationform>
+        <saveformdata>Save form data</saveformdata>
+        <saveandsendmail>Save and send e-mail to participant</saveandsendmail>
+        <log>Log</log>
+        <sessionat>Session at event </sessionat>
+        <editsessiondetails>Edit session details</editsessiondetails>
+        <start>Start</start>
+        <end>End</end>
+        <selectglobaltemplate>Use global template: </selectglobaltemplate>
+        <register>Register</register>
+        <mandatory>Mandatory</mandatory>
+        <introcontent>Introduction</introcontent>
+        <editsessions>Edit sessions</editsessions>
+        <savesessionsdata>Save sessions</savesessionsdata>
+        <trackid>Track ID</trackid>
+        <trackiddescription>Add a track ID to group this session with other sessions with the same ID. User can only choose ONE session from each group. Sessions with same track ID will be grouped together. Leave Track ID empty to group sessions automatically by start time.</trackiddescription>
+        <previous>Previous</previous>
+        <next>Next</next>
+        <all>All</all>
+        <numberPrPage>Paging</numberPrPage>
+        <search>Search</search>
+        <searchparticipants>Search participants</searchparticipants>
+        <sessions>Sessions</sessions>
+        <findresult>Found {0} of {1} participants</findresult>
+        <pageresult>Page {0} -  ({1}-{2} / {3})</pageresult>
+        <movehere>Move selected here</movehere>
+        <copyhere>Copy selected here</copyhere>
+        <numberselected>Number of participants selected: </numberselected>
+        <deselectall>Deselect all</deselectall>
+        <deselect>Deselect</deselect>
+        <select>Select</select>
+        <numbermoreselected>... and {0} more.</numbermoreselected>
+        <selectstatus>Change status</selectstatus>
+        <export>Export selected participants</export>
+        <exportfiltered>Export list of participants</exportfiltered>
+        <showall>Show all</showall>
+        <permanentlydelete>Permanently delete selected participants</permanentlydelete>
+        <deleteconfirmation>Are you sure you want to delete participants. The operation can not be undone.</deleteconfirmation>
+        <convertlocal>Make editable copy of template</convertlocal>
+        <editmailtemplate>Edit template</editmailtemplate>
+        <showselected>Show selected</showselected>
+        <cancelled>Event is cancelled!</cancelled>
+        <private>The event is not public.</private>
+        <registrationopen>Registration is open!</registrationopen>
+        <registrationclosed>Registration is closed!</registrationclosed>
+        <preview>Preview</preview>
+        <selectperiod>Select period</selectperiod>
+        <nextyear>Next year</nextyear>
+        <thisyear>This year</thisyear>
+        <lastyear>Last year</lastyear>
+        <nextmonth>Next month</nextmonth>
+        <thismonth>This month</thismonth>
+        <lastmonth>Last month</lastmonth>
+        <sendnotificationtoselected>Send notification mail</sendnotificationtoselected>
+        <sendmail>Send mail</sendmail>
+        <copypaste>Copy / Paste</copypaste>
+        <time>Dates</time>
+        <moreinfo>More information</moreinfo>
+        <content>Innhold</content>
+        <scheduledemail>Scheduled e-mail</scheduledemail>
+        <sendAs>Send as </sendAs>
+        <scheduling>Scheduling</scheduling>
+        <oneWhatTriggers>1. What should trigger the message?</oneWhatTriggers>
+        <twoWhenShouldBeSent>2. When should the message be sent?</twoWhenShouldBeSent>
+        <threeStatusFilter>3. Status filter - only send to participants with the following status:</threeStatusFilter>
+        <emailmissing>E-mail could not be found in the form.</emailmissing>
+      </edit>
+      <eventstatus>
+        <event-cancelled>Cancelled</event-cancelled>
+        <event-private>Private</event-private>
+        <event-empty> </event-empty>
+        <event-full>FULL</event-full>
+        <event-many> </event-many>
+        <event-some> </event-some>
+        <event-few> </event-few>
+      </eventstatus>
+      <attendstatus>
+        <deleted>Deleted</deleted>
+        <submitted>Submitted</submitted>
+        <cancelled>Cancelled</cancelled>
+        <standby>Standby</standby>
+        <participated>Participated</participated>
+        <undefined>Undefined</undefined>
+        <confirmed>Confirmed</confirmed>
+      </attendstatus>
+      <sendoptions>
+        <specific>Specific</specific>
+        <action>Action</action>
+        <relative>Relative</relative>
+      </sendoptions>
+      <relativeunit>
+        <months>Months</months>
+        <days>Days</days>
+        <hours>Hours</hours>
+        <minutes>Minutes</minutes>
+      </relativeunit>
+      <relativeto>
+        <BeforeStartPublish>Before start publish</BeforeStartPublish>
+        <AfterStartPublish>After start publish</AfterStartPublish>
+        <BeforeEventStart>Before event start</BeforeEventStart>
+        <AfterEventStart>After event start</AfterEventStart>
+      </relativeto>
+      <diploma>
+        <datetext>Has {0} participated at</datetext>
+      </diploma>
+      <help>
+        <emailtemplates>
+          <title>Scheduled messages help</title>
+          <content>Message templates can be defined directly on the page, or you can add a reference to a global template created in the block structure.[br][br][strong]Global template[/strong][br]Global templates can be created in the block structure, and must be of the block type [strong]e-mail template[/strong]. Once the template is created, it can be selected by clicking [strong]use global template[/strong]. To make changes to the global template, click [strong]Edit template[/strong]. [br][br][strong]Local template[/strong][br]If the event requires a unique template, it can be edited directly below. If you want to base the template on a global template, but with some adjustments, you can make a local copy of a selected global template by clicking [strong]Made editable copy of template[/strong]. [br][br][strong]Content in the properties[/strong][br]When editing the template, use brackets to refer to properties on the participant, event data, or the event page. Use CurrentRegistration to refer to the participant registration, and CurrentPage to refer to the event page.[br]E.g.: CurrentPage.PageName, CurrentPage.EventStart, Participant.FirstName, Participant.Email.</content>
+        </emailtemplates>
+        <emailschedule>
+          <title>Message scheduling</title>
+          <content>Messages can be sent based on a point in time, or by events in the system. Messages that are scheduled will be sent using the scheduled job, defined in the Episerver admin mode. The event based messages will be sent directly upon the event.</content>
+        </emailschedule>
+        <emailtriggers>
+          <title>What should trigger the message?</title>
+          <content>There are three triggers for messages. [ol][li][strong]Specifc[/strong][br]Select specific to send the message in a chosen point in time. For instance October 31st 1985.[/li][li][strong]Relative[/strong][br]Select relative to send the message on a point in time relative to one of the event dates. For instance 2 weeks before event start.[/li][li][strong]Action[/strong][br]Select action to send the message upon a specific event in the system. For instance when a user is cancelling the participation.[/li][/ol] </content>
+        </emailtriggers>
+        <emailwhen>
+          <title>When should the message be sent?</title>
+          <content>Which properties to populate here is dependent on the trigger chosen. Specify the exact time the message should be sent. Note: The scheduled job Attend Send Scheduled Email must be activated in the admin mode for the messages to be sent.</content>
+        </emailwhen>
+        <emailfilter>
+          <title>Status filter</title>
+          <content>Add a filter to ensure only the users with the specified statuses recieves the message. Select all the status users could have in order to get the message. If confirmed and submitted is selected, the cancelled participants will not recieve the message when it is being sent. </content>
+        </emailfilter>
+        <participantslist>
+          <title>Participants</title>
+          <content>The list shows all participants associated to the event. Above the table, it is possible to filter the list based on status, e-mail, sessions. There is also a free text serach for participants.  The export button below the table will create an Excel workbook with the same filters applied.[br][br][strong]Select participants[/strong][br]Select participants by clicking the checkbox symbol on the far left side of the table. You can select participants from multiple events. When participants are chosen, a new button row will appear above the table.</content>
+        </participantslist>
+      </help>
+    </attend>
+    <contenttypes>
+      <scheduledemailblock>
+        <name>Scheduled messages</name>
+        <description>Message templates for participant notifications</description>
+        <properties>
+          <emailsendoptions>
+            <caption>Trigger</caption>
+            <help>What should trigger e-mail sending</help>
+          </emailsendoptions>
+          <EmailTemplateContentReference>
+            <caption>E-mail global template</caption>
+            <help>Add a reference to an e-mail template block here to use a global template instead of the custom message in this block</help>
+          </EmailTemplateContentReference>
+          <SpecificDateScheduled>
+            <caption>Specific date to send message</caption>
+            <help>If the trigger is specific, add the specific date and time of scheduling here.</help>
+          </SpecificDateScheduled>
+          <ScheduledRelativeUnit>
+            <caption>Date span unit</caption>
+            <help>Unit for date when making it relative to selected event date</help>
+          </ScheduledRelativeUnit>
+          <ScheduledRelativeAmount>
+            <caption>Amount of time</caption>
+            <help>Amount of time of selected unit from selected event date.</help>
+          </ScheduledRelativeAmount>
+          <DateSent>
+            <caption>Date sent</caption>
+            <help>The date the scheduled message is sent.</help>
+          </DateSent>
+          <SendOnStatus>
+            <caption>Send on status</caption>
+            <help>What participant status should trigger the message?</help>
+          </SendOnStatus>
+          <AttendStatusFilter>
+            <caption>Status filter</caption>
+            <help>Status filter for participants. Only send to participants with selected statuses.</help>
+          </AttendStatusFilter>
+          <EventPage>
+            <caption>Event page</caption>
+            <help>Event associated with this scheduled message.</help>
+          </EventPage>
+          <ScheduledRelativeTo>
+            <caption>Date to send relatively to</caption>
+            <help>If the messages is sent relatively, select property to send relatively to.</help>
+          </ScheduledRelativeTo>
+        </properties>
+      </scheduledemailblock>
+
+      <EmailTemplateBlock>
+        <name>Email Template</name>
+        <description>Block type for message templates</description>
+        <properties>
+          <From>
+            <caption>From</caption>
+            <help>Sender e-mail address. E.g. someone@mycompany.com</help>
+          </From>
+          <To>
+            <caption>To</caption>
+            <help>Receipient e-mail address. E.g. [CurrentRegistration.Email] or someone@mycompany.com</help>
+          </To>
+          <CC>
+            <caption>CC</caption>
+            <help>Send copy of e-mail to</help>
+          </CC>
+          <BCC>
+            <caption>BCC</caption>
+            <help>Send blind copy of e-mail to</help>
+          </BCC>
+          <Subject>
+            <caption>Subject</caption>
+            <help>E-mail subject</help>
+          </Subject>
+          <MainBody>
+            <caption>Main Body</caption>
+            <help>Main body HTML text</help>
+          </MainBody>
+          <MainTextBody>
+            <caption>Main Text Body / SMS body</caption>
+            <help>Main body plain text</help>
+          </MainTextBody>
+          <SendAsSms>
+            <caption>Send as SMS</caption>
+            <help>Check to send message as SMS instead of e-mail (Main Text Body will be used)</help>
+          </SendAsSms>
+        </properties>
+      </EmailTemplateBlock>
+
+
+      <BlockTypeName>
+        <name>Name</name>
+        <description>Description</description>
+        <properties>
+          <PropertyName>
+            <caption>Caption</caption>
+            <help>Help</help>
+          </PropertyName>
+        </properties>
+      </BlockTypeName>
+    </contenttypes>
+    <eventRegistrationPage>
+      <sessionsIntroText>Sessions for </sessionsIntroText>
+      <error>There was an error registering for the event. Please contact us.</error>
+      <confirmed>Your seat is confirmed.</confirmed>
+      <submitted>There were no available seats, but your request has been queued.</submitted>
+    </eventRegistrationPage>
+
+  </language>
+</languages>

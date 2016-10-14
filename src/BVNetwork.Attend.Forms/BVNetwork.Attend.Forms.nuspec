@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BVNetwork.Attend.Forms</id>
+    <version>5.6.0</version> 
+    <title>Attend Episerver Forms Package</title>
+    <authors>The EPiCode Community</authors>
+    <owners>BV Network AS</owners>
+    <projectUrl>https://www.coderesort.com/p/epicode/wiki/Attend</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Adding support for new Episerver Forms within Attend</description>
+    <summary>
+      Forms support for Attand
+    </summary>
+    <tags>EPiServerPublicModulePackage Attend.Forms</tags>
+    <references>
+      <reference file="BVNetwork.Attend.Forms.dll" />
+    </references>
+    <dependencies>
+      <dependency id="BVNetwork.Attend" version="5.3.0"/>
+      <dependency id="EPiServer.CMS.Core" version="9.3.0"/>
+      <dependency id="EPiServer.CMS.UI" version="9.3.0"/>
+    </dependencies>
+</metadata>
+  <files>
+    <file src="\**\*.js" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\**\*.eot" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\**\*.svg" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\**\*.ttf" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\**\*.woff" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\bin\BVNetwork.Attend.Forms.dll" target="lib\net40\BVNetwork.Attend.Forms.dll" />
+    <file src="\**\*.aspx" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\**\*.cshtml" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\**\*.ascx" target="content\Modules\BVNetwork.Attend.Forms\" />
+    <file src="\**\*.master" target="content\Modules\BVNetwork.Attend.Forms\" />
+  </files>
+</package>
