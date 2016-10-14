@@ -80,11 +80,12 @@ namespace BVNetwork.Attend.Forms.Business.Core
                 var control = rep.Get<IContent>(element.ContentLink);
                 string value = string.Empty;
                 string key = "__field_" + control.ContentLink.ID.ToString();
-                if(submission.Data.ContainsKey(key)) { 
+                if(submission.Data.ContainsKey(key)) {
                     var elementObject = submission.Data[key];
                     if (elementObject != null) { 
                         value = elementObject.ToString();
-                    if (control.Name.ToLower() == "email") { 
+                    if (new [] { "email", "e-mail", "epost", "e-post" }.Contains(control.Name.ToLower() ))
+                        { 
                         formData.Add(__AttendEmail, value);
                         skip = true;
                     }

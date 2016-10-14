@@ -335,7 +335,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\Helpers\" />
-    <Folder Include="Views\Forms\AttendSubmitButton\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" />
