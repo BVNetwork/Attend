@@ -15,6 +15,9 @@ using BVNetwork.Attend.Models.Blocks;
 using BVNetwork.Attend.Models.Pages;
 using EPiServer;
 using BVNetwork.Attend.Business.API;
+using EPiServer.Core;
+using EPiServer.ServiceLocation;
+using EPiServer.Web;
 
 namespace BVNetwork.Attend.Business.Email
 {
@@ -169,6 +172,7 @@ namespace BVNetwork.Attend.Business.Email
         {
             EmailTemplate email = new EmailTemplate();
             email.HtmlBody = PopulatePropertyValues(template.MainBody != null ? template.MainBody.ToString() : string.Empty, EventPageBase, participant);
+            email.HtmlBody = RewriteUrls(email.HtmlBody, GetSiteUrl(EventPageBase));
             email.Body = PopulatePropertyValues(template.MainTextBody, EventPageBase, participant);
             email.To = PopulatePropertyValues(template.To, EventPageBase, participant);
             email.From = PopulatePropertyValues(template.From, EventPageBase, participant);
@@ -198,6 +202,41 @@ namespace BVNetwork.Attend.Business.Email
             }
             return template;
         }
+
+        /// <summary>
+        /// Make all urls fully qualified, we only care about href and src attributes here.
+        /// </summary>
+        /// <param name="mailBody"></param>
+        /// <returns></returns>
+        public static string RewriteUrls(string mailBody, string hostUrl)
+        {
+            string safeHost = hostUrl.TrimEnd('/');
+
+            mailBody = mailBody.Replace("src=\"//", "src=\"/");
+            mailBody = mailBody.Replace("src=\"/", "src=\"" + safeHost + "/");
+            mailBody = mailBody.Replace("href=\"/", "href=\"" + safeHost + "/");
+            return mailBody;
+        }
+
+        public static string GetSiteUrl(PageData page)
+        {
+            // Always look up based on page
+            SiteDefinitionResolver repo = ServiceLocator.Current.GetInstance<SiteDefinitionResolver>();
+            SiteDefinition siteDefinition = repo.GetDefinitionForContent(page.ContentLink, fallbackToWildcardMapped: true, fallbackToEmpty: false);
+
+            if (siteDefinition == null || siteDefinition.SiteUrl == null)
+            {
+                // Still haven't found it, can't go on
+                throw new ApplicationException("Cannot find a SiteDefinition with a valid SiteUrl for page: " +
+                                               page.ContentLink.ToString());
+            }
+
+            string hostUrl = siteDefinition.SiteUrl.ToString();
+
+
+            return hostUrl;
+        }
+
 
         protected static string GetPropertyValue(string objectName, string propertyName, EventPageBase CurrentEvent, IParticipant CurrentParticipant)
         {
