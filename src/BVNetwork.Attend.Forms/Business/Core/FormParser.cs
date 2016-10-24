@@ -23,13 +23,15 @@ namespace BVNetwork.Attend.Forms.Business.Core
 {
     public class FormParser
     {
+        private const string __AttendEvent = "__AttendEvent";
         private const string __AttendEmail = "__AttendEmail";
         private const string __AttendSessions = "__AttendSessions";
 
         public static void ProcessForm(NameValueCollection rawFormData, FormContainerBlock formBlock, Submission submissionData) {
 
-            string eventPageId = rawFormData["__AttendEvent"];
-
+            string eventPageId = rawFormData[__AttendEvent];
+            if (string.IsNullOrEmpty(eventPageId)) // Not an Attend form - exit form processing.
+                return;
             SetPrivatePropertyValue<PropertyData>(false, "IsReadOnly", formBlock.Property["SubmitSuccessMessage"]);
 
             NameValueCollection nvc = FormParser.ParseForm(submissionData, formBlock);
