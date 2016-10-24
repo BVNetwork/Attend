@@ -31,17 +31,20 @@ namespace BVNetwork.Attend.Forms.Controllers
             {
                 eventPage = this.ControllerContext.ParentActionViewContext.ViewData["EventPage"].ToString();
             }
-            var attendSessionFormType = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentTypeRepository>().Load<AttendSessionForm>();
-            foreach (var element in currentBlock.ElementsArea.Items)
-            {
-                var elementData = rep.Get<IContent>(element.ContentLink);
-                if((elementData as AttendSessionForm) != null)
+            if(string.IsNullOrEmpty(eventPage) == false)
+            { 
+                var attendSessionFormType = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentTypeRepository>().Load<AttendSessionForm>();
+                foreach (var element in currentBlock.ElementsArea.Items)
                 {
-                    (elementData as AttendSessionForm).Sessions = BVNetwork.Attend.Business.API.AttendSessionEngine.GetSessionsList(new ContentReference(eventPage));
-                    (elementData as AttendSessionForm).EventName = "Temp";
+                    var elementData = rep.Get<IContent>(element.ContentLink);
+                    if((elementData as AttendSessionForm) != null)
+                    {
+                        (elementData as AttendSessionForm).Sessions = BVNetwork.Attend.Business.API.AttendSessionEngine.GetSessionsList(new ContentReference(eventPage));
+                        (elementData as AttendSessionForm).EventName = "Temp";
+                    }
                 }
+                currentBlock.RedirectToPage = new EPiServer.Url(eventPage);
             }
-            currentBlock.RedirectToPage = new EPiServer.Url(eventPage);
             var baseActionResult = base.Index(currentBlock);
             return baseActionResult;
         }

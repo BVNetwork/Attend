@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BVNetwork.Attend.Forms</id>
-    <version>5.6.1</version> 
+    <version>5.6.2</version> 
     <title>Attend Episerver Forms Package</title>
     <authors>The EPiCode Community</authors>
     <owners>BV Network AS</owners>
@@ -17,7 +17,7 @@
       <reference file="BVNetwork.Attend.Forms.dll" />
     </references>
     <dependencies>
-      <dependency id="BVNetwork.Attend" version="5.6.1"/>
+      <dependency id="BVNetwork.Attend" version="5.6.2"/>
       <dependency id="EPiServer.CMS.Core" version="9.3.0"/>
       <dependency id="EPiServer.CMS.UI" version="9.3.0"/>
     </dependencies>

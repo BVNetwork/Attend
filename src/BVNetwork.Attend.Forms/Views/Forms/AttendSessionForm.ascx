@@ -5,7 +5,7 @@
 
 
 
-<% if (Model.Sessions.Count > 0)
+<% if (Model.Sessions != null && Model.Sessions.Count > 0)
 {
     var formElement = Model.FormElement; 
     var labelText = Model.Label;

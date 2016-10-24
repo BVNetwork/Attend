@@ -38,7 +38,7 @@
                 }
                 if (BVNetwork.Attend.Business.API.AttendRegistrationEngine.UseForms == false)
                 {
-                    if (Model.Sessions.Count > 0)
+                    if (Model.Sessions != null && Model.Sessions.Count > 0)
                     {
                         <div class="well-sessions" id="sessions">
                             <div class="form-group">
