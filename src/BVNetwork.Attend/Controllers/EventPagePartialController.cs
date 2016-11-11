@@ -35,10 +35,6 @@ namespace BVNetwork.Attend.Controllers
 
         public ActionResult Index(EventPageBase currentPage, string contentLink)
         {
-            /* Implementation of action. You can create your own view model class that you pass to the view or
-             * you can pass the page type for simpler templates */
-            //var model =
-            //if(Request.HttpMethod =="POST")
 
             if (TempData["ViewData"] != null)
             {
@@ -58,7 +54,8 @@ namespace BVNetwork.Attend.Controllers
                 var pageUrl = urlResolver.GetUrl(hostPageData.ContentLink);
 
                 var actionUrl = string.Format("{0}/", pageUrl);
-                actionUrl = UriSupport.AddQueryString(actionUrl, "XFormId", currentPage.RegistrationForm.Id.ToString());
+                if (BVNetwork.Attend.Business.API.AttendRegistrationEngine.UseForms == false)
+                    actionUrl = UriSupport.AddQueryString(actionUrl, "XFormId", currentPage.RegistrationForm.Id.ToString());
                 actionUrl = UriSupport.AddQueryString(actionUrl, "failedAction", "Failed");
                 actionUrl = UriSupport.AddQueryString(actionUrl, "successAction", "Success");
 
@@ -89,8 +86,6 @@ namespace BVNetwork.Attend.Controllers
             this.TempData[viewDataKey] = this.ViewData;
             model.ViewData = this.ViewData;
             model.ViewDataKey = viewDataKey;
-            
-
 
             string participantEmail = "";
             foreach (var fragment in xFormPostedData.Fragments)
@@ -142,31 +137,12 @@ namespace BVNetwork.Attend.Controllers
             }
             _contentRepository.Save(participant as IContent, SaveAction.Publish, AccessLevel.NoAccess);
 
-
-            //ValidationRuleDescriptorCollection clientValidationRules = XFormClientValidationHelper.CreateClientValidationRules(xFormPostedData.XForm, EPiServer.Framework.Localization.LocalizationService.Current);
-            //foreach (var validationRule in clientValidationRules) {
-            //    foreach (var rule in validationRule.Rules) {
-            //        rule.
-            //   }
-            //}
-
-
             model.Submitted = participant.AttendStatus.ToLower() == "submitted";
 
             ViewBag.Participant = participant;
 
-
-            //return RedirectToAction("Success");
             return PartialView("~/modules/BVNetwork.Attend/Views/Pages/Partials/EventPagePartialSuccess.cshtml", model);
         }
-
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult Success(EventPageBase currentPage, XFormPostedData xFormPostedData, string contentLink)
-        //{
-        //    Model model = null;
-        //    return PartialView("Success", model);
-        //}
-
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Failed(EventPageBase currentPage, XFormPostedData xFormPostedData, string contentLink)
@@ -174,9 +150,6 @@ namespace BVNetwork.Attend.Controllers
             var model = CreateEventRegistrationModel(currentPage, contentLink);
             return View("Index", model);
         }
-
-
-
 
 
         private EventRegistrationModel CreateEventRegistrationModel(EventPageBase currentPage, string contentLink)
