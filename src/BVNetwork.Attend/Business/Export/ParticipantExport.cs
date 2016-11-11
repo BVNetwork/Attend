@@ -65,7 +65,7 @@ namespace BVNetwork.Attend.Business.Export
             }
 
             // Some Excel versions requires more than 100 rows - adding empty ones
-            for (int i = participants.Count; i < 150; i++)
+            for (int i = participants.Count+1; i < 150; i++)
                 worksheet.Cells[i, 0] = new Cell(string.Empty);
 
             workbook.Worksheets.Add(worksheet);
