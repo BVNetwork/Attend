@@ -194,6 +194,7 @@
         <confirmed>Confirmed</confirmed>
       </attendstatus>
       <sendoptions>
+        <notselected>Send option not selected</notselected>
         <specific>Specific</specific>
         <action>Action</action>
         <relative>Relative</relative>

@@ -7,7 +7,7 @@ namespace BVNetwork.Attend.Business.Email
 {
         public enum SendOptions
         {
-            Specific = 1, Relative = 2, Action = 3 
+            NotSelected = 0, Specific = 1, Relative = 2, Action = 3 
         }
 
         public enum RelativeUnit

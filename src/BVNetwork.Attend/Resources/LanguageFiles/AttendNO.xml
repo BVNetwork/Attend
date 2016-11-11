@@ -186,6 +186,7 @@
         <confirmed>Bekreftet</confirmed>
       </attendstatus>
       <sendoptions>
+        <notselected>Ikke valgt</notselected>
         <specific>Spesifisert</specific>
         <action>Hendelse</action>
         <relative>Relativ</relative>
