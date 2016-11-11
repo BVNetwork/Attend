@@ -148,7 +148,7 @@ namespace BVNetwork.Attend.Business.Participant.BlockProvider
 
         public override void SaveParticipant(IParticipant participant)
         {
-            ServiceLocator.Current.GetInstance<IContentRepository>().Save(participant as EPiServer.Core.IContent, EPiServer.DataAccess.SaveAction.Publish);
+            ServiceLocator.Current.GetInstance<IContentRepository>().Save(participant as EPiServer.Core.IContent, EPiServer.DataAccess.SaveAction.Publish, EPiServer.Security.AccessLevel.NoAccess);
         }
 
         public override IParticipant GetParticipant(string code)
