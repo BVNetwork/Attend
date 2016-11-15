@@ -404,6 +404,7 @@
     <Compile Include="Models\Blocks\EventDetailsBlock.cs" />
     <Compile Include="Models\Blocks\MyPageBlock.cs" />
     <Compile Include="Models\Blocks\ParticipantBlock.cs" />
+    <Compile Include="Models\Blocks\RegistrationBlock.cs" />
     <Compile Include="Models\Blocks\ScheduledEmailBlock.cs" />
     <Compile Include="Models\Blocks\SessionBlock.cs" />
     <Compile Include="Business\Participant\IParticipant.cs" />
