@@ -59,6 +59,16 @@ namespace BVNetwork.Attend.Views.Pages
 
             FormsPlaceHolder.DataBind();
 
+            DetailsContentXhtmlWrapper.Visible = UseForms;
+            DetailsContentRepeaterWrapper.Visible = !UseForms;
+
+            ClosedContentXhtmlWrapper.Visible = UseForms;
+            ClosedContentRepeaterWrapper.Visible = !UseForms;
+
+            NoSeatsXhtmlWrapper.Visible = UseForms;
+            NoSeatsContentWrapper.Visible = !UseForms;
+
+
             ConfirmedXhtmlWrapper.Visible = UseForms;
             ConfirmedContentWrapper.Visible = !UseForms;
 
@@ -67,11 +77,18 @@ namespace BVNetwork.Attend.Views.Pages
 
 
             EventPageBaseEditScheduledEmailControl.DataBind();
+
             if ((CurrentPage as EventPageBase).DetailsContent != null)
             DetailsContentRepeater.DataSource = (CurrentPage as EventPageBase).DetailsContent.FilteredItems;
             DetailsContentRepeater.DataBind();
             DetailsContentRepeaterWrapper.ApplyEditAttributes<EventPage>(p => p.DetailsContent);
             (this as PageBase).EditHints.Add("DetailsContent");
+
+            if ((CurrentPage as EventPageBase).RegistrationFormContainer != null)
+                RegistrationFormContainerRepeater.DataSource = (CurrentPage as EventPageBase).RegistrationFormContainer.FilteredItems;
+            RegistrationFormContainerRepeater.DataBind();
+            FormsPlaceHolderContainer.ApplyEditAttributes<EventPage>(p => p.RegistrationFormContainer);
+            (this as PageBase).EditHints.Add("RegistrationFormContainer");
 
 
             if ((CurrentPage as EventPageBase).ClosedContent != null)

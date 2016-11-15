@@ -31,6 +31,33 @@ namespace BVNetwork.Attend.Views.Pages {
         protected global::System.Web.UI.WebControls.PlaceHolder FormsPlaceHolder;
         
         /// <summary>
+        /// FormsPlaceHolderContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel FormsPlaceHolderContainer;
+        
+        /// <summary>
+        /// RegistrationFormContainerRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RegistrationFormContainerRepeater;
+        
+        /// <summary>
+        /// DetailsContentXhtmlWrapper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel DetailsContentXhtmlWrapper;
+        
+        /// <summary>
         /// DetailsContentRepeaterWrapper control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,15 @@ namespace BVNetwork.Attend.Views.Pages {
         protected global::System.Web.UI.WebControls.Repeater DetailsContentRepeater;
         
         /// <summary>
+        /// ClosedContentXhtmlWrapper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ClosedContentXhtmlWrapper;
+        
+        /// <summary>
         /// ClosedContentRepeaterWrapper control.
         /// </summary>
         /// <remarks>
@@ -65,6 +101,15 @@ namespace BVNetwork.Attend.Views.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater ClosedContentRepeater;
+        
+        /// <summary>
+        /// NoSeatsXhtmlWrapper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel NoSeatsXhtmlWrapper;
         
         /// <summary>
         /// NoSeatsContentWrapper control.

@@ -67,12 +67,26 @@ namespace BVNetwork.Attend.Models.Pages
         public virtual ContentArea DetailsContent { get; set; }
 
         [Display(
+            Name = "Details content",
+            Description = "XHTML for event details (For use with Episerver Forms)",
+            GroupName = SystemTabNames.Content,
+            Order = 311)]
+        public virtual XhtmlString DetailsContentXhtml { get; set; }
+
+        [Display(
             Name = "No seats content",
             Description = "Content area when no available seats",
             GroupName = SystemTabNames.Content,
             Order = 320)]
         [UIHint("DialogOnly")]
         public virtual ContentArea NoSeatsContent { get; set; }
+
+        [Display(
+            Name = "No seats content",
+            Description = "XHTML when no available seats (For use with Episerver Forms)",
+            GroupName = SystemTabNames.Content,
+            Order = 521)]
+        public virtual XhtmlString NoSeatsContentXhtml { get; set; }
 
         [Display(
             Name = "Complete content",
@@ -97,6 +111,12 @@ namespace BVNetwork.Attend.Models.Pages
         [UIHint("DialogOnly")]
         public virtual ContentArea ClosedContent { get; set; }
 
+        [Display(
+            Name = "Closed content",
+            Description = "XHTML when closed (For use with Episerver Forms)",
+            GroupName = SystemTabNames.Content,
+            Order = 611)]
+        public virtual XhtmlString ClosedContentXhtml { get; set; }
 
 
         [Display(
