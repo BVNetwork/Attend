@@ -189,5 +189,27 @@ namespace BVNetwork.Attend.Business.Participant.BlockProvider
             return null;
         }
 
+        public override List<IParticipant> GetParticipantByEmail(string email)
+        {
+            /// TODO: Must be rewritten. Loops all participantblocks to find participant.
+            var contentTypeRepository = ServiceLocator.Current.GetInstance<IContentTypeRepository>();
+            var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
+            var contentModelUsage = ServiceLocator.Current.GetInstance<IContentModelUsage>();
+            var myblockType = contentTypeRepository.Load<ParticipantBlock>();
+            List<ContentReference> myblockTypeReferences = contentModelUsage.ListContentOfContentType(myblockType).Select(x => x.ContentLink.ToReferenceWithoutVersion()).ToList();
+            List<IParticipant> participants = new List<IParticipant>();
+            foreach (ContentReference cref in myblockTypeReferences)
+            {
+                ParticipantBlock participant;
+                repository.TryGet<ParticipantBlock>(cref, out participant);
+                if (participant != null)
+                    if (participant.Email == email)
+                        participants.Add(participant.CreateWritableClone() as IParticipant);
+            }
+
+            return participants;
+        }
+
+
     }
 }

@@ -1,0 +1,87 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using BVNetwork.Attend.Business.Text
+@using BVNetwork.Attend.Models.Blocks
+@using EPiServer.Web.Routing
+@using System.Linq
+@using System.Data.Entity
+@using BVNetwork.Attend.Business.Extensions
+
+@model BVNetwork.Attend.Models.ViewModels.MyPageBlockViewModel<BVNetwork.Attend.Models.Blocks.MyPageBlock>
+
+
+    <div class="container my-page">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>@Model.ParticipantName</h1>
+                <h2>@Html.Translate("/attend/edit/upcoming")</h2>
+            </div>
+        </div>
+        @if (Model.UpcomingEntries.Count > 0)
+        {
+            <div class="col-md-8">
+                @foreach (ParticipantBlock entry in Model.UpcomingEntries)
+                {
+                    <div class="row">
+                        <div class="panel @entry.StatusCssClass()">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><span title="@entry.Code">@(entry.EventPageData().EventDetails["CourseName"] ?? entry.EventPageData().PageName )</span></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-3 col-xs-4">
+                                    <span>@entry.EventPageData().FriendlyDateOfEvent()</span>
+                                </div>
+                                <div class="col-md-4 col-xs-6"><span>@entry.EventPageData().EventDetails.Location</span></div>
+                                <div class="col-md-3 col-xs-6"><span>Status: @entry.AttendStatusText</span></div>
+
+
+                                @if (entry.AttendStatus == (AttendStatus.Confirmed.ToString()) || entry.AttendStatus == AttendStatus.Submitted.ToString() || entry.AttendStatus == AttendStatus.Standby.ToString())
+                                {
+                                    <div class="col-md-2 col-xs-4  pull-right">
+
+                                        <a href="@string.Format("{0}?email={1}&code={2}&cancelEvent=true", UrlResolver.Current.GetUrl(Model.CurrentPage.PageLink), entry.Email, entry.Code)">
+                                            <button class="btn btn-default" type="submit">@Html.Translate("/attend/edit/cancel")</button>
+                                        </a>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        @if (false)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>@Html.Translate("/attend/edit/earlier")</h2>
+                    @if (Model.PastEntries.Count > 0)
+                {
+                        <div class="col-md-8">
+                            @foreach (ParticipantBlock entry in Model.PastEntries)
+                    {
+                                <div class="row">
+                                    <div class="panel past-events">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title"><span title="@entry.Code">@entry.EventPageData().EventDetails["CourseName"]</span></h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="col-md-3 col-xs-4">
+                                                <span>@entry.EventPageData().FriendlyDateOfEvent()&nbsp;@entry.EventPageData().EventDetails.EventStart.Year</span>
+                                            </div>
+                                            <div class="col-md-4 col-xs-6"><span>@entry.EventPageData().EventDetails.Location</span></div>
+                                            @*<div class="col-md-3 col-xs-6"><span>Status: @entry.AttendStatusText</span></div>*@
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+
+    </div>

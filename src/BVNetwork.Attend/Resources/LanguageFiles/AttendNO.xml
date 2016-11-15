@@ -175,6 +175,10 @@
         <twoWhenShouldBeSent>2. Når skal meldingen sendes?</twoWhenShouldBeSent>
         <threeStatusFilter>3. Statusfilter - send kun til deltakere med følgende status:</threeStatusFilter>
         <emailmissing>Godkjent e-post-adresse mangler i skjemaet.</emailmissing>
+        <foundNoEvents>Fant ingen kommende kurs eller arrangementer.</foundNoEvents>
+        <cancel>Kanseller</cancel>
+        <upcoming>Dine kommende arrangementer</upcoming>
+        <earlier>Dine gjennomførte arrangementer</earlier>
       </edit>
       <attendstatus>
         <deleted>Slettet</deleted>

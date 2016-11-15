@@ -370,6 +370,7 @@
     <Compile Include="Business\Email\SmsSender.cs" />
     <Compile Include="Business\Email\Validation.cs" />
     <Compile Include="Business\Export\ParticipantExport.cs" />
+    <Compile Include="Business\Extensions\AttendExtensions.cs" />
     <Compile Include="Business\Index\Registration.cs" />
     <Compile Include="Business\InitializableModules\AttendLogInitializer.cs" />
     <Compile Include="Business\InitializableModules\AttendLocalizationProviderInitializer.cs" />
@@ -396,16 +397,19 @@
     <Compile Include="Business\Email\EmailTemplate.cs" />
     <Compile Include="Business\UIDescriptors\EventPageUIDescriptor.cs" />
     <Compile Include="Controllers\EventPagePartialController.cs" />
+    <Compile Include="Controllers\MyPageBlockController.cs" />
     <Compile Include="Controllers\PreviewController.cs" />
     <Compile Include="Models\Blocks\AvailableSeatsBlock.cs" />
     <Compile Include="Models\Blocks\EmailTemplateBlock.cs" />
     <Compile Include="Models\Blocks\EventDetailsBlock.cs" />
+    <Compile Include="Models\Blocks\MyPageBlock.cs" />
     <Compile Include="Models\Blocks\ParticipantBlock.cs" />
     <Compile Include="Models\Blocks\ScheduledEmailBlock.cs" />
     <Compile Include="Models\Blocks\SessionBlock.cs" />
     <Compile Include="Business\Participant\IParticipant.cs" />
     <Compile Include="Models\Pages\EventPage.cs" />
     <Compile Include="Models\Pages\EventPageBase.cs" />
+    <Compile Include="Models\ViewModels\MyPageBlockViewModel.cs" />
     <Compile Include="Models\ViewModels\EventRegistrationModel.cs" />
     <Compile Include="Models\ViewModels\AttendPageViewModel.cs" />
     <Compile Include="Models\ViewModels\AttendPreviewModel.cs" />
@@ -630,6 +634,8 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Blocks\MyPageBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\MyPageBlock\EmptyView.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

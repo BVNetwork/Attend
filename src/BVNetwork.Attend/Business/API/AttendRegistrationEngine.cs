@@ -110,6 +110,12 @@ namespace BVNetwork.Attend.Business.API
             return ServiceLocator.Current.GetInstance<IContentRepository>().Get<ParticipantBlock>(new ContentReference(ParticipantID));
         }
 
+        public static List<IParticipant> GetParticipantByEmail(string email)
+        {
+            return ParticipantProviderManager.Provider.GetParticipantByEmail(email);
+        }
+
+
         public static int GetNumberOfSeats(ContentReference EventPageBase)
         {
             return ParticipantProviderManager.Provider.GetNumberOfSeats(EventPageBase);

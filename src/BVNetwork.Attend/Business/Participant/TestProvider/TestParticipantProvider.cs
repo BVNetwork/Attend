@@ -44,6 +44,12 @@ namespace BVNetwork.Attend.Business.Participant.TestProvider
             throw new NotImplementedException();
         }
 
+        public override List<IParticipant> GetParticipantByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+
         public override IParticipant GetParticipant(string email, string code)
         {
             throw new NotImplementedException();

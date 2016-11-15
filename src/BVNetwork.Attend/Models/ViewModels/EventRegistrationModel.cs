@@ -25,7 +25,7 @@ namespace BVNetwork.Attend.Models.ViewModels
         public string Controller { get; set; }
         public string ViewDataKey { get; set; }
         public List<AttendSessionEngine.Session> Sessions { get; set; }
-        public int AvalibleSeats { get; set; }
+        public int AvailableSeats { get; set; }
         public string PriceText { get; set; }
         public string EventCategory { get; set; }
         public bool Submitted { get; set; }

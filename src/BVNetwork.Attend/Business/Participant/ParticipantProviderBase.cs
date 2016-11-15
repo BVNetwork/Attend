@@ -107,6 +107,7 @@ namespace BVNetwork.Attend.Business.Participant
 
         public abstract IParticipant GetParticipant(string email, string code);
 
+        public abstract List<IParticipant> GetParticipantByEmail(string email);
 
         public abstract List<EventPageBase> GetEventPages();
 
