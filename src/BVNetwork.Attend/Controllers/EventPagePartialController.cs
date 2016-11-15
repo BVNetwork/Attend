@@ -163,7 +163,7 @@ namespace BVNetwork.Attend.Controllers
             model.HostPageData = pageRouteHelper.Page;
             model.EventPageBase = currentPage;
             model.Sessions = BVNetwork.Attend.Business.API.AttendSessionEngine.GetSessionsList(model.EventPageBase.PageLink);
-            model.AvalibleSeats = AttendRegistrationEngine.GetAvailableSeats(model.EventPageBase.PageLink);
+            model.AvailableSeats = AttendRegistrationEngine.GetAvailableSeats(model.EventPageBase.PageLink);
             model.PriceText = model.EventPageBase.EventDetails.Price > 0 ? model.EventPageBase.EventDetails.Price + " " + localizationService.GetString("/eventRegistrationTemplate/norwegianCurrencey") : localizationService.GetString("/eventRegistrationTemplate/freeOfCharge");
             return model;
         }
