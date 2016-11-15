@@ -234,7 +234,6 @@
   <ItemGroup>
     <Compile Include="Business\Core\FormParser.cs" />
     <Compile Include="Business\InitializableModules\FormInitialization.cs" />
-    <Compile Include="Business\Participant\FormsBlockProvider\FormsBlockParticipantProvider.cs" />
     <Compile Include="Business\Rendering\AttendTemplateResolver.cs" />
     <Compile Include="Controllers\AttendFormContainerBlockController.cs" />
     <Compile Include="Models\Forms\AttendSubmitButton.cs" />
