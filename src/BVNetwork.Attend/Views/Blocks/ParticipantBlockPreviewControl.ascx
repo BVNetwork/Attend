@@ -1,7 +1,8 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ParticipantBlockPreviewControl.ascx.cs" Inherits="BVNetwork.Attend.Views.Blocks.ParticipantBlockPreviewControl" %>
 <%@ Register Namespace="EPiServer.Web.WebControls" TagPrefix="EPiServer" %>
 <%@ Register Namespace="EPiServer.XForms.WebControls" TagPrefix="XForms" %>
-
+<%@ Import Namespace="EPiServer.Core" %>
+<%@ Import Namespace="BVNetwork.Attend.Business.Participant" %>
 <script type="text/javascript">
     $(function () {
         // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
@@ -126,8 +127,18 @@
                 <xforms:xformcontrol runat="server" id="DetailsXFormControl" />
             </asp:PlaceHolder>
             <asp:PlaceHolder runat="server" ID="FormContainer">
-                <episerver:Property propertyname="xform" id="FormControl" runat="server"></episerver:Property>
+                <asp:Repeater runat="server" ID="FormElementsRepeater">
+                    <ItemTemplate>
+
+                        <asp:Label runat="server" CssClass="control-label" AssociatedControlID="FormTextBox" ID="FormLabel" Text="<%#Container.DataItem as string %>"></asp:Label>
+                        <asp:TextBox runat="server" CssClass="form-control" ID="FormTextBox" Text="<%#GetFormElementValue(Container.DataItem as string) %>"></asp:TextBox>
+                    </ItemTemplate>
+                </asp:Repeater>
+
             </asp:PlaceHolder>
+
+            
+
             <br />
             <asp:LinkButton runat="server" OnClick="UpdateParticipant_Click" Text="<%$ Resources: EPiServer, attend.edit.saveformdata %>" CssClass="btn btn-primary primary" />
             &nbsp;

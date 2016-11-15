@@ -85,13 +85,13 @@ namespace BVNetwork.Attend.Views.Blocks {
         protected global::System.Web.UI.WebControls.PlaceHolder FormContainer;
         
         /// <summary>
-        /// FormControl control.
+        /// FormElementsRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::EPiServer.Web.WebControls.Property FormControl;
+        protected global::System.Web.UI.WebControls.Repeater FormElementsRepeater;
         
         /// <summary>
         /// StatusLiteral control.

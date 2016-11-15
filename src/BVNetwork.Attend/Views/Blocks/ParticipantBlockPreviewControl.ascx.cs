@@ -18,6 +18,10 @@ using System.Text;
 using EPiServer.Framework.Web;
 using BVNetwork.Attend.Business.Email;
 using BVNetwork.Attend.Business.API;
+using EPiServer.ServiceLocation;
+using BVNetwork.Attend.Business.Participant;
+using System.Collections.Specialized;
+using System.Xml;
 
 namespace BVNetwork.Attend.Views.Blocks
 {
@@ -25,18 +29,34 @@ namespace BVNetwork.Attend.Views.Blocks
     public partial class ParticipantBlockPreviewControl : BlockControlBase<ParticipantBlock>
     {
         protected string FormDataXml { get; set; }
+        protected NameValueCollection FormData { get; set; }
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            DetailsXFormControl.FormDefinition = XForm.CreateInstance(new Guid(Locate.ContentRepository().Get<EventPageBase>(CurrentBlock.EventPage).RegistrationForm.Id.ToString()));
-            PopulateForm();
-            DetailsXFormControl.DataBind();
-
             bool UseForms = BVNetwork.Attend.Business.API.AttendRegistrationEngine.UseForms;
+            var eventPage = Locate.ContentRepository().Get<EventPageBase>(CurrentBlock.EventPage);
+            if (UseForms == false)
+            {
+                DetailsXFormControl.FormDefinition = XForm.CreateInstance(new Guid(eventPage.RegistrationForm.Id.ToString()));
+                PopulateForm();
+                DetailsXFormControl.DataBind();
+            }
+            else {
+                FormData = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetFormData(CurrentBlock);
+                FormElementsRepeater.DataSource = FormData;
+                FormElementsRepeater.DataBind();
+            }
             XFormContainer.Visible = !UseForms;
             FormContainer.Visible = UseForms;
-
             SessionList.Controls.Add(AttendSessionEngine.GetSessionsControl(CurrentData.EventPage, CurrentData));
+        }
+
+        protected string GetFormElementValue(string key)
+        {
+            var value = FormData[key];
+            if (!string.IsNullOrEmpty(value))
+                return value;
+            return string.Empty;
         }
 
         protected void UpdateParticipant_Click(object sender, EventArgs e)
@@ -47,11 +67,29 @@ namespace BVNetwork.Attend.Views.Blocks
 
                 ParticipantBlock current = (CurrentBlock.CreateWritableClone() as ParticipantBlock);
                 if (UseForms)
-                    current.XForm = FormControl.InnerProperty.Value.ToString();
+                {
+                    XmlDocument doc = new XmlDocument();
+
+                    XmlNode rootNode = doc.CreateElement("FormData");
+                    doc.AppendChild(rootNode);
+                    foreach (RepeaterItem item in FormElementsRepeater.Items)
+                    {
+                        if (item.ItemType == ListItemType.Item
+                            || item.ItemType == ListItemType.AlternatingItem)
+                        {
+                            System.Web.UI.WebControls.Label label = (System.Web.UI.WebControls.Label)item.FindControl("FormLabel");
+                            TextBox textBox = (TextBox)item.FindControl("FormTextBox");
+
+                            XmlNode formElementNode = doc.CreateElement(label.Text);
+                            formElementNode.InnerText = textBox.Text;
+                            rootNode.AppendChild(formElementNode);
+                        }
+                    }
+                    current.XForm = doc.InnerXml;
+                }
                 else
                     current.XForm = DetailsXFormControl.Data.Data.OuterXml;
                 Locate.ContentRepository().Save(current as IContent, EPiServer.DataAccess.SaveAction.Publish);
-                StatusLiteral.Text = "OK";
             }
             catch (Exception ex) {
                 StatusLiteral.Text = ex.Message;
