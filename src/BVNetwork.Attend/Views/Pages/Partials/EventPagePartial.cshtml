@@ -15,20 +15,24 @@
     <div class="col-md-12">
 
         <div class=" registrationForm">
-            @if (Model.AvalibleSeats < 1)
+            @if (Model.AvailableSeats < 1)
             {
                 <div class="well">
                     @Html.PropertyFor(x => x.EventPageBase.NoSeatsContent)
+                    @Html.PropertyFor(x => x.EventPageBase.NoSeatsContentXhtml)
                 </div>
             }
-            @if (Model.EventPageBase.EventDetails.RegistrationClose < DateTime.Now)
+            @if (Model.AvailableSeats >= 1 && Model.EventPageBase.EventDetails.RegistrationClose < DateTime.Now)
             {
                 <div class="well">
                     @Html.PropertyFor(x => x.EventPageBase.ClosedContent)
+                    @Html.PropertyFor(x => x.EventPageBase.ClosedContentXhtml)
                 </div>
             }
             else if (Model.EventPageBase.EventDetails.RegistrationClose > DateTime.Now && !Model.EventPageBase.EventDetails.Cancelled)
             {
+                @Html.PropertyFor(x => x.EventPageBase.DetailsContent)
+                @Html.PropertyFor(x => x.EventPageBase.DetailsContentXhtml)
                 if (Model.EventPageBase.AvailableSeatsText.ShowAvailableSeats)
                 {
                     <strong>
