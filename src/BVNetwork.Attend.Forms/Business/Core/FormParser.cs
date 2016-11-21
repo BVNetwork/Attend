@@ -113,6 +113,8 @@ namespace BVNetwork.Attend.Forms.Business.Core
                 participant.Sessions = parseSessionsToContentArea(parseSessionsToStringArray(sessions));
             }
             Attend.Business.API.AttendRegistrationEngine.SaveParticipant(participant);
+            Attend.Business.API.AttendRegistrationEngine.SendStatusMail(participant);
+
             return participant;
         }
 
