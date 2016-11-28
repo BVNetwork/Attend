@@ -19,8 +19,8 @@
     <dependencies>
       <dependency id="BVNetwork.Attend" version="9.1.0"/>
       <dependency id="EPiServer.Forms" version="3.1.0"/>
-      <dependency id="EPiServer.CMS.Core" version="9.3.0"/>
-      <dependency id="EPiServer.CMS.UI" version="9.3.0"/>
+      <dependency id="EPiServer.CMS.Core" version="[9.3.0, 10.0)"/>
+      <dependency id="EPiServer.CMS.UI" version="[9.3.0, 10.0)"/>
     </dependencies>
 </metadata>
   <files>

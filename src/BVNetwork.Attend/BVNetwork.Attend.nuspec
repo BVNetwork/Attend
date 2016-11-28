@@ -17,8 +17,8 @@
       <reference file="BVNetwork.Attend.dll" />
     </references>
     <dependencies>
-      <dependency id="EPiServer.CMS.Core" version="9.3.0"/>
-      <dependency id="EPiServer.CMS.UI" version="9.3.0"/>
+      <dependency id="EPiServer.CMS.Core" version="[9.3.0, 10.0)"/>
+      <dependency id="EPiServer.CMS.UI" version="[9.3.0, 10.0)"/>
       <dependency id="iTextSharp" version="5.5.6"/>
       <dependency id="ExcelLibrary" version="1.2011.7.30"/>
     </dependencies>
