@@ -1,4 +1,5 @@
-﻿using EPiServer.DataAnnotations;
+﻿using BVNetwork.Attend.Business.Participant;
+using EPiServer.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,13 @@ namespace BVNetwork.Attend.Forms.Models.Forms
         public virtual string AttendPage { get {
                 return this.FormElement.Form.RedirectUrl;
             } }
+
+        [Ignore]
+        public virtual Dictionary<string, string> PredefinedValues { get; set; }
+
+        [Ignore]
+        public virtual string ParticipantCode {get; set;}
+        [Ignore]
+        public virtual string ParticipantEmail { get; set; }
     }
 }

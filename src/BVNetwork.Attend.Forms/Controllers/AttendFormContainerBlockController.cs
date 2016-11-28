@@ -15,6 +15,7 @@ using EPiServer.Data.Dynamic;
 using BVNetwork.Attend.Forms.Models.Forms;
 using EPiServer.DataAbstraction;
 using BVNetwork.Attend.Models.Pages;
+using EPiServer.Forms.Implementation.Elements.BaseClasses;
 
 namespace BVNetwork.Attend.Forms.Controllers
 {
@@ -25,6 +26,10 @@ namespace BVNetwork.Attend.Forms.Controllers
         public override ActionResult Index(FormContainerBlock currentBlock)
         {
             var rep = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentRepository>();
+            string email = Request.QueryString["email"];
+            string code = Request.QueryString["code"];
+
+
             currentBlock = currentBlock.CreateWritableClone() as FormContainerBlock;
             string eventPage = "";
             if (this.ControllerContext.ParentActionViewContext.ViewData["EventPage"] != null)
@@ -33,7 +38,6 @@ namespace BVNetwork.Attend.Forms.Controllers
             }
             if(string.IsNullOrEmpty(eventPage) == false)
             { 
-                var attendSessionFormType = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentTypeRepository>().Load<AttendSessionForm>();
                 foreach (var element in currentBlock.ElementsArea.Items)
                 {
                     var elementData = rep.Get<IContent>(element.ContentLink);
@@ -45,8 +49,37 @@ namespace BVNetwork.Attend.Forms.Controllers
                 }
                 currentBlock.RedirectToPage = new EPiServer.Url(eventPage);
             }
+
+            // Edit existing participation?
+            var currentParticipant = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetParticipant(email, code);
+            if (currentParticipant != null)
+            {
+                AttendSubmitButton submitButton = null;
+                Dictionary<string, string> predefinedValues = new Dictionary<string, string>();
+                foreach (var element in currentBlock.ElementsArea.Items)
+                {
+                    var elementData = rep.Get<IContent>(element.ContentLink);
+                    string value = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetParticipantInfo(currentParticipant, elementData.Name);
+                    if (!string.IsNullOrEmpty(value)) {
+                        predefinedValues.Add(elementData.GetType().Name+";__field_"+element.ContentLink.ID, value); 
+                    }
+                    if ((elementData as AttendSubmitButton) != null)
+                    {
+                        submitButton = elementData as AttendSubmitButton;
+                    }
+                }
+                if(submitButton != null) { 
+                    submitButton.PredefinedValues = predefinedValues;
+                    submitButton.ParticipantCode = currentParticipant.Code;
+                    submitButton.ParticipantEmail = currentParticipant.Email;
+                }
+            }
+
+
             var baseActionResult = base.Index(currentBlock);
             return baseActionResult;
         }
+        
+
     }
 }

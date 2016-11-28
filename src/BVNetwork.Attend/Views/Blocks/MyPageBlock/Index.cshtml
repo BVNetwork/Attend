@@ -42,6 +42,9 @@
                                         <a href="@string.Format("{0}?email={1}&code={2}&cancelEvent=true", UrlResolver.Current.GetUrl(Model.CurrentPage.PageLink), entry.Email, entry.Code)">
                                             <button class="btn btn-default" type="submit">@Html.Translate("/attend/edit/cancel")</button>
                                         </a>
+                                        <a href="@string.Format("{0}?email={1}&code={2}&editEvent=true", UrlResolver.Current.GetUrl(Model.CurrentPage.PageLink), entry.Email, entry.Code)">
+                                            <button class="btn btn-default" type="submit">@Html.Translate("/attend/edit/edit")</button>
+                                        </a>
                                     </div>
                                 }
 

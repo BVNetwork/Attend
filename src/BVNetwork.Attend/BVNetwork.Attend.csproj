@@ -397,6 +397,7 @@
     <Compile Include="Business\Email\EmailTemplate.cs" />
     <Compile Include="Business\UIDescriptors\EventPageUIDescriptor.cs" />
     <Compile Include="Controllers\EventPagePartialController.cs" />
+    <Compile Include="Controllers\RegistrationBlockController.cs" />
     <Compile Include="Controllers\MyPageBlockController.cs" />
     <Compile Include="Controllers\PreviewController.cs" />
     <Compile Include="Models\Blocks\AvailableSeatsBlock.cs" />
@@ -410,6 +411,7 @@
     <Compile Include="Business\Participant\IParticipant.cs" />
     <Compile Include="Models\Pages\EventPage.cs" />
     <Compile Include="Models\Pages\EventPageBase.cs" />
+    <Compile Include="Models\ViewModels\RegistrationBlockViewModel.cs" />
     <Compile Include="Models\ViewModels\MyPageBlockViewModel.cs" />
     <Compile Include="Models\ViewModels\EventRegistrationModel.cs" />
     <Compile Include="Models\ViewModels\AttendPageViewModel.cs" />
@@ -637,6 +639,8 @@
     </Content>
     <Content Include="Views\Blocks\MyPageBlock\Index.cshtml" />
     <Content Include="Views\Blocks\MyPageBlock\EmptyView.cshtml" />
+    <Content Include="Views\Blocks\RegistrationBlock\Index.cshtml" />
+    <Content Include="Views\Blocks\MyPageBlock\EditEvent.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

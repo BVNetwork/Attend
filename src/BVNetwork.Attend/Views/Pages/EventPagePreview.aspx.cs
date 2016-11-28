@@ -40,11 +40,7 @@ namespace BVNetwork.Attend.Views.Pages
         protected void Page_Init(object sender, EventArgs e)
         {
             Sessions = AttendSessionEngine.GetSessions(CurrentPage.ContentLink).ToList();
-
             BVNetwork.Attend.Business.Localization.FixEditModeCulture.TryToFix();
-
-            //ParticipantsContentArea.DataBind();
-            //SessionsContentArea.DataBind();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -52,10 +48,6 @@ namespace BVNetwork.Attend.Views.Pages
             bool UseForms = BVNetwork.Attend.Business.API.AttendRegistrationEngine.UseForms;
 
             SetupGenericPreviewPropertyControl(SessionsContentArea, Sessions);
-
-
-            //if(SubmitMailTemplateBlock != null)
-            //SubmitMailTemplate. = Locate.ContentRepository().Get<EmailTemplateBlock>((CurrentPage as EventPageBase).ConfirmMailTemplateBlock) as PropertyData;
 
             FormsPlaceHolder.DataBind();
 
@@ -117,9 +109,6 @@ namespace BVNetwork.Attend.Views.Pages
             SubmittedContentRepeater.DataBind();
             SubmittedContentWrapper.ApplyEditAttributes<EventPage>(p => p.SubmittedContent);
             (this as PageBase).EditHints.Add("SubmittedContent");
-
-
-
 
         }
 

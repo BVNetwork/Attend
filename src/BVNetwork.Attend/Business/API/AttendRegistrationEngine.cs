@@ -232,7 +232,12 @@ namespace BVNetwork.Attend.Business.API
 
                                 foreach (XmlNode formNode in xmlDoc.SelectNodes("instance/*"))
                                 {
-                                    if (propertyname == formNode.Name.ToLower())
+                                    if (propertyname == formNode.Name.Replace('_',' ').ToLower())
+                                        return formNode.InnerText;
+                                }
+                                foreach (XmlNode formNode in xmlDoc.SelectNodes("FormData/*"))
+                                {
+                                    if (propertyname == formNode.Name.Replace('_', ' ').ToLower())
                                         return formNode.InnerText;
                                 }
                             }

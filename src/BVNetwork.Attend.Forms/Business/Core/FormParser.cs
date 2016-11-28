@@ -26,17 +26,32 @@ namespace BVNetwork.Attend.Forms.Business.Core
         private const string __AttendEvent = "__AttendEvent";
         private const string __AttendEmail = "__AttendEmail";
         private const string __AttendSessions = "__AttendSessions";
+        private const string __AttendParticipantEmail = "__AttendParticipantEmail";
+        private const string __AttendParticipantCode = "__AttendParticipantCode";
+
 
         public static void ProcessForm(NameValueCollection rawFormData, FormContainerBlock formBlock, Submission submissionData) {
 
             string eventPageId = rawFormData[__AttendEvent];
+            string participantEmail = rawFormData[__AttendParticipantEmail];
+            string participantCode = rawFormData[__AttendParticipantCode];
+
             if (string.IsNullOrEmpty(eventPageId)) // Not an Attend form - exit form processing.
                 return;
             SetPrivatePropertyValue<PropertyData>(false, "IsReadOnly", formBlock.Property["SubmitSuccessMessage"]);
 
             NameValueCollection nvc = FormParser.ParseForm(submissionData, formBlock);
             ContentReference eventPage = new ContentReference(eventPageId).ToPageReference();
-            IParticipant participant = FormParser.GenerateParticipation(eventPage, nvc);
+
+            IParticipant participant = null;
+            if (!string.IsNullOrEmpty(participantCode) && !string.IsNullOrEmpty(participantEmail))
+            {
+                participant = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetParticipant(participantEmail, participantCode);
+                participant = FormParser.UpdateParticipation(participant, nvc);
+            }
+            if (participant == null)
+                participant = FormParser.GenerateParticipation(eventPage, nvc);
+            
             string message = null;
             EventPageBase eventPageBase = ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(eventPage);
             if (participant.AttendStatus == AttendStatus.Confirmed.ToString())
@@ -66,7 +81,7 @@ namespace BVNetwork.Attend.Forms.Business.Core
 
         public static string SerializeForm(NameValueCollection values) {
             var allValues = new XElement("FormData",
-                                        values.AllKeys.Select(o => new XElement(o, values[o]))
+                                        values.AllKeys.Select(o => new XElement(o.Replace(" ", "_"), values[o]))
                                      );
             var result = new XElement("FormData", (from element in allValues.Elements() where element.Name.ToString().StartsWith("__") == false select element));
             return result.ToString();
@@ -104,6 +119,8 @@ namespace BVNetwork.Attend.Forms.Business.Core
 
         }
 
+        
+
         public static IParticipant GenerateParticipation(ContentReference eventPage, NameValueCollection nvc) {
             string email = nvc.AllKeys.Contains(__AttendEmail) ? nvc[__AttendEmail] : "";
             IParticipant participant = null;
@@ -117,6 +134,18 @@ namespace BVNetwork.Attend.Forms.Business.Core
 
             return participant;
         }
+
+
+        public static IParticipant UpdateParticipation(IParticipant participant, NameValueCollection nvc)
+        {
+            string sessions = nvc.AllKeys.Contains(__AttendSessions) ? nvc[__AttendSessions] : "";
+            participant.Sessions = parseSessionsToContentArea(parseSessionsToStringArray(sessions));
+            participant.XForm = FormParser.SerializeForm(nvc);
+            Attend.Business.API.AttendRegistrationEngine.SaveParticipant(participant);
+
+            return participant;
+        }
+
 
         private static string[] parseSessionsToStringArray(string sessions) {
             string[] result = sessions.Replace(" ","").Split(',');

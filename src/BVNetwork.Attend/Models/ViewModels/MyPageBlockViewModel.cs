@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using EPiServer.Core;
 using BVNetwork.Attend.Models.Blocks;
+using BVNetwork.Attend.Models.Pages;
 
 namespace BVNetwork.Attend.Models.ViewModels
 {
@@ -19,6 +20,8 @@ namespace BVNetwork.Attend.Models.ViewModels
         public string ParticipantName { get; set; }
         public MyPageBlock CurrentBlock { get; set; }
         public PageData CurrentPage { get; set; }
+        public EventPageBase CurrentEvent { get; set; }
+        public string PredefinedValues { get; set; }
 
         public MyPageBlockViewModel(T currentBlock) : base()
         {

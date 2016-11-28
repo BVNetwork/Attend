@@ -1,0 +1,12 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using BVNetwork.Attend.Business.Text
+@using BVNetwork.Attend.Models.Blocks
+@using EPiServer.Web.Routing
+@using System.Linq
+@using System.Data.Entity
+@using BVNetwork.Attend.Business.Extensions
+
+@model BVNetwork.Attend.Models.ViewModels.RegistrationBlockViewModel<BVNetwork.Attend.Models.Blocks.RegistrationBlock>
+
+@Html.PropertyFor(x => x.CurrentBlock.MainContentArea)

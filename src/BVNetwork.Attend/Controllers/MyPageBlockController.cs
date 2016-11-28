@@ -43,18 +43,20 @@ namespace BVNetwork.Attend.Controllers
         public override ActionResult Index(MyPageBlock currentBlock)
         {
             var model = new MyPageBlockViewModel<MyPageBlock>(currentBlock);
+
             string email = Request.QueryString["email"];
             string code = Request.QueryString["code"];
             string cancelEvent = Request.QueryString["cancelEvent"];
+            string editEvent = Request.QueryString["editEvent"];
+
             if (email.IsNullOrEmpty() || code.IsNullOrEmpty())
                 return View("~/Modules/BVNetwork.Attend/Views/Blocks/MyPageBlock/EmptyView.cshtml", model);  //No results found, code not matching email.
-
-
 
             var currentParticipant = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetParticipant(email, code);
 
             if (currentParticipant == null)
                 return View("~/Modules/BVNetwork.Attend/Views/Blocks/MyPageBlock/EmptyView.cshtml", model);
+
 
             ////Set name
             if (currentParticipant != null)
@@ -76,12 +78,23 @@ namespace BVNetwork.Attend.Controllers
                 }
             }
 
-
             model.RegistrationCode = code;
             model.Email = email;
+            model.CurrentBlock = currentBlock;
+
+            //Edit event?
+            if (editEvent == "true" && currentParticipant != null) {
+                model.CurrentEvent = _contentRepository.Get<EventPageBase>(currentParticipant.EventPage);
+                model.PredefinedValues = currentParticipant.XForm;
+                return View("~/Modules/BVNetwork.Attend/Views/Blocks/MyPageBlock/EditEvent.cshtml", model);  //Edit event
+            }
+
 
             var entries = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetParticipantByEmail(email);
 
+            model.AllEntries = new List<ParticipantBlock>();
+            model.UpcomingEntries = new List<ParticipantBlock>();
+            model.PastEntries = new List<ParticipantBlock>();
 
             foreach (var entry in entries)
             {
@@ -102,7 +115,6 @@ namespace BVNetwork.Attend.Controllers
                 return View("~/Modules/BVNetwork.Attend/Views/Blocks/MyPageBlock/EmptyView.cshtml", model);  //No results found, code not matching email.
             }
 
-            model.CurrentBlock = currentBlock;
             var pageRouteHelper = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.Web.Routing.PageRouteHelper>();
             model.CurrentPage = pageRouteHelper.Page;
 

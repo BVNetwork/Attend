@@ -10,6 +10,8 @@ namespace BVNetwork.Attend.Models.Blocks
     [ContentType(DisplayName = "Registration", GUID = "57482cfd-9943-49a1-b301-cc39efc90fc2", Description = "")]
     public class RegistrationBlock : BlockData
     {
+        [Ignore]
+        public ContentArea MainContentArea { get; set; }
 
     }
 }
