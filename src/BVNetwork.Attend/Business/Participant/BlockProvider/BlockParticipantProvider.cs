@@ -16,6 +16,7 @@ using EPiServer.Filters;
 using EPiServer.Personalization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
+using System.Collections;
 
 namespace BVNetwork.Attend.Business.Participant.BlockProvider
 {
@@ -196,16 +197,18 @@ namespace BVNetwork.Attend.Business.Participant.BlockProvider
             var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
             var contentModelUsage = ServiceLocator.Current.GetInstance<IContentModelUsage>();
             var myblockType = contentTypeRepository.Load<ParticipantBlock>();
-            List<ContentReference> myblockTypeReferences = contentModelUsage.ListContentOfContentType(myblockType).Select(x => x.ContentLink.ToReferenceWithoutVersion()).ToList();
-            List<IParticipant> participants = new List<IParticipant>();
+            List<ContentReference> myblockTypeReferences = contentModelUsage.ListContentOfContentType(myblockType).Select(x => x.ContentLink).ToList();
+            Hashtable participantsTable = new Hashtable();
             foreach (ContentReference cref in myblockTypeReferences)
             {
                 ParticipantBlock participant;
                 repository.TryGet<ParticipantBlock>(cref, out participant);
                 if (participant != null)
-                    if (participant.Email == email)
-                        participants.Add(participant.CreateWritableClone() as IParticipant);
+                    if (participant.Email == email && participantsTable.ContainsKey(participant.Code) == false)
+                        participantsTable.Add(participant.Code, participant.CreateWritableClone() as IParticipant);
             }
+
+            List<IParticipant> participants = participantsTable.Values.Cast<IParticipant>().ToList<IParticipant>();            
 
             return participants;
         }
