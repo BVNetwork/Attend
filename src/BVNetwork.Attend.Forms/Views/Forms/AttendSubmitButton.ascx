@@ -29,13 +29,28 @@
 
     <% if(Model.PredefinedValues != null) { %>
         <script type="text/javascript">
-            $( document ).ready(function() {
+            function getInputsByValue(type, name, value) {
+                return document.querySelectorAll(type+'[value="' + value + '"][name="' + name + '"]');
+            }
+
+            function getInputsByName(type, name) {
+                return document.querySelectorAll(type+'[name="' + name + '"]');
+            }
+
+
+
+            document.addEventListener("DOMContentLoaded", function (event) {
                 <% foreach(var element in Model.PredefinedValues) { %>
                 <% if(element.Key.Split(';')[0].ToLower().StartsWith("choice")) { %>
-                    <% foreach(var choice in element.Value.Split(',')) 
+                <% foreach(var choice in element.Value.Split(',')) 
                     { 
                     %>
-                        $('input[name="<%=element.Key.Split(';')[1] %>"][value="<%=choice%>"]').prop('checked', true);
+                var checkboxes = getInputsByValue('input','<%=element.Key.Split(';')[1] %>', '<%=choice%>');
+                if (checkboxes != null && checkboxes.length > 0) {
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        checkboxes[i].checked = true;
+                    }
+                }
                     <%
                     }
                     %>
@@ -44,22 +59,39 @@
                 else if(element.Key.Split(';')[0].ToLower().StartsWith("select")) 
                 { 
                 %>
-                    $('select[name="<%=element.Key.Split(';')[1] %>"]').val('<%=element.Value %>')
+                var dropdowns = getInputsByName('select', '<%=element.Key.Split(';')[1] %>');
+                if (dropdowns != null) {
+                    for (var i = 0; i < dropdowns.length; i++) {
+                        dropdowns[i].value = '<%=element.Value %>';
+                    }
+                }
                 <% 
                 }
                 else if(element.Key.Split(';')[0].ToLower().StartsWith("textarea")) 
                 { 
                 %>
-                    $('textarea[name="<%=element.Key.Split(';')[1] %>"]').val('<%=element.Value %>')
+                var textareas = getInputsByName('textarea', '<%=element.Key.Split(';')[1] %>');
+                if (textareas != null) {
+                    for (var i = 0; i < textareas.length; i++) {
+                        textareas[i].value = '<%=element.Value %>';
+                    }
+                }
                 <% 
                 }
                 else 
                 {
                  %>
-                    $('input[name="<%=element.Key.Split(';')[1] %>"]').val('<%=element.Value %>')
+                var inputs = getInputsByName('input', '<%=element.Key.Split(';')[1] %>');
+                if (inputs != null) {
+                    for (var i = 0; i < inputs.length; i++) {
+                        inputs[i].value = '<%=element.Value %>';
+                    }
+                }
                 <% 
                 }
             } %>
             });
+
+
         </script>
         <% } %>
