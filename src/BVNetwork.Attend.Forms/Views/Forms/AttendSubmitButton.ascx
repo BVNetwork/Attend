@@ -94,4 +94,7 @@
 
 
         </script>
-        <% } %>
+        <% 
+            Model.PredefinedValues = null;
+            }
+             %>
