@@ -27,7 +27,7 @@
     <% } %>
 </button>
 
-    <% if(Model.PredefinedValues != null) { %>
+    <% if(Model.PredefinedValues != null && !string.IsNullOrEmpty(Request.QueryString["code"])) { %>
         <script type="text/javascript">
             function getInputsByValue(type, name, value) {
                 return document.querySelectorAll(type+'[value="' + value + '"][name="' + name + '"]');
@@ -94,7 +94,9 @@
 
 
         </script>
-        <% 
-            Model.PredefinedValues = null;
-            }
-             %>
+    <% 
+        }
+        Model.PredefinedValues = null;
+        Model.ParticipantEmail = null;
+        Model.ParticipantCode = null;
+    %>
