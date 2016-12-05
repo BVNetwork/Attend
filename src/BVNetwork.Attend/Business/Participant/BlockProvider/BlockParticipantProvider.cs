@@ -197,18 +197,16 @@ namespace BVNetwork.Attend.Business.Participant.BlockProvider
             var repository = ServiceLocator.Current.GetInstance<IContentRepository>();
             var contentModelUsage = ServiceLocator.Current.GetInstance<IContentModelUsage>();
             var myblockType = contentTypeRepository.Load<ParticipantBlock>();
-            List<ContentReference> myblockTypeReferences = contentModelUsage.ListContentOfContentType(myblockType).Select(x => x.ContentLink).ToList();
-            Hashtable participantsTable = new Hashtable();
+            List<ContentReference> myblockTypeReferences = contentModelUsage.ListContentOfContentType(myblockType).GroupBy(x => x.ContentLink.ID).Select(y => y.FirstOrDefault().ContentLink).ToList();
+            List<IParticipant> participants = new List<IParticipant>();
             foreach (ContentReference cref in myblockTypeReferences)
             {
                 ParticipantBlock participant;
-                repository.TryGet<ParticipantBlock>(cref, out participant);
-                if (participant != null)
-                    if (participant.Email == email && participantsTable.ContainsKey(participant.Code) == false)
-                        participantsTable.Add(participant.Code, participant.CreateWritableClone() as IParticipant);
+                repository.TryGet<ParticipantBlock>(new ContentReference(cref.ID), out participant);
+                if (participant != null && participant.Email == email)
+                    participants.Add(participant);
             }
 
-            List<IParticipant> participants = participantsTable.Values.Cast<IParticipant>().ToList<IParticipant>();            
 
             return participants;
         }

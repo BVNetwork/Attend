@@ -178,6 +178,7 @@
         <cancel>Cancel</cancel>
         <upcoming>Your upcoming events</upcoming>
         <earlier>Your earlier events</earlier>
+        <registrationCancelled>Your registration is now cancelled</registrationCancelled>
       </edit>
       <eventstatus>
         <event-cancelled>Cancelled</event-cancelled>

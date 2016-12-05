@@ -179,6 +179,7 @@
         <cancel>Kanseller</cancel>
         <upcoming>Dine kommende arrangementer</upcoming>
         <earlier>Dine gjennomførte arrangementer</earlier>
+        <registrationCancelled>Din påmelding er nå kansellert</registrationCancelled>
       </edit>
       <attendstatus>
         <deleted>Slettet</deleted>

@@ -75,6 +75,7 @@ namespace BVNetwork.Attend.Controllers
                     ParticipantLog.AddLogText("Status change", "Status changed to ", entry);
                     _contentRepository.Save(entry as IContent, SaveAction.Publish, AccessLevel.NoAccess);
                     AttendRegistrationEngine.SendStatusMail(entry);
+                    return View("~/Modules/BVNetwork.Attend/Views/Blocks/MyPageBlock/Cancelled.cshtml", model);
                 }
             }
 

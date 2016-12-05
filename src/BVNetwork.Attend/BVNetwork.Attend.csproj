@@ -641,6 +641,7 @@
     <Content Include="Views\Blocks\MyPageBlock\EmptyView.cshtml" />
     <Content Include="Views\Blocks\RegistrationBlock\Index.cshtml" />
     <Content Include="Views\Blocks\MyPageBlock\EditEvent.cshtml" />
+    <Content Include="Views\Blocks\MyPageBlock\Cancelled.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
