@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Web;
 using System.Xml;
 using System.Xml.Linq;
@@ -32,43 +33,58 @@ namespace BVNetwork.Attend.Forms.Business.Core
 
         public static void ProcessForm(NameValueCollection rawFormData, FormContainerBlock formBlock, Submission submissionData) {
 
-            string eventPageId = rawFormData[__AttendEvent];
+            string eventPageIds = rawFormData[__AttendEvent];
             string participantEmail = rawFormData[__AttendParticipantEmail];
             string participantCode = rawFormData[__AttendParticipantCode];
-
-            if (string.IsNullOrEmpty(eventPageId)) // Not an Attend form - exit form processing.
+            List<string> eventPages = null;
+            if (string.IsNullOrEmpty(eventPageIds)) // Not an Attend form - exit form processing.
                 return;
+            if (eventPageIds.Split(',').Length > 1)
+                eventPages = eventPageIds.Split(',').ToList<string>();
+            else
+                eventPages = new List<string>() { eventPageIds };
+
             SetPrivatePropertyValue<PropertyData>(false, "IsReadOnly", formBlock.Property["SubmitSuccessMessage"]);
 
             NameValueCollection nvc = FormParser.ParseForm(submissionData, formBlock);
-            ContentReference eventPage = new ContentReference(eventPageId).ToPageReference();
+            StringBuilder message = new StringBuilder();
 
-            IParticipant participant = null;
-            if (!string.IsNullOrEmpty(participantCode) && !string.IsNullOrEmpty(participantEmail))
-            {
-                participant = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetParticipant(participantEmail, participantCode);
-                participant = FormParser.UpdateParticipation(participant, nvc);
+            foreach (string eventPageId in eventPages) { 
+                ContentReference eventPage = new ContentReference(eventPageId).ToPageReference();
+                EventPageBase eventPageBase = ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(eventPage);
+
+                if (eventPages.Count > 1)
+                    message.Append("<strong>" + eventPageBase.Name + "</strong><br/>");
+
+                IParticipant participant = null;
+                if (!string.IsNullOrEmpty(participantCode) && !string.IsNullOrEmpty(participantEmail))
+                {
+                    participant = BVNetwork.Attend.Business.API.AttendRegistrationEngine.GetParticipant(participantEmail, participantCode);
+                    participant = FormParser.UpdateParticipation(participant, nvc);
+                }
+                if (participant == null)
+                    participant = FormParser.GenerateParticipation(eventPage, nvc);
+
+
+                if (participant.AttendStatus == AttendStatus.Confirmed.ToString())
+                {
+                    if (eventPageBase.CompleteContentXhtml != null)
+                        message.Append(eventPageBase.CompleteContentXhtml.ToHtmlString());
+                    else
+                        message.Append(EPiServer.Framework.Localization.LocalizationService.Current.GetString("/eventRegistrationPage/confirmed"));
+                }
+
+                if (participant.AttendStatus == AttendStatus.Submitted.ToString())
+                    if (eventPageBase.SubmittedContentXhtml != null)
+                        message.Append(eventPageBase.SubmittedContentXhtml.ToHtmlString());
+                    else
+                        message.Append(EPiServer.Framework.Localization.LocalizationService.Current.GetString("/eventRegistrationPage/submitted"));
+                if (message.Length == 0)
+                    message.Append(EPiServer.Framework.Localization.LocalizationService.Current.GetString("/eventRegistrationPage/error"));
+                message.Append("<br/><br/>");
             }
-            if (participant == null)
-                participant = FormParser.GenerateParticipation(eventPage, nvc);
-            
-            string message = null;
-            EventPageBase eventPageBase = ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(eventPage);
-            if (participant.AttendStatus == AttendStatus.Confirmed.ToString())
-            {
-                if (eventPageBase.CompleteContentXhtml != null)
-                    message = eventPageBase.CompleteContentXhtml.ToHtmlString();
-                else
-                    message = EPiServer.Framework.Localization.LocalizationService.Current.GetString("/eventRegistrationPage/confirmed");
-            }
-            if (participant.AttendStatus == AttendStatus.Submitted.ToString())
-                if (eventPageBase.SubmittedContentXhtml != null)
-                    message = eventPageBase.SubmittedContentXhtml.ToHtmlString();
-                else
-                    message = EPiServer.Framework.Localization.LocalizationService.Current.GetString("/eventRegistrationPage/submitted");
-            if (message == null)
-                message = EPiServer.Framework.Localization.LocalizationService.Current.GetString("/eventRegistrationPage/error");
-            formBlock.SubmitSuccessMessage = new XhtmlString(message);
+
+            formBlock.SubmitSuccessMessage = new XhtmlString(message.ToString());
 
         }
 

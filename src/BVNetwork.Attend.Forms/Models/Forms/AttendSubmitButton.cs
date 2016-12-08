@@ -15,6 +15,9 @@ namespace BVNetwork.Attend.Forms.Models.Forms
     {
         [Ignore]
         public virtual string AttendPage { get {
+                string requestedEvent = System.Web.HttpContext.Current.Request.QueryString["eventPageID"];
+                if (!string.IsNullOrEmpty(requestedEvent))
+                    return requestedEvent;
                 return this.FormElement.Form.RedirectUrl;
             } }
 
