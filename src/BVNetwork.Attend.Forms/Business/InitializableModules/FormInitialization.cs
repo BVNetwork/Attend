@@ -20,6 +20,8 @@ using BVNetwork.Attend.Models.Pages;
 using System.Web.Mvc;
 using BVNetwork.Attend.Business.Text;
 using EPiServer;
+using System.Text;
+using BVNetwork.Attend.Forms.Models.Forms;
 
 namespace BVNetwork.Attend.Forms.Business.InitializableModules
 {
@@ -32,8 +34,35 @@ namespace BVNetwork.Attend.Forms.Business.InitializableModules
         {
             var formsEvents = ServiceLocator.Current.GetInstance<FormsEvents>();
             formsEvents.FormsSubmitting += FormsEvents_FormsSubmitting;
+            ParticipantProviderBase.OnAddingParticipant += ParticipantProviderBase_OnAddingParticipant;
         }
 
+        private void ParticipantProviderBase_OnAddingParticipant(object sender, ParticipantEventArgs e)
+        {
+            if(string.IsNullOrEmpty(e.CurrentParticipant.XForm))
+            {
+                StringBuilder xform = new StringBuilder();
+                xform.AppendLine("<instance>");
+                var eventRef = e.CurrentParticipant.EventPage;
+                var rep = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentRepository>();
+                var eventPage = rep.Get<EventPage>(eventRef);
+                if (eventPage != null && eventPage.RegistrationFormContainer != null)
+                {
+                    foreach (ContentAreaItem contentAreaItem in eventPage.RegistrationFormContainer.FilteredItems)
+                        if (contentAreaItem.ContentLink != null) { 
+                            var formContainerBlock = rep.Get<FormContainerBlock>(contentAreaItem.ContentLink);
+                            if(formContainerBlock != null)
+                                foreach (ContentAreaItem formElement in formContainerBlock.ElementsArea.FilteredItems) {
+                                    IContent element = rep.Get<IContent>(formElement.ContentLink);
+                                    if(element != null && !string.IsNullOrEmpty(element.Name) && (element as AttendSubmitButton == null))
+                                        xform.AppendLine("<"+element.Name+">"+ "</" + element.Name + ">");
+                                }
+                        }
+                }
+                xform.AppendLine("</instance>");
+                e.CurrentParticipant.XForm = xform.ToString();
+            }
+        }
 
         private void FormsEvents_FormsSubmitting(object sender, FormsEventArgs e)
         {

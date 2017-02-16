@@ -48,7 +48,7 @@ namespace BVNetwork.Attend.Forms.Business.Core
 
             NameValueCollection nvc = FormParser.ParseForm(submissionData, formBlock);
             StringBuilder message = new StringBuilder();
-
+            StringBuilder codes = new StringBuilder();
             foreach (string eventPageId in eventPages) { 
                 ContentReference eventPage = new ContentReference(eventPageId).ToPageReference();
                 EventPageBase eventPageBase = ServiceLocator.Current.GetInstance<IContentRepository>().Get<EventPageBase>(eventPage);
@@ -82,8 +82,14 @@ namespace BVNetwork.Attend.Forms.Business.Core
                 if (message.Length == 0)
                     message.Append(EPiServer.Framework.Localization.LocalizationService.Current.GetString("/eventRegistrationPage/error"));
                 message.Append("<br/><br/>");
+                codes.Append(participant.Code + ",");
             }
 
+            if (formBlock.RedirectToPage != null) {
+                SetPrivatePropertyValue<PropertyData>(false, "IsReadOnly", formBlock.Property["RedirectToPage"]);
+                Url redirectUrl = new Url(formBlock.RedirectToPage.Uri.ToString()+"?code="+codes.ToString()+"&eventPageID="+eventPageIds);
+                formBlock.RedirectToPage = redirectUrl;
+            }
             formBlock.SubmitSuccessMessage = new XhtmlString(message.ToString());
 
         }
