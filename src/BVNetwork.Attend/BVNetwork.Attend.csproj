@@ -135,10 +135,6 @@
       <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.Web.WebControls.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPiServer.WorkflowFoundation, Version=8.11.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.CMS.Core.8.11.0\lib\net45\EPiServer.WorkflowFoundation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EPiServer.XForms, Version=9.3.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.Core.9.3.3\lib\net45\EPiServer.XForms.dll</HintPath>
       <Private>True</Private>
