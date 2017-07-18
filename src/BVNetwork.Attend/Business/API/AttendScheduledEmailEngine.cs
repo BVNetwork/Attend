@@ -159,12 +159,12 @@ namespace BVNetwork.Attend.Business.API
 
                     case RelativeTo.AfterStartPublish:
                         subtract = false;
-                        dateToSend = EventPageBase.StartPublish;
+                        dateToSend = EventPageBase.StartPublish ?? DateTime.Now;
                         break;
 
                     case RelativeTo.BeforeStartPublish:
                         subtract = true;
-                        dateToSend = EventPageBase.StartPublish;
+                        dateToSend = EventPageBase.StartPublish ?? DateTime.Now;
                         break;
 
                 }
