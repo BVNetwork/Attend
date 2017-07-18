@@ -3,6 +3,12 @@
 ######################
 *License.config
 
+src/BVNetwork.Attend/App_Data/*
+src/BVNetwork.Attend/modules/*
+
+src/BVNetwork.Attend.Forms/App_Data/*
+src/BVNetwork.Attend.Forms/modules/*
+
 # NuGet Packages Directory
 src/packages/
 ## Ignore Visual Studio temporary files, build results, and
