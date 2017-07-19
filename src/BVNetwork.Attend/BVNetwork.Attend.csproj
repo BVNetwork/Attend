@@ -332,7 +332,7 @@
     <Compile Include="Business\API\AttendSessionEngine.cs" />
     <Compile Include="Business\API\RegistrationEventArgs.cs" />
     <Compile Include="Business\Core\Folders.cs" />
-    <Compile Include="Business\EditorDescriptors\AttendFormsOnlyContentAreaEditing .cs" />
+    <Compile Include="Business\EditorDescriptors\AttendFormsOnlyContentAreaEditing.cs" />
     <Compile Include="Business\EditorDescriptors\AttendStatusMultipleSelector.cs" />
     <Compile Include="Business\EditorDescriptors\AttendXFormFieldsSelector.cs" />
     <Compile Include="Business\EditorDescriptors\AttendXFormFieldsSelectionFactory.cs" />
