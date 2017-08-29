@@ -116,7 +116,7 @@ namespace BVNetwork.Attend.Controllers
                 return View("~/Modules/BVNetwork.Attend/Views/Blocks/MyPageBlock/EmptyView.cshtml", model);  //No results found, code not matching email.
             }
 
-            var pageRouteHelper = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.Web.Routing.PageRouteHelper>();
+            var pageRouteHelper = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IPageRouteHelper>();
             model.CurrentPage = pageRouteHelper.Page;
 
             return View("~/Modules/BVNetwork.Attend/Views/Blocks/MyPageBlock/Index.cshtml", model);  //No results found, code not matching email.

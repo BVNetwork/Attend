@@ -17,7 +17,7 @@ namespace BVNetwork.Attend.Business.EditorDescriptors
            IEnumerable<Attribute> attributes)
         {
             base.ModifyMetadata(metadata, attributes);
-            ClientEditingClass = "epi.cms.contentediting.editors.ContentAreaEditor";
+            ClientEditingClass = "epi-cms/contentediting/editors/ContentAreaEditor";
             metadata.CustomEditorSettings["uiWrapperType"] = UiWrapperType.Floating;
             AllowedTypes = new List<Type>() { typeof(BlockData), typeof(PageData), typeof(IContent) };
             

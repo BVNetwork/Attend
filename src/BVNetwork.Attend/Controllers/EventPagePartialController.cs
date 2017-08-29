@@ -43,7 +43,7 @@ namespace BVNetwork.Attend.Controllers
 
             var viewModel = CreateEventRegistrationModel(currentPage, contentLink);
 
-            var pageRouteHelper = ServiceLocator.Current.GetInstance<PageRouteHelper>();
+            var pageRouteHelper = ServiceLocator.Current.GetInstance<IPageRouteHelper>();
             PageData hostPageData = pageRouteHelper.Page;
 
             if (currentPage != null && hostPageData != null)
@@ -158,7 +158,7 @@ namespace BVNetwork.Attend.Controllers
             var repository = ServiceLocator.Current.GetInstance<IContentLoader>();
             var localizationService = ServiceLocator.Current.GetInstance<LocalizationService>();
 
-            var pageRouteHelper = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.Web.Routing.PageRouteHelper>();
+            var pageRouteHelper = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IPageRouteHelper>();
             PageReference currentPageLink = pageRouteHelper.PageLink;
             model.HostPageData = pageRouteHelper.Page;
             model.EventPageBase = currentPage;
