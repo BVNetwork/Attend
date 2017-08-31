@@ -25,7 +25,7 @@
         <eventname>Arrangementsnavn</eventname>
         <attend>Attend</attend>
         <invoicing>Fakturering</invoicing>
-        <participantfilter>Deltakerfilter</participantfilter>B
+        <participantfilter>Deltakerfilter</participantfilter>
         <totalparticipants>Totalt antall deltakere</totalparticipants>
         <totalincome>Totale inntekter</totalincome>
         <export>Eksporter</export>
