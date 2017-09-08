@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>BVNetwork.Attend.Forms</id>
-    <version>10.0.2</version> 
+    <version>10.0.3</version> 
     <title>Attend Episerver Forms Package</title>
     <authors>The EPiCode Community</authors>
     <owners>BV Network AS</owners>
@@ -17,7 +17,7 @@
       <reference file="BVNetwork.Attend.Forms.dll" />
     </references>
     <dependencies>
-      <dependency id="BVNetwork.Attend" version="10.0.2"/>
+      <dependency id="BVNetwork.Attend" version="10.0.3"/>
       <dependency id="EPiServer.Forms" version="4.1.0"/>
       <dependency id="EPiServer.CMS.Core" version="[10.0.1, 11.0)"/>
       <dependency id="EPiServer.CMS.UI" version="[10.0.2, 11.0)"/>
@@ -29,7 +29,7 @@
     <file src="**\*.svg" target="content\Modules\BVNetwork.Attend.Forms\" />
     <file src="**\*.ttf" target="content\Modules\BVNetwork.Attend.Forms\" />
     <file src="**\*.woff" target="content\Modules\BVNetwork.Attend.Forms\" />
-    <file src="bin\BVNetwork.Attend.Forms.dll" target="lib\net40\BVNetwork.Attend.Forms.dll" />
+    <file src="bin\BVNetwork.Attend.Forms.dll" target="lib\net45\BVNetwork.Attend.Forms.dll" />
     <file src="**\*.aspx" target="content\Modules\BVNetwork.Attend.Forms\" />
     <file src="**\*.cshtml" target="content\Modules\BVNetwork.Attend.Forms\" />
     <file src="**\*.ascx" target="content\Modules\BVNetwork.Attend.Forms\" />

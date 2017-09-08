@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>BVNetwork.Attend</id>
-    <version>10.0.2</version> 
+    <version>10.0.3</version> 
     <title>Attend</title>
     <authors>The EPiCode Community</authors>
     <owners>BV Network AS</owners>
@@ -32,7 +32,7 @@
     <file src="**\*.ttf" target="content\Modules\BVNetwork.Attend\" />
     <file src="**\*.woff" target="content\Modules\BVNetwork.Attend\" />
     <file src="Resources\LanguageFiles\*.xml" target="content\lang\" />
-    <file src="bin\BVNetwork.Attend.dll" target="lib\net40\BVNetwork.Attend.dll" />
+    <file src="bin\BVNetwork.Attend.dll" target="lib\net45\BVNetwork.Attend.dll" />
     <!--<file src="\bin\ExcelLibrary.dll" target="lib\net40\ExcelLibrary.dll" />-->
     <!--<file src="\bin\OpenPop.dll" target="lib\net40\OpenPop.dll" />
     <file src="\bin\OpenPop.dll" target="content\modulesbin\OpenPop.dll" />-->
