@@ -129,7 +129,7 @@ namespace BVNetwork.Attend.Business.Participant.BlockProvider
 
                 foreach (LanguageBranch languageBranch in allLanguages)
                 {
-                    allEvents.Add(DataFactory.Instance.FindPagesWithCriteria(siteDefinition.StartPage.ToPageReference(), criteria, languageBranch.LanguageID));
+                    allEvents.Add(DataFactory.Instance.FindAllPagesWithCriteria(siteDefinition.StartPage.ToPageReference(), criteria, languageBranch.LanguageID, new LanguageSelector(languageBranch.LanguageID)));
                 }
 
                 foreach (PageData currentEvent in allEvents)
