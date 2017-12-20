@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>BVNetwork.Attend</id>
-    <version>10.0.5</version> 
+    <version>11.0.0</version> 
     <title>Attend</title>
     <authors>The EPiCode Community</authors>
     <owners>BV Network AS</owners>
@@ -17,8 +17,9 @@
       <reference file="BVNetwork.Attend.dll" />
     </references>
     <dependencies>
-      <dependency id="EPiServer.CMS.Core" version="[10.0.1, 11.0)"/>
-      <dependency id="EPiServer.CMS.UI" version="[10.0.2, 11.0)"/>
+      <dependency id="EPiServer.CMS.Core" version="[11.3.0, 12.0)"/>
+      <dependency id="EPiServer.CMS.UI" version="[11.3.0, 12.0)"/>
+      <dependency id="EPiServer.XForms" version="1.0"/>
       <dependency id="iTextSharp" version="5.5.6"/>
       <dependency id="ExcelLibrary" version="1.2011.7.30"/>
     </dependencies>
@@ -33,9 +34,6 @@
     <file src="**\*.woff" target="content\Modules\BVNetwork.Attend\" />
     <file src="Resources\LanguageFiles\*.xml" target="content\lang\" />
     <file src="bin\BVNetwork.Attend.dll" target="lib\net45\BVNetwork.Attend.dll" />
-    <!--<file src="\bin\ExcelLibrary.dll" target="lib\net40\ExcelLibrary.dll" />-->
-    <!--<file src="\bin\OpenPop.dll" target="lib\net40\OpenPop.dll" />
-    <file src="\bin\OpenPop.dll" target="content\modulesbin\OpenPop.dll" />-->
     <file src="**\*.aspx" target="content\Modules\BVNetwork.Attend\" />
     <file src="**\*.cshtml" target="content\Modules\BVNetwork.Attend\" />
     <file src="**\*.ascx" target="content\Modules\BVNetwork.Attend\" />
