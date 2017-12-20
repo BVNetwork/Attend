@@ -31,7 +31,7 @@ namespace BVNetwork.Attend.Business.InitializableModules
                     configValues.Add(FileXmlLocalizationProvider.PhysicalPathKey, langFolder);
                     FileXmlLocalizationProvider localizationProvider = new FileXmlLocalizationProvider();
                     localizationProvider.Initialize(ProviderName, configValues);
-                    localizationService.Providers.Add(localizationProvider);
+                    localizationService.AddProvider(localizationProvider);
                 }
             }
 
@@ -42,10 +42,10 @@ namespace BVNetwork.Attend.Business.InitializableModules
             ProviderBasedLocalizationService localizationService = context.Locate.Advanced.GetInstance<LocalizationService>() as ProviderBasedLocalizationService;
             if (localizationService != null)
             {
-                LocalizationProvider localizationProvider = localizationService.Providers.FirstOrDefault(p => p.Name.Equals(ProviderName, StringComparison.Ordinal));
+                LocalizationProvider localizationProvider = localizationService.ProviderList.FirstOrDefault(p => p.Name.Equals(ProviderName, StringComparison.Ordinal));
                 if (localizationProvider != null)
                 {
-                    localizationService.Providers.Remove(localizationProvider);
+                    localizationService.RemoveProvider(localizationProvider.Name);
                 }
             }
         }
