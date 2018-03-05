@@ -20,7 +20,7 @@ using EPiServer.Forms.Implementation.Elements.BaseClasses;
 namespace BVNetwork.Attend.Forms.Controllers
 {
 
-    [TemplateDescriptor(AvailableWithoutTag = true, Default = true, ModelType = typeof(FormContainerBlock), TagString = "AttendContentArea", TemplateTypeCategory = TemplateTypeCategories.MvcPartialController)]
+    [TemplateDescriptor(AvailableWithoutTag = true, Default = true, ModelType = typeof(FormContainerBlock), TagString = "AttendContentArea", TemplateTypeCategory = TemplateTypeCategories.MvcPartialController, Inherited = true)]
     public class AttendFormContainerBlockController : FormContainerBlockController
     {
         public override ActionResult Index(FormContainerBlock currentBlock)
